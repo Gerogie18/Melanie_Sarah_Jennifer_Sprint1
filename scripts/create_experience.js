@@ -52,7 +52,7 @@ let timeSlots = [
   { value: '20:00', text: '8:00 PM' },
   { value: '21:00', text: '9:00 PM' },
 ];
-
+//if timeslots[value] = bookings["time"] => timeslots.pop(value)
 // Add options to the select element
 timeSlots.forEach((timeSlot) => {
   const option = document.createElement('option');
