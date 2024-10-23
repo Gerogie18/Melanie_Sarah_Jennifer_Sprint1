@@ -142,4 +142,4 @@ window.addEventListener("DOMContentLoaded", function () {
     //   book.showAlert("Book Successfully added", "success");
       event.preventDefault();
     });
-  
+});

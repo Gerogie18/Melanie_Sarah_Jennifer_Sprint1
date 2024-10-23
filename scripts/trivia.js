@@ -1,104 +1,113 @@
-window.addEventListener("DOMContentLoaded", function () {
-  fetch("./data/trivia.json")
-    .then(response => response.json())
-    .then(data => {
+console.log("script is running");
+class triviaQuestion {
+  constructor(question, answers, solution, index){
+    this.question = question;
+    this.answers = answers;
+    this.solution = solution;
+    this.index = index;
+  
+    // Initialize the creation of DOM elements
+    this.createQuestionDiv();
+    this.createAnswerButtons();
+    this.createNotifyDiv();
+  }
 
-      console.log(data);
-
-      var questions = [];
-      var answers = [];
-      var solutions = [];
-
-      data.forEach(function(item) {
-        questions.push(item.q)
-        answers.push(item.answers)
-        solutions.push(item.soln)
-      })
-
-      // Create sections for questions and answers
-      questions.forEach(function(question, index) {
-        createQuestionDiv(question, index);
-        createAnswerButtons(answers[index], index); 
-        createNotifyDiv(index);
-      });
-
-      //Validate answers;
-      questions.forEach(function (question, index){
-        console.log(question);
-        let soln = solutions[index];
-        console.log(soln);
-        identifySolutions(soln, index);
-      });
-    });
-  });
-
-  function createQuestionDiv(question, index) {
+  // Create question div and display question
+  createQuestionDiv() {
     let div = document.createElement("div");
-    div.id = `q${index}`; 
-    div.innerHTML = `<h2>${question}</h2>`;
+    div.id = `q${this.index}`;
+    div.className = "hideDiv";
+    div.innerHTML = `<h2>${this.question}</h2>`;
     document.querySelector("#questions").appendChild(div);
   }
 
-  function createAnswerButtons(answers, index) {
-    let containerDiv = document.querySelector(`#q${index}`);
-    let count = 0;
-    answers.forEach(answer => {
 
-      let btn = document.createElement("button");  // Create a new button for each answer
-      btn.id = `btn${index}-${count}`
-      btn.innerText = answer;
-      containerDiv.appendChild(btn);  // Append each button to the container div
+  //Create answer buttons and attach to the question div
+  createAnswerButtons() {
+    let containerDiv = document.querySelector(`#q${this.index}`);
+    this.answers.forEach((answer, count) => {
+      let btn = document.createElement("button");
+      btn.id = `btn${this.index}-${count}`;
 
-      let br = document.createElement("br"); // Create and append a line break after the button
-      containerDiv.appendChild(br);
-      count +=1;
-    });
-  }
+      let icon;
+      if (count === 0){icon = "&#9312;"};
+      if (count === 1){icon = "&#9313;"};
+      if (count === 2){icon = "&#9314;"};
 
+      btn.innerHTML = `<span>${icon}</span> <span id="soln">${answer}</span>`
+      containerDiv.appendChild(btn);
+      containerDiv.appendChild(document.createElement("br"));
 
-  function createNotifyDiv(index) {
-    let div = document.createElement("div");
-    div.id = `notify${index}`;  //
-    document.querySelector(`#q${index}`).appendChild(div);     
-  }
+      // Attach event listener for validation
+      btn.addEventListener("click", () => {
+        this.validateAnswer(btn);
 
-  function identifySolutions(soln, index) {
-    let btns = document.querySelectorAll(`#q${index} button`);
-    console.log(btns)
-    btns.forEach((btn) => {
-      btn.addEventListener("click", function() {
-        validateAnswer(btn, soln, index)
+        // Alternative code: 
+        // btn.addEventListener("click", function() {
+        //   this.validateAnswer(btn);
+        // }.bind(this)); // Bind the correct `this` to the event listener
       });
     });
   }
 
-  function validateAnswer(btn, soln, index){
-    console.log(index);
-    if (btn.innerText.trim() === soln.toUpperCase()) {
-      showAlert("yay!", "success", index);
+
+  // Create a div to notify user of result
+  createNotifyDiv() {
+    let div = document.createElement("div");
+    div.id = `notify${this.index}`; 
+    document.querySelector(`#q${this.index}`).appendChild(div);     
+  }
+
+  // Provide feedback on button press
+  validateAnswer(btn){
+    let btnSoln = btn.querySelector('#soln')
+    if (btnSoln.innerText.trim().toUpperCase() === this.solution.toUpperCase()) {
+      this.showAlert("yay!", "success");
     } else {
-      showAlert("nope!", "error", index);
+      this.showAlert("nope!", "error");
     }
   }
 
   // showAlert function
-  function showAlert(msg, className, index) {
+  showAlert(msg, className) {
     let div = document.createElement("div");
     div.innerText = msg;
     div.className = className;
-    div.id = `box${index}`;  
+    div.id = `box${this.index}`;  
 
-    let notifyDiv = document.querySelector(`#notify${index}`);
+    let notifyDiv = document.querySelector(`#notify${this.index}`);
     notifyDiv.innerHTML = "";  // Clear any existing alert
     notifyDiv.appendChild(div);  // Append the new alert
-    removeAfterTimeout(`#box${index}`, 3000); 
+    removeAfterTimeout(`#box${this.index}`, 3000); 
   }
-  
-  function removeAfterTimeout(id, time) {
-    setTimeout(function() {
-      let element = document.querySelector(id)
-      if (element){
-        element.remove();
-      }
-    }, time);
-  }
+}
+
+function removeAfterTimeout(id, time) {
+  setTimeout(function() {
+    let element = document.querySelector(id)
+    if (element){
+      element.remove();
+    }
+  }, time);
+}
+
+window.addEventListener("DOMContentLoaded", function () {
+  fetch("../data/trivia.json")
+    .then(response => response.json())
+    .then(data => {
+      data.forEach((item, index) => {
+        new triviaQuestion(item.q, item.answers, item.soln, index);  // Create a new instance for each trivia question
+      });
+    });
+});
+
+// Function to handle "Next" button click
+function handleNextClick() {
+  let div = document.getElementById('q1');
+  div.classList.remove('hideDiv');
+}
+
+// Add event listener to the "Next" button
+document.getElementById('nextButton').addEventListener('click', handleNextClick);
+
+
