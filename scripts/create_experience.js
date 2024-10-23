@@ -20,7 +20,7 @@ async function loadImageData() {
   loadImageData();
 
 //fetching booking data
-let bookings; // or let bookings = [];
+let bookings = [];
 fetch('../data/bookings.json')
   .then(response => response.json())
   .then(data => {
@@ -28,19 +28,23 @@ fetch('../data/bookings.json')
     bookings = data;
   })
   .catch(error => console.error(error));
-
+  console.log('these are the bookings:')
+  console.log(bookings)
 //Creating a min date, and blocking out dates
-const dateInput = document.getElementById('date');
+let dateInput = document.getElementById('date');
 const today = new Date();
 today.setDate(today.getDate() + 1);
 const minDate = today.toISOString().split('T')[0];
 dateInput.min = minDate;
-console.log(minDate);
-//TODO: Create a Black Out dates
+//console.log(minDate); //checking mindate is working
+//creating blackout dates could be done using an external library
 
 
-// Get the select element
-const timeSelect = document.getElementById('time-select');
+// Get the date selected
+dateInput.addEventListener('change', function() {
+    const selectedDate = dateInput.value;
+    console.log('Date updated:', selectedDate);
+  });
 
 // Define time slots (you can adjust these)
 let timeSlots = [
@@ -52,7 +56,11 @@ let timeSlots = [
   { value: '20:00', text: '8:00 PM' },
   { value: '21:00', text: '9:00 PM' },
 ];
-//if timeslots[value] = bookings["time"] => timeslots.pop(value)
+
+function buttonPressed(event) {
+    console.log('Button pressed:', event.target.value);
+  
+}
 // Add options to the select element
 timeSlots.forEach((timeSlot) => {
   const option = document.createElement('option');
@@ -61,4 +69,12 @@ timeSlots.forEach((timeSlot) => {
   timeSelect.appendChild(option);
 });
 
+// Get the time selected
+let selectedTime = "not selected";
+timeSelect.addEventListener('change', (event) => {
+    selectedTime = event.target.value;
+    console.log('Selected time:', selectedTime);
+  });
+
+  console.log('Selected time:', selectedTime);
 

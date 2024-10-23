@@ -3,15 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../scripts/default.css">
     <title>Document</title>
 </head>
 <body>
     <h1>Create your Own Experience</h1>
     <h2>Available Dates: </h2>
-    <input type="date" name="Date" id="date">
-<select id="time-select">
-  <option value="">Pick Time</option>
-</select>
+    <input type="date" name="Date" id="date" max="2024-11-21">
+    <h2>Age Range</h2>
+        <p>We love throwing spooky events for all age ranges.  Depending on age range picked different timeslots and activities may be available.</p>
+        <button type="button" class = "ageRange3-6" name="Youth Range 3-6">Youth 3-6</button>
+        <button type="button" class = "ageRange7-11" name="Youth Range 7-11">Adult 12+</button>
+        <button type="button" class = "ageRange12-17" name="Youth Range 12-17">Adult 12-17</button>
+        <button type="button" class = "ageRange18+" name="Adult Range 18+">Adult 18+</button>
+    <h2>Select Time</h2>
+    <select id="timeSelect">
+        <option value="">Select Start Time</option>
+    </select>
+    <h2>Activity Slot 1</h2>
+    <h2>Activity Slot 2</h2>
+    <h2>Activity Slot 4</h2>
+
 <script src="../scripts/create_experience.js"></script>
 </body>
 </html>
