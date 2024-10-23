@@ -34,7 +34,7 @@ class triviaQuestion {
       if (count === 1){icon = "&#9313;"};
       if (count === 2){icon = "&#9314;"};
 
-      btn.innerHTML = `<span>${icon}</span> <span>${answer}</span>`
+      btn.innerHTML = `<span>${icon}</span> <span id="soln">${answer}</span>`
       containerDiv.appendChild(btn);
       containerDiv.appendChild(document.createElement("br"));
 
@@ -54,13 +54,14 @@ class triviaQuestion {
   // Create a div to notify user of result
   createNotifyDiv() {
     let div = document.createElement("div");
-    div.id = `notify${this.index}`;  //
+    div.id = `notify${this.index}`; 
     document.querySelector(`#q${this.index}`).appendChild(div);     
   }
 
   // Provide feedback on button press
   validateAnswer(btn){
-    if (btn.innerText.trim() === this.solution.toUpperCase()) {
+    let btnSoln = btn.querySelector('#soln')
+    if (btnSoln.innerText.trim().toUpperCase() === this.solution.toUpperCase()) {
       this.showAlert("yay!", "success");
     } else {
       this.showAlert("nope!", "error");
@@ -108,4 +109,5 @@ function handleNextClick() {
 
 // Add event listener to the "Next" button
 document.getElementById('nextButton').addEventListener('click', handleNextClick);
+
 
