@@ -28,8 +28,13 @@ class triviaQuestion {
     this.answers.forEach((answer, count) => {
       let btn = document.createElement("button");
       btn.id = `btn${this.index}-${count}`;
-      //btn.innerText = answer;
-      btn.innerHTML = `<span>(${count})</span> <span>${answer}</span>`
+
+      let icon;
+      if (count === 0){icon = "&#9312;"};
+      if (count === 1){icon = "&#9313;"};
+      if (count === 2){icon = "&#9314;"};
+
+      btn.innerHTML = `<span>${icon}</span> <span>${answer}</span>`
       containerDiv.appendChild(btn);
       containerDiv.appendChild(document.createElement("br"));
 
