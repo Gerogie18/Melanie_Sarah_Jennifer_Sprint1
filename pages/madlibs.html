@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+      integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>MadLibs</title>
+  </head>
+
+  <body>
+    <h1>Madlibs</h1>
+    <p>Provide an example of each of the following to play madlibs.</p>
+    <br />
+
+    <form id="storyForm">
+      <label for="category">2 animate nouns (things that are living):</label>
+      <p>(e.g., "dog", "cat", "person", "fish", "bird")</p>
+      <input
+        type="text"
+        id="noun1"
+        name="noun1"
+        placeholder="noun1"
+        required
+      /><br />
+      <input
+        type="text"
+        id="noun2"
+        name="noun2"
+        placeholder="noun2"
+        required
+      /><br />
+      <br />
+      <br />
+
+      <label for="category">1 inanimate noun (not living):</label>
+      <p>(e.g., "table", "chair", "house", "car", "computer")</p>
+      <input
+        type="text"
+        id="noun3"
+        name="noun3"
+        placeholder="noun3"
+        required
+      /><br />
+      <br />
+      <br />
+
+      <label for="category">3 Adjectives:</label>
+      <p>(e.g., "funny", "boring", "small", "tall", "yellow")</p>
+      <input
+        type="text"
+        id="adj1"
+        name="adj1"
+        placeholder="adj1"
+        required
+      /><br />
+      <input
+        type="text"
+        id="adj2"
+        name="adj2"
+        placeholder="adj2"
+        required
+      /><br />
+      <input
+        type="text"
+        id="adj3"
+        name="adj3"
+        placeholder="adj3"
+        required
+      /><br />
+      <br />
+      <br />
+
+      <label for="category">2 intransitive verbs (past and present):</label
+      ><br />
+      <p>
+        (e.g., "run, ran", "melt, melted", "sleep, slept") <br />
+        (hint: these verbs that can end the sentence "The cat wants to ______"
+        with just one word)
+      </p>
+      <input
+        type="text"
+        id="verb1a"
+        name="IV1a"
+        placeholder="present"
+        required
+      />
+      <input
+        type="text"
+        id="verb1b"
+        name="IV1b"
+        placeholder="past"
+        required
+      /><br />
+      <input
+        type="text"
+        id="verb2a"
+        name="IV2a"
+        placeholder="present"
+        required
+      />
+      <input
+        type="text"
+        id="verb2b"
+        name="IV2b"
+        placeholder="past"
+        required
+      /><br />
+      <br />
+      <br />
+
+      <label for="category">1 preposition indicating location:</label>
+      <p>(e.g., "in", "on", "under", "over", "beside")</p>
+      <input
+        type="text"
+        id="prep"
+        name="prep"
+        placeholder="preposition"
+        required
+      /><br />
+      <br />
+      <button id="btn_submit" type="submit">Submit</button>
+    </form>
+
+    <br />
+    <h1>User Output Example</h1>
+    <br />
+    <div id="userStory"></div>
+
+    <script src="scripts/madlibs2.js"></script>
+  </body>
+</html>
