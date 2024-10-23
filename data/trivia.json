@@ -1,0 +1,5 @@
+[
+  { "q": "Where", "answers": ["here","there","everywhere"], "soln": "there" },
+  { "q": "Who", "answers": ["him", "her", "them"], "soln": "them" },
+  { "q": "What", "answers": ["this", "that", "everything"], "soln": "this" }
+]
