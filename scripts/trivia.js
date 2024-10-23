@@ -18,18 +18,16 @@ window.addEventListener("DOMContentLoaded", function () {
 
       // Create sections for questions and answers
       questions.forEach(function(question, index) {
-        createQuestionDiv(question, index);  // No need to pass index separately
-        createAnswerButtons(answers[index], index);  // You still need index here to append answers
+        createQuestionDiv(question, index);
+        createAnswerButtons(answers[index], index); 
         createNotifyDiv(index);
       });
 
       function createQuestionDiv(question, index) {
         let div = document.createElement("div");
-        div.id = `q${index}`;  // The index is available here, so you can use it directly
+        div.id = `q${index}`; 
+        div.innerHTML = `<h2>${question}</h2>`;
         document.querySelector("#questions").appendChild(div);
-        let h2 = document.createElement("h2");
-        h2.innerText = question;
-        document.querySelector(`#q${index}`).appendChild(h2);
       };
 
 
@@ -38,7 +36,7 @@ window.addEventListener("DOMContentLoaded", function () {
         let count = 0;
         answers.forEach(answer => {
           let btn = document.createElement("button");  // Create a new button for each answer
-          btn.id = `btn${count}`
+          btn.id = `btn${index}-${count}`
           btn.innerText = answer;
           containerDiv.appendChild(btn);  // Append each button to the container div
 
@@ -65,15 +63,10 @@ window.addEventListener("DOMContentLoaded", function () {
         findSolutions(answers, soln, index);
       });
 
-        function findSolutions(answers, soln, index) {
-        // document.querySelector("#q1").innerText = question.q;
-          console.log(answers);
-          console.log(soln);
-          console.log(index);
+        function findSolutions(soln, index) {
           let btns = document.querySelectorAll(`#q${index} button`);
           console.log(btns)
           btns.forEach((btn) => {
-            console.log(btn, "hi")
             btn.addEventListener("click", function() {
               validateAnswer(btn, soln, index)
             });
@@ -83,7 +76,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
           function validateAnswer(btn, soln, index){
             console.log(index);
-            if (btn.innerText.trim() === soln.toUpperCase()) {
+            if (btn.innerText.trim().toUpperCase() === soln.toUpperCase()) {
               showAlert("yay!", "success", index);
             } else {
               showAlert("nope!", "error", index);
