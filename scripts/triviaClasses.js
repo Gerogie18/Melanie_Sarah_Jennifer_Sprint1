@@ -1,10 +1,10 @@
 console.log("script is running");
 class triviaQuestion {
-  constructor(question, answers = [], solution, index){
-    this.question;
-    this.answers;
-    this.solution;
-    this.index;
+  constructor(question, answers, solution, index){
+    this.question = question;
+    this.answers = answers;
+    this.solution = solution;
+    this.index = index;
   
     // Initialize the creation of DOM elements
     this.createQuestionDiv();
@@ -16,61 +16,52 @@ class triviaQuestion {
   createQuestionDiv() {
     let div = document.createElement("div");
     div.id = `q${this.index}`;
+    div.className = "hideDiv";
     div.innerHTML = `<h2>${this.question}</h2>`;
     document.querySelector("#questions").appendChild(div);
   }
 
-  // Create answer buttons and attach to the question div
-  // createAnswerButtons() {
-  //   let containerDiv = document.querySelector(`#q${this.index}`);
-  //   let count = 0;
-  //   this.answers.forEach((answer, count) => {
 
-  //     let btn = document.createElement("button");
-  //     btn.id = `btn${this.index}-${count}`
-  //     btn.innerText = answer;
-  //     containerDiv.appendChild(btn);  // Append each button to the container div
+  //Create answer buttons and attach to the question div
+  createAnswerButtons() {
+    let containerDiv = document.querySelector(`#q${this.index}`);
+    this.answers.forEach((answer, count) => {
+      let btn = document.createElement("button");
+      btn.id = `btn${this.index}-${count}`;
 
-  //     let br = document.createElement("br"); // Create and append a line break after the button
-  //     containerDiv.appendChild(br);
+      let icon;
+      if (count === 0){icon = "&#9312;"};
+      if (count === 1){icon = "&#9313;"};
+      if (count === 2){icon = "&#9314;"};
 
-  //     btn.addEventListener("click", function() {
-  //       this.validateAnswer(btn)
-  //     });
-  //     count +=1;
-  //   });
-  // }
+      btn.innerHTML = `<span>${icon}</span> <span id="soln">${answer}</span>`
+      containerDiv.appendChild(btn);
+      containerDiv.appendChild(document.createElement("br"));
 
+      // Attach event listener for validation
+      btn.addEventListener("click", () => {
+        this.validateAnswer(btn);
 
-
-// Create answer buttons and attach to the question div
-createAnswerButtons() {
-  let containerDiv = document.querySelector(`#q${this.index}`);
-  this.answers.forEach((answer, count) => {
-    let btn = document.createElement("button");
-    btn.id = `btn${this.index}-${count}`;
-    btn.innerText = answer;
-    containerDiv.appendChild(btn);
-    containerDiv.appendChild(document.createElement("br"));
-
-    // Attach event listener for validation
-    btn.addEventListener("click", () => {
-      this.validateAnswer(btn);
+        // Alternative code: 
+        // btn.addEventListener("click", function() {
+        //   this.validateAnswer(btn);
+        // }.bind(this)); // Bind the correct `this` to the event listener
+      });
     });
-  });
-}
+  }
 
 
   // Create a div to notify user of result
   createNotifyDiv() {
     let div = document.createElement("div");
-    div.id = `notify${this.index}`;  //
+    div.id = `notify${this.index}`; 
     document.querySelector(`#q${this.index}`).appendChild(div);     
   }
 
   // Provide feedback on button press
   validateAnswer(btn){
-    if (btn.innerText.trim() === this.solution.toUpperCase()) {
+    let btnSoln = btn.querySelector('#soln')
+    if (btnSoln.innerText.trim().toUpperCase() === this.solution.toUpperCase()) {
       this.showAlert("yay!", "success");
     } else {
       this.showAlert("nope!", "error");
@@ -109,3 +100,14 @@ window.addEventListener("DOMContentLoaded", function () {
       });
     });
 });
+
+// Function to handle "Next" button click
+function handleNextClick() {
+  let div = document.getElementById('q1');
+  div.classList.remove('hideDiv');
+}
+
+// Add event listener to the "Next" button
+document.getElementById('nextButton').addEventListener('click', handleNextClick);
+
+
