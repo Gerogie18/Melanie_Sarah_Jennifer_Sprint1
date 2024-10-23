@@ -1,10 +1,10 @@
 console.log("script is running");
 class triviaQuestion {
-  constructor(question, answers = [], solution, index){
-    this.question;
-    this.answers;
-    this.solution;
-    this.index;
+  constructor(question, answers, solution, index){
+    this.question = question;
+    this.answers = answers;
+    this.solution = solution;
+    this.index = index;
   
     // Initialize the creation of DOM elements
     this.createQuestionDiv();
@@ -16,49 +16,34 @@ class triviaQuestion {
   createQuestionDiv() {
     let div = document.createElement("div");
     div.id = `q${this.index}`;
+    div.className = "hideDiv";
     div.innerHTML = `<h2>${this.question}</h2>`;
     document.querySelector("#questions").appendChild(div);
   }
 
-  // Create answer buttons and attach to the question div
-  // createAnswerButtons() {
-  //   let containerDiv = document.querySelector(`#q${this.index}`);
-  //   let count = 0;
-  //   this.answers.forEach((answer, count) => {
 
-  //     let btn = document.createElement("button");
-  //     btn.id = `btn${this.index}-${count}`
-  //     btn.innerText = answer;
-  //     containerDiv.appendChild(btn);  // Append each button to the container div
+  //Create answer buttons and attach to the question div
+  createAnswerButtons() {
+    let containerDiv = document.querySelector(`#q${this.index}`);
+    this.answers.forEach((answer, count) => {
+      let btn = document.createElement("button");
+      btn.id = `btn${this.index}-${count}`;
+      //btn.innerText = answer;
+      btn.innerHTML = `<span>(${count})</span> <span>${answer}</span>`
+      containerDiv.appendChild(btn);
+      containerDiv.appendChild(document.createElement("br"));
 
-  //     let br = document.createElement("br"); // Create and append a line break after the button
-  //     containerDiv.appendChild(br);
+      // Attach event listener for validation
+      btn.addEventListener("click", () => {
+        this.validateAnswer(btn);
 
-  //     btn.addEventListener("click", function() {
-  //       this.validateAnswer(btn)
-  //     });
-  //     count +=1;
-  //   });
-  // }
-
-
-
-// Create answer buttons and attach to the question div
-createAnswerButtons() {
-  let containerDiv = document.querySelector(`#q${this.index}`);
-  this.answers.forEach((answer, count) => {
-    let btn = document.createElement("button");
-    btn.id = `btn${this.index}-${count}`;
-    btn.innerText = answer;
-    containerDiv.appendChild(btn);
-    containerDiv.appendChild(document.createElement("br"));
-
-    // Attach event listener for validation
-    btn.addEventListener("click", () => {
-      this.validateAnswer(btn);
+        // Alternative code: 
+        // btn.addEventListener("click", function() {
+        //   this.validateAnswer(btn);
+        // }.bind(this)); // Bind the correct `this` to the event listener
+      });
     });
-  });
-}
+  }
 
 
   // Create a div to notify user of result
@@ -109,3 +94,13 @@ window.addEventListener("DOMContentLoaded", function () {
       });
     });
 });
+
+// Function to handle "Next" button click
+function handleNextClick() {
+  let div = document.getElementById('q1');
+  div.classList.remove('hideDiv');
+}
+
+// Add event listener to the "Next" button
+document.getElementById('nextButton').addEventListener('click', handleNextClick);
+
