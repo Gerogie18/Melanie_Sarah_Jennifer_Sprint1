@@ -32,7 +32,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
 
       function createAnswerButtons(answers, index) {
-        let containerDiv = document.querySelector(`#q${index}`); // Attach buttons to the question div
+        let containerDiv = document.querySelector(`#q${index}`);
         let count = 0;
         answers.forEach(answer => {
           let btn = document.createElement("button");  // Create a new button for each answer
@@ -40,12 +40,12 @@ window.addEventListener("DOMContentLoaded", function () {
           btn.innerText = answer;
           containerDiv.appendChild(btn);  // Append each button to the container div
 
-              // Create and append a line break after the button
-          let br = document.createElement("br");
+          let br = document.createElement("br"); // Create and append a line break after the button
           containerDiv.appendChild(br);
           count +=1;
         });
       };
+
 
       function createNotifyDiv(index) {
         let div = document.createElement("div");
@@ -54,45 +54,53 @@ window.addEventListener("DOMContentLoaded", function () {
       }
 
 
-  //     Validate answers;
+  //Validate answers;
       questions.forEach(function (question, index){
         console.log(question);
-
         let soln = solutions[index];
         console.log(soln);
-        findSolutions(answers, soln, index);
+        identifySolutions(soln, index);
       });
 
-        function findSolutions(soln, index) {
-          let btns = document.querySelectorAll(`#q${index} button`);
-          console.log(btns)
-          btns.forEach((btn) => {
-            btn.addEventListener("click", function() {
-              validateAnswer(btn, soln, index)
-            });
-
+      function identifySolutions(soln, index) {
+        let btns = document.querySelectorAll(`#q${index} button`);
+        console.log(btns)
+        btns.forEach((btn) => {
+          btn.addEventListener("click", function() {
+            validateAnswer(btn, soln, index)
           });
-        };
-
-          function validateAnswer(btn, soln, index){
-            console.log(index);
-            if (btn.innerText.trim().toUpperCase() === soln.toUpperCase()) {
-              showAlert("yay!", "success", index);
-            } else {
-              showAlert("nope!", "error", index);
-            }
-          }
         });
-  
+      };
+
+      function validateAnswer(btn, soln, index){
+        console.log(index);
+        if (btn.innerText.trim() === soln.toUpperCase()) {
+          showAlert("yay!", "success", index);
+        } else {
+          showAlert("nope!", "error", index);
+        }
+      }
+    });
+
     // showAlert function
     function showAlert(msg, className, index) {
-        let div = document.createElement("div");
-        div.innerText = msg;
-        div.className = className;
-        div.id = "box";
-        document.querySelector(`#notify${index}`).appendChild(div);
-        setTimeout(function () {
-          document.querySelector("#box").remove();
-        }, 3000);
-      }
+      let div = document.createElement("div");
+      div.innerText = msg;
+      div.className = className;
+      div.id = `box${index}`;  
+
+      let notifyDiv = document.querySelector(`#notify${index}`);
+      notifyDiv.innerHTML = "";  // Clear any existing alert
+      notifyDiv.appendChild(div);  // Append the new alert
+      removeAfterTimeout(`#box${index}`, 3000); 
+  }
+    
+      function removeAfterTimeout(id, time) {
+        setTimeout(function() {
+          let element = document.querySelector(id)
+          if (element){
+            element.remove();
+          }
+      }, time);
+    }
    });
