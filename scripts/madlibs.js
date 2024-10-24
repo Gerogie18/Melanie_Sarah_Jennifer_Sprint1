@@ -1,3 +1,4 @@
+console.log("JS loaded")
 window.addEventListener("DOMContentLoaded", function () {
     class Story {
         constructor(noun1, noun2, noun3, adj1, adj2, adj3, verb1a, verb1b, verb2a, verb2b, prep) {

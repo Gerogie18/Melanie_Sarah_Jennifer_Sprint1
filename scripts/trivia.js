@@ -1,4 +1,4 @@
-console.log("script is running");
+console.log("JS loaded");
 class triviaQuestion {
   constructor(question, answers, solution, index){
     this.question = question;
