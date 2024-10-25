@@ -1,5 +1,5 @@
 [
-  { "q": "Where", "answers": ["here","there","everywhere"], "soln": "there" },
-  { "q": "Who", "answers": ["him", "her", "them"], "soln": "them" },
-  { "q": "What", "answers": ["this", "that", "everything"], "soln": "this" }
+  { "q": "Where", "answers": ["here","there","everywhere"], "soln": "there", "index": "1" },
+  { "q": "Who", "answers": ["him", "her", "them"], "soln": "them", "index": "2" },
+  { "q": "What", "answers": ["this", "that", "everything"], "soln": "this", "index": "3" }
 ]
