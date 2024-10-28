@@ -16,7 +16,7 @@ class triviaQuestion {
   createQuestionDiv() {
     let div = document.createElement("div");
     div.id = `q${this.index}`;
-    div.className = "hide";
+    if (div.id != "q0"){div.className = "hide";}
     div.innerHTML = `<h2>${this.question}</h2>`;
     document.querySelector("#questions").appendChild(div);
     console.log("Question div created")
@@ -112,16 +112,38 @@ window.addEventListener("DOMContentLoaded", function () {
 let currCount = 0
 function handleNextClick() {
   console.log(currCount, "of", totalCount);
-  if (currCount < totalCount){
-    let showDiv = document.getElementById(`q${currCount}`);
+  if (currCount < (totalCount-1)){
+    
+    //Show nextDiv
+    let newCount = (currCount + 1);
+    let showDiv = document.getElementById(`q${newCount}`);
     showDiv.classList.remove('hide');
-    if (currCount > 0){
-      oldCount = currCount -1;
-      let hideDiv = document.getElementById(`q${oldCount}`);
-      hideDiv.className = "hide";}
+
+    //Hide curr Div
+    let hideDiv = document.getElementById(`q${currCount}`);
+    hideDiv.className = "hide";
+    console.log(currCount, newCount, totalCount);
+
+    //Disable Button
+      if (newCount == (totalCount-1)){
+      console.log("RAGE");
+      let nextButton = document.getElementById('nextButton');
+    // nextButton.classList.remove('button-primary'); // Disable the button  
+      nextButton.className = ''; // Disable the button
+      nextButton.removeEventListener("click", handleNextClick);   
+      }
     }
   currCount +=1;
   console.log(score)
+}
+
+
+// Disable the button and remove the event listener
+function disableButton(button) {
+  button.classList.remove('button-primary'); // Disable the button
+  button.className = 'button'; // Disable the button
+  button.removeEventListener("click", handleNextClick); // Remove event listener
+  console.log("button disabled");
 }
 
 // Add event listener to the "Next" button
