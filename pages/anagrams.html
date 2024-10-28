@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anagrams</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <style>
+      .success,
+      .error {
+        width: 370px;
+        font-size: 1em;
+        color: white;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      .success {
+        background-color: green;
+      }
+
+      .error {
+        background-color: red;
+      }
+      .hide {
+        display: none;
+      }
+      .rect {
+        width: 56px;
+        height: 56px;
+        border-radius: 15px;
+        font-size: 2em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 5px;
+      }
+      [id^='anaForm'] {
+        /* display: flex; */
+        gap: 1px; /* Add space between inputs */
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container my-5">
+      <h1 id="title">Anagrams Draft</h1>
+
+      <div id="anaQuestionBox" class="container">
+        <div id="anaQuestionRow" class="row pt-4">
+          <div class="container">
+            <div class="col-12 text-center"><h2>mymum</h2></div>
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="rect bg-light text-center">M</div>
+              <div class="rect bg-light text-center">U</div>
+              <div class="rect bg-light text-center">M</div>
+              <div class="rect bg-light text-center">M</div>
+              <div class="rect bg-light text-center">Y</div>
+            </div>
+          </div>
+
+          <div class="container pt-4 text-center">
+            <h2>mymum</h2>
+            <div>
+              <form id="anaForm">
+                <div class="d-flex justify-content-center align-items-center">
+                  <input
+                    class="rect bg-light text-center"
+                    type="text"
+                    id="ch1"
+                    name="ch1"
+                    pattern="[A-Za-z]+"
+                    maxlength="1"
+                  />
+                  <input
+                    class="rect bg-light text-center"
+                    type="text"
+                    id="ch2"
+                    name="ch2"
+                    pattern="[A-Za-z]+"
+                    maxlength="1"
+                  />
+                  <input
+                    class="rect bg-light text-center"
+                    type="text"
+                    id="ch3"
+                    name="ch3"
+                    pattern="[A-Za-z]+"
+                    maxlength="1"
+                  />
+                  <input
+                    class="rect bg-light text-center"
+                    type="text"
+                    id="ch4"
+                    name="ch4"
+                    pattern="[A-Za-z]+"
+                    maxlength="1"
+                  />
+                  <input
+                    class="rect bg-light text-center"
+                    type="text"
+                    id="ch5"
+                    name="ch5"
+                    pattern="[A-Za-z]+"
+                    maxlength="1"
+                  />
+                </div>
+                <div class="d-flex justify-content-center align-items-center">
+                  <input
+                    class="rect bg-light text-center"
+                    type="text"
+                    id="ch1"
+                    name="ch1"
+                    pattern="[A-Za-z]+"
+                    maxlength="1"
+                  />
+                  <input
+                    class="rect bg-light text-center"
+                    type="text"
+                    id="ch2"
+                    name="ch2"
+                    pattern="[A-Za-z]+"
+                    maxlength="1"
+                  />
+                  <input
+                    class="rect bg-light text-center"
+                    type="text"
+                    id="ch3"
+                    name="ch3"
+                    pattern="[A-Za-z]+"
+                    maxlength="1"
+                  />
+                  <input
+                    class="rect bg-light text-center"
+                    type="text"
+                    id="ch4"
+                    name="ch4"
+                    pattern="[A-Za-z]+"
+                    maxlength="1"
+                  />
+                  <input
+                    class="rect bg-light text-center"
+                    type="text"
+                    id="ch5"
+                    name="ch5"
+                    pattern="[A-Za-z]+"
+                    maxlength="1"
+                  />
+                </div>
+                <button id="nextButton" type="submit" class="btn btn-primary">
+                  Next
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Bootstrap JavaScript -->
+    <script src="../scripts/anagrams.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

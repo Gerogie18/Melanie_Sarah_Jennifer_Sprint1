@@ -1,8 +1,8 @@
 [
   {
     "scrambled_word":"Imparev",
-    "longest_word":"Vampire",
-    "all_possible_words":[
+    "longest_soln":"Vampire",
+    "solutions":[
       "Vamp",
       "Amp",
       "Rim",
@@ -13,8 +13,8 @@
   },
   {
     "scrambled_word":"Weerflow",
-    "longest_word":"Werewolf",
-    "all_possible_words":[
+    "longest_soln":"Werewolf",
+    "solutions":[
       "Flow",
       "Flew",
       "Wolf",
@@ -25,8 +25,8 @@
   },
   {
     "scrambled_word":"Tghos",
-    "longest_word":"Ghost",
-    "all_possible_words":[
+    "longest_soln":"Ghost",
+    "solutions":[
       "Hot",
       "Got",
       "Ghost"
@@ -35,8 +35,8 @@
   },
   {
     "scrambled_word":"Tcihw",
-    "longest_word":"Witch",
-    "all_possible_words":[
+    "longest_soln":"Witch",
+    "solutions":[
       "Hit",
       "It",
       "Wit",
@@ -46,8 +46,8 @@
   },
   {
     "scrambled_word":"Bozmei",
-    "longest_word":"Zombie",
-    "all_possible_words":[
+    "longest_soln":"Zombie",
+    "solutions":[
       "Bio",
       "Mob",
       "Zero",
@@ -57,8 +57,8 @@
   },
   {
     "scrambled_word":"Lngboi",
-    "longest_word":"Goblin",
-    "all_possible_words":[
+    "longest_soln":"Goblin",
+    "solutions":[
       "Log",
       "Bin",
       "Goblin"
@@ -67,8 +67,8 @@
   },
   {
     "scrambled_word":"Mymum",
-    "longest_word":"Mummy",
-    "all_possible_words":[
+    "longest_soln":"Mummy",
+    "solutions":[
       "My",
       "Mum",
       "Mummy"
@@ -77,8 +77,8 @@
   },
   {
     "scrambled_word":"Nestleok",
-    "longest_word":"Skeleton",
-    "all_possible_words":[
+    "longest_soln":"Skeleton",
+    "solutions":[
       "Ten",
       "One",
       "Let",
@@ -89,8 +89,8 @@
   },
   {
     "scrambled_word":"Tab",
-    "longest_word":"Bat",
-    "all_possible_words":[
+    "longest_soln":"Bat",
+    "solutions":[
       "Bat",
       "Tab"
     ],
@@ -98,8 +98,8 @@
   },
   {
     "scrambled_word":"Dipres",
-    "longest_word":"Spider",
-    "all_possible_words":[
+    "longest_soln":"Spider",
+    "solutions":[
       "Red",
       "Sip",
       "Rip",
@@ -108,20 +108,9 @@
     "challenge_rating":"Medium"
   },
   {
-    "scrambled_word":"Hesnuad Tuohe",
-    "longest_word":"Haunted House",
-    "all_possible_words":[
-      "House",
-      "Haunt",
-      "Unto",
-      "Haunted House"
-    ],
-    "challenge_rating":"Hard"
-  },
-  {
     "scrambled_word":"Ravegardy",
-    "longest_word":"Graveyard",
-    "all_possible_words":[
+    "longest_soln":"Graveyard",
+    "solutions":[
       "Yard",
       "Gave",
       "Graveyard"
@@ -130,8 +119,8 @@
   },
   {
     "scrambled_word":"Leacts",
-    "longest_word":"Castle",
-    "all_possible_words":[
+    "longest_soln":"Castle",
+    "solutions":[
       "Set",
       "Let",
       "Cast",
@@ -141,8 +130,8 @@
   },
   {
     "scrambled_word":"Ondgenu",
-    "longest_word":"Dungeon",
-    "all_possible_words":[
+    "longest_soln":"Dungeon",
+    "solutions":[
       "Dog",
       "Done",
       "Dungeon"
@@ -151,8 +140,8 @@
   },
   {
     "scrambled_word":"Ptrcy",
-    "longest_word":"Crypt",
-    "all_possible_words":[
+    "longest_soln":"Crypt",
+    "solutions":[
       "Cry",
       "Try",
       "Crypt"
@@ -161,8 +150,8 @@
   },
   {
     "scrambled_word":"Sdowo",
-    "longest_word":"Woods",
-    "all_possible_words":[
+    "longest_soln":"Woods",
+    "solutions":[
       "Sow",
       "Wood",
       "Woods"
@@ -171,8 +160,8 @@
   },
   {
     "scrambled_word":"Pmswa",
-    "longest_word":"Swamp",
-    "all_possible_words":[
+    "longest_soln":"Swamp",
+    "solutions":[
       "Map",
       "Saw",
       "Swamp"
@@ -181,8 +170,8 @@
   },
   {
     "scrambled_word":"Eavc",
-    "longest_word":"Cave",
-    "all_possible_words":[
+    "longest_soln":"Cave",
+    "solutions":[
       "Ace",
       "Cave"
     ],
@@ -190,8 +179,8 @@
   },
   {
     "scrambled_word":"Ydcan",
-    "longest_word":"Candy",
-    "all_possible_words":[
+    "longest_soln":"Candy",
+    "solutions":[
       "Can",
       "Day",
       "Candy"
@@ -200,8 +189,8 @@
   },
   {
     "scrambled_word":"Umpnpik",
-    "longest_word":"Pumpkin",
-    "all_possible_words":[
+    "longest_soln":"Pumpkin",
+    "solutions":[
       "Pin",
       "Pun",
       "Pump",
@@ -211,8 +200,8 @@
   },
   {
     "scrambled_word":"Dlanucro",
-    "longest_word":"Cauldron",
-    "all_possible_words":[
+    "longest_soln":"Cauldron",
+    "solutions":[
       "Ran",
       "Land",
       "Lad",
@@ -222,8 +211,8 @@
   },
   {
     "scrambled_word":"Strombico",
-    "longest_word":"Broomstick",
-    "all_possible_words":[
+    "longest_soln":"Broomstick",
+    "solutions":[
       "Broom",
       "Stick",
       "Broomstick"
@@ -231,19 +220,9 @@
     "challenge_rating":"Hard"
   },
   {
-    "scrambled_word":"Jolaktnenrca-'",
-    "longest_word":"Jack-o'-lantern",
-    "all_possible_words":[
-      "Jack",
-      "Lantern",
-      "Jack-o'-lantern"
-    ],
-    "challenge_rating":"Easy"
-  },
-  {
     "scrambled_word":"Ksma",
-    "longest_word":"Mask",
-    "all_possible_words":[
+    "longest_soln":"Mask",
+    "solutions":[
       "Ask",
       "Mask"
     ],
@@ -251,8 +230,8 @@
   },
   {
     "scrambled_word":"Eucmost",
-    "longest_word":"Costume",
-    "all_possible_words":[
+    "longest_soln":"Costume",
+    "solutions":[
       "Cut",
       "Cost",
       "Costume"
@@ -260,27 +239,17 @@
     "challenge_rating":"Medium"
   },
   {
-    "scrambled_word":"Rirct Tatoeck",
-    "longest_word":"Trick or Treat",
-    "all_possible_words":[
-      "Trick",
-      "Treat",
-      "Trick or Treat"
-    ],
-    "challenge_rating":"Easy"
-  },
-  {
     "scrambled_word":"Oob",
-    "longest_word":"Boo",
-    "all_possible_words":[
+    "longest_soln":"Boo",
+    "solutions":[
       "Boo"
     ],
     "challenge_rating":"Easy"
   },
   {
     "scrambled_word":"Posyok",
-    "longest_word":"Spooky",
-    "all_possible_words":[
+    "longest_soln":"Spooky",
+    "solutions":[
       "Spy",
       "So",
       "Spooky"
@@ -289,8 +258,8 @@
   },
   {
     "scrambled_word":"Ryecep",
-    "longest_word":"Creepy",
-    "all_possible_words":[
+    "longest_soln":"Creepy",
+    "solutions":[
       "Pry",
       "Creep",
       "Creepy"
@@ -298,42 +267,12 @@
     "challenge_rating":"Medium"
   },
   {
-    "scrambled_word":"Tfghir Thign",
-    "longest_word":"Fright Night",
-    "all_possible_words":[
-      "Fright",
-      "Night",
-      "Fright Night"
-    ],
-    "challenge_rating":"Hard"
-  },
-  {
     "scrambled_word":"Tgylsho",
-    "longest_word":"Ghostly",
-    "all_possible_words":[
+    "longest_soln":"Ghostly",
+    "solutions":[
       "Hot",
       "Ghost",
       "Ghostly"
-    ],
-    "challenge_rating":"Hard"
-  },
-  {
-    "scrambled_word":"Pocag Mition",
-    "longest_word":"Magic Potion",
-    "all_possible_words":[
-      "Magic",
-      "Potion",
-      "Magic Potion"
-    ],
-    "challenge_rating":"Medium"
-  },
-  {
-    "scrambled_word":"Sehbti Crww",
-    "longest_word":"Witch\u2019s Brew",
-    "all_possible_words":[
-      "Witch",
-      "Brew",
-      "Witch\u2019s Brew"
     ],
     "challenge_rating":"Hard"
   }
