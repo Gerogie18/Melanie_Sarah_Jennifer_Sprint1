@@ -1,11 +1,57 @@
 console.log("JS loaded");
 
-class triviaQuestion {
-  constructor(question, options, solution, index){
+// CREATE CLASSES 
+// to store user data  
+class userData {
+  constructor(id, userSolns = [], triviaScore = 0){
+    this.id = id;
+    this.userSolns = userSolns;
+    this.triviaScore = triviaScore;
+  }
+
+  addCorrectSolns(userSoln){
+    if (!this.userSolns.includes(userSoln)) {
+      this.userSolns.push(userSoln);
+      this.triviaScore++;
+      console.log(`Stored ${userSoln} in user data`)
+    } else{
+      console.log(`${userSoln} already stored in user data`)}
+  }
+}
+
+class trivia{
+  constructor(question, options, solution){
     this.question = question;
     this.options = options;
     this.solution = solution;
+  }
+    // Provide feedback on button press
+    /* ***Can disable other buttons and provide more feedback, too  */
+    validateSelection(btn, btnID, userData){
+      console.log(btnID);
+      let qscore = 0;  
+      let btnSoln = btn.querySelector('#text')
+      if (btnSoln.innerText.trim().toUpperCase() === this.solution.toUpperCase()) {
+        showAlert("yay!", "success", btnID);
+        if (qscore === 0){
+          userData.addCorrectSolns(this.solution);
+          return score +=1;};
+        qscore +=1;
+        console.log(score);
+      } else {
+        showAlert("nope!", "error", btnID);
+        qscore +=1;
+        console.log(score);
+      }
+      console.log("selection validated")
+    }
+}
+
+class triviaUI {
+  constructor(trivia, index, userData){
+    this.trivia = trivia;
     this.index = index;
+    this.userData = userData;
   
     // Initialize the creation of DOM elements
     this.createQuestionDiv();
@@ -17,16 +63,15 @@ class triviaQuestion {
     let div = document.createElement("div");
     div.id = `q${this.index}`;
     if (div.id != "q0"){div.className = "hide";}
-    div.innerHTML = `<h2>${this.question}</h2>`;
+    div.innerHTML = `<h2>${this.trivia.question}</h2>`;
     document.querySelector("#questions").appendChild(div);
     console.log("Question div created")
   }
 
-
   //Create answer buttons and attach to the question div
   createOptionButtons() {
     let buttonContainer = document.querySelector(`#q${this.index}`);
-    this.options.forEach((option, count) => {
+    this.trivia.options.forEach((option, count) => {
       let btn = document.createElement("button");
       let btnID = `btn${this.index}-${count}`
       btn.id = btnID;
@@ -44,34 +89,23 @@ class triviaQuestion {
       // Attach event listener for validation
       btn.addEventListener("click", () => {
         console.log("click")
-        this.validateSelection(btn, btnID);
+        this.trivia.validateSelection(btn, btnID, this.userData);
+        this.updateScore();
       });
     });
     console.log("Option buttons created")
   }
 
-  // Provide feedback on button press
-  validateSelection(btn, btnID){
-    console.log(btnID);
-    let qscore = 0;  
-    let btnSoln = btn.querySelector('#text')
-    if (btnSoln.innerText.trim().toUpperCase() === this.solution.toUpperCase()) {
-      showAlert("yay!", "success", btnID);
-      if (qscore === 0){return score +=1};
-      qscore +=1;
-      console.log(score);
-    } else {
-      showAlert("nope!", "error", btnID);
-      qscore +=1;
-      console.log(score);
-    }
-    console.log("selection validated")
+  updateScore(){   
+    let content = document.querySelector(`#triviaScore`);
+    content.innerText = this.userData.triviaScore;
   }
-
 }
 
 // create score
-let score =0; 
+let score = 0; 
+
+// TRIVIA FUNCTIONS 
 
 // create alert
 function showAlert(msg, className, btnID) {
@@ -93,19 +127,6 @@ function removeAfterTimeout(id, time) {
     }
   }, time);
 }
-
-window.addEventListener("DOMContentLoaded", function () {
-  fetch("../data/trivia.json")
-    .then(response => response.json())
-    .then(data => {
-      totalCount = 0;
-      data.forEach((item, index) => {
-        new triviaQuestion(item.question, item.options, item.solution, index); // Create a new instance for each trivia question
-        console.log("JSON file read");
-        totalCount +=1;
-      });
-    });
-});
 
 
 // Function to handle "Next" button click
@@ -146,5 +167,32 @@ function disableButton(button) {
   console.log("button disabled");
 }
 
+function getUserID(){
+  let userID = localStorage.getItem("userID") || generateRandomID();
+  console.log(`userID: ${userID}`); // Example output: "a1Bc"
+  return userID;
+}
+
+function createUser(){
+  let userID = getUserID();
+  return new userData(userID);
+}
+
+
+window.addEventListener("DOMContentLoaded", function () {
+  fetch("../data/trivia.json")
+    .then(response => response.json())
+    .then(data => {
+      totalCount = 0;
+      data.forEach((item, index) => {
+        let triviaData = new trivia(item.question, item.options, item.solution); // Create a new instance for each trivia question
+        new triviaUI(triviaData, index, newUser);
+        console.log("JSON file read");
+        totalCount +=1;
+      });
+    });
+});
+
 // Add event listener to the "Next" button
+const newUser = createUser();
 document.getElementById('nextButton').addEventListener('click', handleNextClick);

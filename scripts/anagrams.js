@@ -21,9 +21,6 @@ class userData {
   }
 }
 
-// to create anagrams
-//******** Probably this class handles too much? Consider refactoring (esp. CreateSolnFields)******
-//******** Refactored to sperate logic from DOM manipulation */
 class Anagram{
   constructor(scrambled_word, longest_soln, solutions, challenge_rating, index){
     this.scrambled_word = scrambled_word;
@@ -148,8 +145,9 @@ class AnagramUI{
   }
 }
 
-// UTILITY FUNCTIONS
 
+
+// UTILITY FUNCTIONS
 function moveFocusTo(id){
   let field = document.querySelector(id);
   if (field) {
@@ -158,7 +156,9 @@ function moveFocusTo(id){
 }
 
 function generateRandomID() {
-  return Math.random().toString(36).substring(2, 6); // Generates a 4-character alphanumeric string
+  randomID = Math.random().toString(36).substring(2, 6); // Generates a 4-character alphanumeric string
+  localStorage.setItem("userID", randomID);
+  return randomID; 
 }
 
 function enableButton(buttonID, eventHandler){
@@ -175,7 +175,7 @@ function disableButton(button, eventHandler) {
 
 
 
-// Anagram Functions
+// ANAGRAM FUNCTIONS
 
 // Play Button
 function handlePlayClick() {
@@ -226,6 +226,18 @@ function handleNextClick() {
 }
 
 
+// create user
+
+function getUserID(){
+  let userID = localStorage.getItem("userID") || generateRandomID();
+  console.log(`userID: ${userID}`); // Example output: "a1Bc"
+  return userID;
+}
+
+function createUser(){
+  let userID = getUserID();
+  return new userData(userID);
+}
 
 // GET DATA
 window.addEventListener("DOMContentLoaded", function () {
@@ -250,14 +262,6 @@ window.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-
-// create user
-
-function createUser(){
-  let userID = generateRandomID();
-  console.log(userID); // Example output: "a1Bc"
-  return new userData(`userID: ${userID}`);
-}
 
 
 
