@@ -18,35 +18,32 @@
   </head>
   <body>
     <main class="container my-5">
-      <section id="intro" class="container">
+      <section id="intro" class="container pt-4">
         <h1 id="title">Games</h1>
         <p>Games while you wait</p>
       </section>
 
       <section id="trivia" class="container pt-4">
         <h2 id="triviaTitle">Trivia Draft</h2>
-        <div id="triviaBox" class="container game-box">
-          <div id="questions" class="col-12"></div>
-          <div id="triviaButtonBox" class="col-12">
-            <button id="nextButton" class="btn-primary rounded">Next</button>
-          </div>
-          <div id="scoreBox" class="card" style="width: 18rem">
-            <!-- <img src="..." class="card-img-top" alt="..." /> -->
-            <div class="card-body">
-              <h5 class="card-title">Trivia Score</h5>
-              <p id="triviaScore" class="card-text">0</p>
+
+        <div id="triviaBox" class="game-box col-6">
+          <div id="" class="row pt-4">
+            <div id="questions" class="col-12"></div>
+            <div id="triviaButtonBox" class="col-12">
+              <button id="nextButton" class="btn-primary rounded">Next</button>
             </div>
           </div>
         </div>
+        <div id="jokeBox" class="col-6"></div>
       </section>
 
       <section id="anagrams" class="container pt-4">
         <h2 id="anaTitle">Anagrams Draft</h2>
 
-        <div id="anaQuestionBox" class="container game-box">
+        <div id="anaQuestionBox" class="game-box col-6">
           <div id="anaQuestionRow" class="row pt-4">
             <div id="anaDemo" class="container">
-              <div class="col-12 text-center"><h2>mymum</h2></div>
+              <div class="col-12 games-header"><h2>mymum</h2></div>
               <div class="flex-center">
                 <div class="letter-box">M</div>
                 <div class="letter-box">U</div>
@@ -79,13 +76,23 @@
             </button>
             <button id="anaPlayButton" class="btn-primary rounded">play</button>
           </div>
+        </div>
+      </section>
 
-          <div id="scoreBox" class="card" style="width: 18rem">
-            <!-- <img src="..." class="card-img-top" alt="..." /> -->
-            <div class="card-body">
-              <h5 class="card-title">Anagrams Score</h5>
-              <p id="anaScore" class="card-text">0</p>
-            </div>
+      <section id="scoreBox" class="container pt-4">
+        <div id="triviaScoreBox" class="card" style="width: 18rem">
+          <!-- <img src="..." class="card-img-top" alt="..." /> -->
+          <div class="card-body">
+            <h5 class="card-title">Trivia Score</h5>
+            <p id="triviaScore" class="card-text">0</p>
+          </div>
+        </div>
+
+        <div id="scoreBox" class="card" style="width: 18rem">
+          <!-- <img src="..." class="card-img-top" alt="..." /> -->
+          <div class="card-body">
+            <h5 class="card-title">Anagrams Score</h5>
+            <p id="anaScore" class="card-text">0</p>
           </div>
         </div>
       </section>

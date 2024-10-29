@@ -65,7 +65,7 @@ class triviaUI {
     let div = document.createElement("div");
     div.id = `q${this.index}`;
     if (div.id != "q0"){div.className = "hide";}
-    div.innerHTML = `<h2>${this.trivia.question}</h2>`;
+    div.innerHTML = `<h2 class="games-header">${this.trivia.question}</h2>`;
     document.querySelector("#questions").appendChild(div);
     console.log("Question div created")
   }
