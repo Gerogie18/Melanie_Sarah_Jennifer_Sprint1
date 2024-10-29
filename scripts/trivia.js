@@ -34,14 +34,17 @@ class trivia{
       let qscore = 0;  
       let btnSoln = btn.querySelector('#text')
       if (btnSoln.innerText.trim().toUpperCase() === this.solution.toUpperCase()) {
-        showAlert("yay!", "success", btnID);
+        // showAlert("yay!", "success", btnID);
+        showValidation('btn-success', btn)
+        // btn.classList.remove('btn-light');
+        // btn.classList.add('btn-success');
         if (qscore === 0){
           userTriviaData.updateTriviaData(this.solution);
           return triviaScore +=1;};
         qscore +=1;
         console.log(triviaScore);
       } else {
-        showAlert("nope!", "error", btnID);
+        showValidation('btn-danger', btn)
         qscore +=1;
         console.log(triviaScore);
       }
@@ -110,25 +113,41 @@ let triviaScore = 0;
 // TRIVIA FUNCTIONS 
 
 // create alert
-function showAlert(msg, className, btnID) {
-  let span = document.createElement("span");
-  span.innerText = msg;
-  span.className = className;
-  span.id = `alert`;  
-  let button = document.querySelector(`#${btnID}`)
-  button.insertAdjacentElement('afterend', span);  
-  removeAfterTimeout(`#alert`, 2000); 
+
+function showValidation(className, btn){
+  btn.classList.remove('btn-light');
+  btn.classList.add(className);
+  removeAfterTimeout(className, btn, 1500);
 }
 
-// clear alert
-function removeAfterTimeout(id, time) {
+
+function removeAfterTimeout(className, btn, time) {
   setTimeout(function() {
-    let element = document.querySelector(id)
-    if (element){
-      element.remove();
-    }
+    btn.classList.add('btn-light');
+    btn.classList.remove(className);
   }, time);
 }
+
+
+// function showAlert(msg, className, btnID) {
+//   let span = document.createElement("span");
+//   span.innerText = msg;
+//   span.className = className;
+//   span.id = `alert`;  
+//   let button = document.querySelector(`#${btnID}`)
+//   button.insertAdjacentElement('afterend', span);  
+//   removeAfterTimeout(`#alert`, 2000); 
+// }
+
+// // clear alert
+// function removeAfterTimeout(btn, time) {
+//   setTimeout(function() {
+//     let element = document.querySelector(id)
+//     if (element){
+//       element.remove();
+//     }
+//   }, time);
+// }
 
 
 // Function to handle "Next" button click
