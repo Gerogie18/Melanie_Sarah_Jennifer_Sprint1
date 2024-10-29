@@ -1,0 +1,166 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.games-header {
+  color: white;
+  text-align: center;
+}
+
+.hide {
+    display: none;
+  }
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-box {
+    border: 2px solid #A9A9A9;
+    border-radius: 10px;
+    background-color: purple;
+}
+
+
+
+.joke-container {
+  position: relative;
+  width: 50%;
+}
+
+.joke-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.joke-overlay-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(241, 193, 48);
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: .5s ease;
+}
+
+.joke-container:hover .joke-overlay-bottom {
+  bottom: 0;
+  height: 100%;
+}
+
+.joke-overlay-top {
+  position: absolute;
+  bottom: 100%;
+  left: 0%;
+  right: 0;
+  background-color: rgb(241, 193, 48);
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: .3s ease;
+}
+
+.joke-container:hover .joke-overlay-top {
+  bottom: 0;
+  height: 100%;
+}
+
+.joke-text {
+  color: black;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  /* white-space: nowrap; */
+}
+
+
+
+
+
+/* image shake */
+.shake-container {
+  position: relative;
+  width: 100%;
+}
+.shake-img{
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.shake-img:hover {
+  /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake 0.5s;
+
+  /* When the animation is finished, start again */
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+/* alert */
+
+.success,
+.error {
+  width: 370px;
+  font-size: 1em;
+  color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.success {
+  background-color: green;
+}
+
+.error {
+  background-color: red;
+}
+
+
+
+
+/* anagrams */
+.letter-box {
+  width: 56px;
+  height: 56px;
+  border-radius: 15px;
+  font-size: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  background-color: #f8f9fa; /* This is Bootstrap's bg-light colour*/
+  text-align: center;
+  
+}
+
+
+[id^='anaForm'] {
+    gap: 1px; /* Add space between inputs */
+}

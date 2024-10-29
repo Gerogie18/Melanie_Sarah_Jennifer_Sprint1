@@ -14,7 +14,7 @@
     />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../styles/temp.css" />
+    <link rel="stylesheet" href="../styles/games.css" />
   </head>
   <body>
     <main class="container my-5">
@@ -25,56 +25,97 @@
 
       <section id="trivia" class="container pt-4">
         <h2 id="triviaTitle">Trivia Draft</h2>
+        <div class="row">
+          <div id="triviaBox" class="game-box col-6">
+            <div id="" class="row pt-4">
+              <div id="questions" class="col-12"></div>
+              <div id="triviaButtonBox" class="col-12">
+                <button id="nextButton" class="btn-primary rounded">
+                  Next
+                </button>
+              </div>
+            </div>
+          </div>
 
-        <div id="triviaBox" class="game-box col-6">
-          <div id="" class="row pt-4">
-            <div id="questions" class="col-12"></div>
-            <div id="triviaButtonBox" class="col-12">
-              <button id="nextButton" class="btn-primary rounded">Next</button>
+          <div id="jokeBox" class="col-6">
+            <div class="joke-container">
+              <img
+                src="/images/Possible_Images/Sheri Silver Unsplash.jpg"
+                alt=""
+                class="joke-image"
+              />
+              <div class="joke-overlay-bottom">
+                <div class="joke-text">
+                  <p>What was the witch's favourite subject?</p>
+                  <p></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="joke-container">
+              <img
+                src="/images/Possible_Images/Sheri Silver Unsplash.jpg"
+                alt=""
+                class="joke-image"
+              />
+              <div class="joke-overlay-top">
+                <div class="joke-text">Spelling</div>
+              </div>
             </div>
           </div>
         </div>
-        <div id="jokeBox" class="col-6"></div>
       </section>
-
+      <hr class="hr hr-blurry" />
       <section id="anagrams" class="container pt-4">
         <h2 id="anaTitle">Anagrams Draft</h2>
-
-        <div id="anaQuestionBox" class="game-box col-6">
-          <div id="anaQuestionRow" class="row pt-4">
-            <div id="anaDemo" class="container">
-              <div class="col-12 games-header"><h2>mymum</h2></div>
-              <div class="flex-center">
-                <div class="letter-box">M</div>
-                <div class="letter-box">U</div>
-                <div class="letter-box">M</div>
-                <div class="letter-box">M</div>
-                <div class="letter-box">Y</div>
-              </div>
-              <div class="flex-center">
-                <div class="letter-box">M</div>
-                <div class="letter-box">U</div>
-                <div class="letter-box">M</div>
-              </div>
-              <div class="flex-center">
-                <div class="letter-box">M</div>
-                <div class="letter-box">Y</div>
-              </div>
-              <div class="flex-center">
-                <div class="letter-box">Y</div>
-                <div class="letter-box">U</div>
-                <div class="letter-box">M</div>
-              </div>
+        <div class="row">
+          <div id="shakeBox" class="col-4">
+            <div class="shake-container">
+              <img
+                src="/images/Possible_Images/Sheri Silver Unsplash2.jpg"
+                alt=""
+                class="shake-img"
+              />
             </div>
           </div>
-          <div
-            id="anaButtonBox"
-            class="col-12 d-flex justify-content-center pt-4"
-          >
-            <button id="anaNextButton" class="btn-primary rounded hide">
-              next >
-            </button>
-            <button id="anaPlayButton" class="btn-primary rounded">play</button>
+          <div id="anaQuestionBox" class="game-box col-6">
+            <div id="anaQuestionRow" class="">
+              <div id="anaDemo" class="container">
+                <div class="col-12 games-header"><h2>mymum</h2></div>
+                <div class="flex-center">
+                  <div class="letter-box">M</div>
+                  <div class="letter-box">U</div>
+                  <div class="letter-box">M</div>
+                  <div class="letter-box">M</div>
+                  <div class="letter-box">Y</div>
+                </div>
+                <div class="flex-center">
+                  <div class="letter-box">M</div>
+                  <div class="letter-box">U</div>
+                  <div class="letter-box">M</div>
+                </div>
+                <div class="flex-center">
+                  <div class="letter-box">M</div>
+                  <div class="letter-box">Y</div>
+                </div>
+                <div class="flex-center">
+                  <div class="letter-box">Y</div>
+                  <div class="letter-box">U</div>
+                  <div class="letter-box">M</div>
+                </div>
+              </div>
+            </div>
+            <div
+              id="anaButtonBox"
+              class="col-12 d-flex justify-content-center pt-4"
+            >
+              <button id="anaNextButton" class="btn-primary rounded hide">
+                next >
+              </button>
+              <button id="anaPlayButton" class="btn-primary rounded">
+                play
+              </button>
+            </div>
           </div>
         </div>
       </section>
