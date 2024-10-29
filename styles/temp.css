@@ -1,0 +1,61 @@
+.selected {
+    background-color: grey;
+    color: white;
+}
+
+.hide {
+    display: none;
+  }
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-box {
+    border: 2px solid black;
+    border-radius: 5px;
+}
+/* alert */
+
+.success,
+.error {
+  width: 370px;
+  font-size: 1em;
+  color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.success {
+  background-color: green;
+}
+
+.error {
+  background-color: red;
+}
+
+
+
+
+/* anagrams */
+.letter-box {
+  width: 56px;
+  height: 56px;
+  border-radius: 15px;
+  font-size: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  background-color: #f8f9fa; /* This is Bootstrap's bg-light colour*/
+  text-align: center;
+  
+}
+
+
+[id^='anaForm'] {
+  /* display: flex; */
+  gap: 1px; /* Add space between inputs */
+}

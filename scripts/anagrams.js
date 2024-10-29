@@ -1,4 +1,4 @@
-console.log("JS loaded")
+console.log("Anagrams JS loaded")
 
 // SET UP CLASSES
 
@@ -85,7 +85,7 @@ class AnagramUI{
 
       // Create solution container
       let div = document.createElement("div");
-      div.className = "d-flex justify-content-center align-items-center";
+      div.className = "flex-center";
       solnContainer.appendChild(div);
 
       // Loop through each letter of the solution and create an input for it
@@ -94,7 +94,7 @@ class AnagramUI{
 
       for (let i = 0; i < soln.length; i++) {
         let input = document.createElement("input");
-        input.className = "rect bg-light text-center";
+        input.className = "letter-box";
         input.type = "text";
         input.id = `ch${i}_${id}`;
         input.name = `ch${i}`;
@@ -162,13 +162,13 @@ function generateRandomID() {
 }
 
 function enableButton(buttonID, eventHandler){
-  // button.disabled = false; // enable the button
+  button.disabled = false; // enable the button
   document.getElementById(buttonID).addEventListener('click', eventHandler);
   console.log("button enabled");
 }
 
 function disableButton(button, eventHandler) {
-  // button.disabled = true; // Disable the button
+  button.disabled = true; // Disable the button
   button.removeEventListener("click", eventHandler); // Remove event listener
   console.log("button disabled");
 }
@@ -350,7 +350,7 @@ document.getElementById('anaNextButton').addEventListener('click', handleNextCli
 
 //       // Create solution container
 //       let div = document.createElement("div");
-//       div.className = "d-flex justify-content-center align-items-center";
+//       div.className = "flex-center";
 //       solnContainer.appendChild(div);
 
 //       // Loop through each letter of the solution and create an input for it
@@ -359,7 +359,7 @@ document.getElementById('anaNextButton').addEventListener('click', handleNextCli
 
 //       for (let i = 0; i < soln.length; i++) {
 //         let input = document.createElement("input");
-//         input.className = "rect bg-light text-center";
+//         input.className = "letter-box";
 //         input.type = "text";
 //         input.id = `ch${i}_${id}`;
 //         input.name = `ch${i}`;
