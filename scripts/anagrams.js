@@ -1,11 +1,29 @@
 console.log("JS loaded")
 
-// INITIALIZE VARIABLES
+// SET UP CLASSES
 
-let anaScore = 0;
+// to store user data  
+class userData {
+  constructor(id, userSolns = [], anaScore = 0){
+    this.id = id;
+    //this.scrambled_word = scrambled_word;
+    this.userSolns = userSolns;
+    this.anaScore = anaScore;
+  }
 
-// CREATE ANAGRAM CLASSES
+  addCorrectSolns(userSoln){
+    if (!this.userSolns.includes(userSoln)) {
+      this.userSolns.push(userSoln);
+      this.anaScore++;
+      console.log(`Stored ${userSoln} in user data`)
+    } else{
+      console.log(`${userSoln} already stored in user data`)}
+  }
+}
 
+// to create anagrams
+//******** Probably this class handles too much? Consider refactoring (esp. CreateSolnFields)******
+//******** Refactored to sperate logic from DOM manipulation */
 class Anagram{
   constructor(scrambled_word, longest_soln, solutions, challenge_rating, index){
     this.scrambled_word = scrambled_word;
@@ -15,24 +33,21 @@ class Anagram{
     this.index = index;
   }
   // Check if the user solution is correct
-    checkSolution(userSoln) {
-
+    checkSolution(userSoln, userData) {
     if (this.solutions.includes(userSoln.toLowerCase())) {
       console.log(`Correct! ${userSoln} is a possible solution`);
-      anaScore++;
-      return anaScore;
-
+      userData.addCorrectSolns(userSoln);
     } else {
       console.log(`Incorrect. Try again.`);
-      return anaScore;
     }
   }
 }
 
 class AnagramUI{
-  constructor(anagram, index){
+  constructor(anagram, index, userData){
     this.anagram = anagram;
     this.index = index;
+    this.userData = userData;
 
     // Initialize the creation of DOM elements
     this.createQuestionDiv();
@@ -105,8 +120,8 @@ class AnagramUI{
       // Check if all inputs are filled before checking the solution
       if (wordArray.every((letter) => letter !== "")) {
         let userSoln = wordArray.join("");
-        let score = this.anagram.checkSolution(userSoln);
-        this.updateScore(score);
+        this.anagram.checkSolution(userSoln, this.userData);
+        this.updateScore();
       }
       // Move to focus to next field
       if (event.target.value.length === event.target.maxLength) {
@@ -127,12 +142,9 @@ class AnagramUI{
     });
   }
 
-  updateScore(score){   
+  updateScore(){   
     let content = document.querySelector(`#anaScore`);
-    if (content){
-      content.innerText = score;
-      }
-    console.log("score updated")
+    content.innerText = this.userData.anaScore;
   }
 }
 
@@ -215,16 +227,8 @@ function handleNextClick() {
 
 
 
-
-
-
+// GET DATA
 window.addEventListener("DOMContentLoaded", function () {
-
-  // Show Score
-  let savedScore = localStorage.getItem("anaScore") || 0;  // Initialize the score to 0 if null
-  // document.querySelector('#anaScore').innerText = savedScore;
-
-  // Get Data
   fetch("../data/anagrams.json")
     .then(response => {
       if (!response.ok) {
@@ -236,7 +240,7 @@ window.addEventListener("DOMContentLoaded", function () {
       totalCount = 0;
       data.forEach((item, index) => {
         let anagramData = new Anagram(item.scrambled_word, item.longest_soln, item.solutions, item.rating); // Create a new instance for each trivia question
-        new AnagramUI(anagramData, index);
+        new AnagramUI(anagramData, index, newUser);
         totalCount +=1;
       });
       console.log("Anagrams JSON file read and divs created");
@@ -247,52 +251,34 @@ window.addEventListener("DOMContentLoaded", function () {
   });
 
 
+// create user
 
-  document.getElementById('anaPlayButton').addEventListener('click', handlePlayClick);
-  document.getElementById('anaNextButton').addEventListener('click', handleNextClick);
-
-
-
-
-
-
+function createUser(){
+  let userID = generateRandomID();
+  console.log(userID); // Example output: "a1Bc"
+  return new userData(`userID: ${userID}`);
+}
 
 
 
-
-
-
-
+// play Anagrams
+const newUser = createUser();
+document.getElementById('anaPlayButton').addEventListener('click', handlePlayClick);
+document.getElementById('anaNextButton').addEventListener('click', handleNextClick);
 
 
 
 
+
+// //ALTERNATE APPROACH
 // console.log("JS loaded")
 
-// // SET UP CLASSES
+// // INITIALIZE VARIABLES
 
-// // to store user data  
-// class userData {
-//   constructor(id, userSolns = [], anaScore = 0){
-//     this.id = id;
-//     //this.scrambled_word = scrambled_word;
-//     this.userSolns = userSolns;
-//     this.anaScore = anaScore;
-//   }
+// let anaScore = 0;
 
-//   addCorrectSolns(userSoln){
-//     if (!this.userSolns.includes(userSoln)) {
-//       this.userSolns.push(userSoln);
-//       this.anaScore++;
-//       console.log(`Stored ${userSoln} in user data`)
-//     } else{
-//       console.log(`${userSoln} already stored in user data`)}
-//   }
-// }
+// // CREATE ANAGRAM CLASSES
 
-// // to create anagrams
-// //******** Probably this class handles too much? Consider refactoring (esp. CreateSolnFields)******
-// //******** Refactored to sperate logic from DOM manipulation */
 // class Anagram{
 //   constructor(scrambled_word, longest_soln, solutions, challenge_rating, index){
 //     this.scrambled_word = scrambled_word;
@@ -302,21 +288,24 @@ window.addEventListener("DOMContentLoaded", function () {
 //     this.index = index;
 //   }
 //   // Check if the user solution is correct
-//     checkSolution(userSoln, userData) {
+//     checkSolution(userSoln) {
+
 //     if (this.solutions.includes(userSoln.toLowerCase())) {
 //       console.log(`Correct! ${userSoln} is a possible solution`);
-//       userData.addCorrectSolns(userSoln);
+//       anaScore++;
+//       return anaScore;
+
 //     } else {
 //       console.log(`Incorrect. Try again.`);
+//       return anaScore;
 //     }
 //   }
 // }
 
 // class AnagramUI{
-//   constructor(anagram, index, userData){
+//   constructor(anagram, index){
 //     this.anagram = anagram;
 //     this.index = index;
-//     this.userData = userData;
 
 //     // Initialize the creation of DOM elements
 //     this.createQuestionDiv();
@@ -389,8 +378,8 @@ window.addEventListener("DOMContentLoaded", function () {
 //       // Check if all inputs are filled before checking the solution
 //       if (wordArray.every((letter) => letter !== "")) {
 //         let userSoln = wordArray.join("");
-//         this.anagram.checkSolution(userSoln, this.userData);
-//         this.updateScore();
+//         let score = this.anagram.checkSolution(userSoln);
+//         this.updateScore(score);
 //       }
 //       // Move to focus to next field
 //       if (event.target.value.length === event.target.maxLength) {
@@ -411,9 +400,12 @@ window.addEventListener("DOMContentLoaded", function () {
 //     });
 //   }
 
-//   updateScore(){   
+//   updateScore(score){   
 //     let content = document.querySelector(`#anaScore`);
-//     content.innerText = this.userData.anaScore;
+//     if (content){
+//       content.innerText = score;
+//       }
+//     console.log("score updated")
 //   }
 // }
 
@@ -498,8 +490,14 @@ window.addEventListener("DOMContentLoaded", function () {
 
 
 
-// // GET DATA
+
 // window.addEventListener("DOMContentLoaded", function () {
+
+//   // Show Score
+//   let savedScore = localStorage.getItem("anaScore") || 0;  // Initialize the score to 0 if null
+//   // document.querySelector('#anaScore').innerText = savedScore;
+
+//   // Get Data
 //   fetch("../data/anagrams.json")
 //     .then(response => {
 //       if (!response.ok) {
@@ -511,7 +509,7 @@ window.addEventListener("DOMContentLoaded", function () {
 //       totalCount = 0;
 //       data.forEach((item, index) => {
 //         let anagramData = new Anagram(item.scrambled_word, item.longest_soln, item.solutions, item.rating); // Create a new instance for each trivia question
-//         new AnagramUI(anagramData, index, newUser);
+//         new AnagramUI(anagramData, index);
 //         totalCount +=1;
 //       });
 //       console.log("Anagrams JSON file read and divs created");
@@ -522,19 +520,6 @@ window.addEventListener("DOMContentLoaded", function () {
 //   });
 
 
-// // create user
 
-// function createUser(){
-//   let userID = generateRandomID();
-//   console.log(userID); // Example output: "a1Bc"
-//   return new userData(userID);
-// }
-
-
-
-// // play Anagrams
-// const newUser = createUser();
-// document.getElementById('anaPlayButton').addEventListener('click', handlePlayClick);
-// document.getElementById('anaNextButton').addEventListener('click', handleNextClick);
-
-
+//   document.getElementById('anaPlayButton').addEventListener('click', handlePlayClick);
+//   document.getElementById('anaNextButton').addEventListener('click', handleNextClick);
