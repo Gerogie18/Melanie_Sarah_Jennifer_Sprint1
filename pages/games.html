@@ -37,35 +37,30 @@
             </div>
           </div>
 
-          <div id="jokeBox" class="col-6">
-            <div class="joke-container">
-              <img
-                src="/images/Possible_Images/Sheri Silver Unsplash.jpg"
-                alt=""
-                class="joke-image"
-              />
-              <div class="joke-overlay-bottom">
-                <div class="joke-text">
-                  <p>What was the witch's favourite subject?</p>
-                  <p></p>
-                </div>
+          <div id="fadeBox" class="col-6">
+            <div class="row">
+              <div class="fade-container col-6">
+                <img
+                  class="fade-image"
+                  src="/images/Possible_Images/Sheri Silver Unsplash.jpg"
+                />
               </div>
             </div>
-
-            <div class="joke-container">
-              <img
-                src="/images/Possible_Images/Sheri Silver Unsplash.jpg"
-                alt=""
-                class="joke-image"
-              />
-              <div class="joke-overlay-top">
-                <div class="joke-text">Spelling</div>
+            <div class="row pt-4">
+              <div id="triviaScoreBox" class="card" style="width: 18rem">
+                <!-- <img src="..." class="card-img-top" alt="..." /> -->
+                <div class="card-body">
+                  <h5 class="card-title">Trivia Score</h5>
+                  <p id="triviaScore" class="card-text">0</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
       <hr class="hr hr-blurry" />
+
       <section id="anagrams" class="container pt-4">
         <h2 id="anaTitle">Anagrams Draft</h2>
         <div class="row">
@@ -76,6 +71,13 @@
                 alt=""
                 class="shake-img"
               />
+            </div>
+            <div id="scoreBox" class="card pt-4" style="width: 18rem">
+              <!-- <img src="..." class="card-img-top" alt="..." /> -->
+              <div class="card-body">
+                <h5 class="card-title">Anagrams Score</h5>
+                <p id="anaScore" class="card-text">0</p>
+              </div>
             </div>
           </div>
           <div id="anaQuestionBox" class="game-box col-6">
@@ -126,27 +128,71 @@
         </div>
       </section>
 
-      <section id="scoreBox" class="container pt-4">
-        <div id="triviaScoreBox" class="card" style="width: 18rem">
-          <!-- <img src="..." class="card-img-top" alt="..." /> -->
-          <div class="card-body">
-            <h5 class="card-title">Trivia Score</h5>
-            <p id="triviaScore" class="card-text">0</p>
+      <hr class="hr hr-blurry pt-4" />
+
+      <section id="jokes" class="container pt-4">
+        <div class="row"></div>
+        <div class="col-12">
+          <h2>Halloween Jokes</h2>
+        </div>
+        <div id="jokeBox" class="col-6">
+          <div class="joke-container">
+            <img
+              src="/images/Possible_Images/Sheri Silver Unsplash.jpg"
+              alt=""
+              class="joke-image"
+            />
+            <div class="joke-overlay-bottom">
+              <div class="joke-text">
+                <p>What was the witch's favourite subject?</p>
+                <p></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="joke-container">
+            <img
+              src="/images/Possible_Images/Sheri Silver Unsplash.jpg"
+              alt=""
+              class="joke-image"
+            />
+            <div class="joke-overlay-top">
+              <div class="joke-text">Spelling</div>
+            </div>
           </div>
         </div>
+        <div id="jokeBox" class="col-6">
+          <div class="joke-container">
+            <img
+              src="/images/Possible_Images/Sheri Silver Unsplash.jpg"
+              alt=""
+              class="joke-image"
+            />
+            <div class="joke-overlay-bottom">
+              <div class="joke-text">
+                <p>What was the witch's favourite subject?</p>
+              </div>
+            </div>
+          </div>
 
-        <div id="scoreBox" class="card" style="width: 18rem">
-          <!-- <img src="..." class="card-img-top" alt="..." /> -->
-          <div class="card-body">
-            <h5 class="card-title">Anagrams Score</h5>
-            <p id="anaScore" class="card-text">0</p>
+          <div class="joke-container">
+            <img
+              src="/images/Possible_Images/Sheri Silver Unsplash.jpg"
+              alt=""
+              class="joke-image"
+            />
+            <div class="joke-overlay-top">
+              <div class="joke-text">Spelling</div>
+            </div>
           </div>
         </div>
       </section>
     </main>
     <!-- JavaScript for games -->
+    <script src="../scripts/functions.js"></script>
     <script src="../scripts/anagrams.js"></script>
     <script src="../scripts/trivia.js"></script>
+
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   </body>

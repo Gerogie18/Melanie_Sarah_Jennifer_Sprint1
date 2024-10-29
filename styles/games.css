@@ -27,6 +27,8 @@
 
 
 
+/* Handle Images */
+
 .joke-container {
   position: relative;
   width: 50%;
@@ -86,8 +88,26 @@
 }
 
 
+/* Image fade in/out */
 
+.fade-in-container {
+  position: relative;
+  width: 50%;
+}
 
+.fade-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.5s ease; /* Smooth fade effect */
+  opacity: 1; /* Full visibility */
+}
+
+.fade-image:hover {
+  opacity: 0; /* Fully transparent on hover */
+}
 
 /* image shake */
 .shake-container {
