@@ -2,16 +2,25 @@ console.log("JS loaded")
 
 // SET UP CLASSES
 
-// to store user data 
-//****** (incomplete)****** 
+// to store user data  
 class userData {
-  constructor(id, anaScore, madlibValues, triviaScore){
+  constructor(id, userSolns = [], anaScore = 0){
     this.id = id;
+    //this.scrambled_word = scrambled_word;
+    this.userSolns = userSolns;
     this.anaScore = anaScore;
-    this.madlibValues = madlibValues;
-    this.triviaScore = triviaScore;
+  }
+
+  addCorrectSolns(userSoln){
+    if (!this.userSolns.includes(userSoln)) {
+      this.userSolns.push(userSoln);
+      this.anaScore++;
+      console.log(`Stored ${userSoln} in user data`)
+    } else{
+      console.log(`${userSoln} already stored in user data`)}
   }
 }
+
 // to create anagrams
 //******** Probably this class handles too much? Consider refactoring (esp. CreateSolnFields)******
 //******** Refactored to sperate logic from DOM manipulation */
@@ -24,15 +33,21 @@ class Anagram{
     this.index = index;
   }
   // Check if the user solution is correct
-    checkAnswer(userSoln) {
-    return this.solutions.includes(userSoln.toLowerCase());
+    checkSolution(userSoln, userData) {
+    if (this.solutions.includes(userSoln.toLowerCase())) {
+      console.log(`Correct! ${userSoln} is a possible solution`);
+      userData.addCorrectSolns(userSoln);
+    } else {
+      console.log(`Incorrect. Try again.`);
+    }
   }
 }
 
 class AnagramUI{
-  constructor(anagram, index){
+  constructor(anagram, index, userData){
     this.anagram = anagram;
     this.index = index;
+    this.userData = userData;
 
     // Initialize the creation of DOM elements
     this.createQuestionDiv();
@@ -49,184 +64,108 @@ class AnagramUI{
     let title = this.anagram.scrambled_word.toLowerCase();
     div.innerHTML = `<h2>${title}</h2>`;
     document.querySelector("#anaQuestionRow").appendChild(div);
-    console.log("Anagram question div created")
   }
   createSolutionsDiv(){
     let div = document.createElement("div");
     div.id = `anaQ${this.index}`;
     div.className = "container";
     document.querySelector(`#anaQ${this.index}_${this.anagram.challenge_rating}`).appendChild(div);
-    console.log("Anagram solutions div created")
   };
   
   createForm(){
     let form = document.createElement("form");
     form.id = `anaForm${this.index}`;
     document.querySelector(`#anaQ${this.index}`).appendChild(form);
-    console.log("Anagram solutions form created")
   };
-
-
-// Create rows of solutions
 
   createSolnFields() {
     let solnContainer = document.querySelector(`#anaForm${this.index}`);
-    this.anagram.solutions.forEach((soln, solnIndex) => {
+
+    let k = 0; //initialize counter
+    this.anagram.solutions.forEach((soln) => {
+      // Create an array to store each character of the word
+      let wordArray = new Array(soln.length).fill(''); 
+
+      // Create solution container
       let div = document.createElement("div");
       div.className = "d-flex justify-content-center align-items-center";
       solnContainer.appendChild(div);
 
-      let wordArray = new Array(soln.length).fill(''); // Create an array to store each character of the word
-      
       // Loop through each letter of the solution and create an input for it
+      let j = this.index;
+      let id = `${j}${k}`; 
+
       for (let i = 0; i < soln.length; i++) {
         let input = document.createElement("input");
         input.className = "rect bg-light text-center";
         input.type = "text";
-        input.id = `ch${i}_${solnIndex}`;
+        input.id = `ch${i}_${id}`;
         input.name = `ch${i}`;
         input.pattern = "[A-Za-z]+";
         input.maxLength = "1";
         div.appendChild(input);
 
         // Event listener for each input to update the word array
-        this.addInputListener(input, wordArray, i);
+        this.addInputListener(input, wordArray, i, id);
+        this.addBackspaceListener(input, i, id)
+      }
+      k++;
+    });
+  }
+
+  addInputListener(input, wordArray, i, id){
+    input.addEventListener("input", (event) => {
+      wordArray[i] = event.target.value.toLowerCase();
+    
+      // Check if all inputs are filled before checking the solution
+      if (wordArray.every((letter) => letter !== "")) {
+        let userSoln = wordArray.join("");
+        this.anagram.checkSolution(userSoln, this.userData);
+        this.updateScore();
+      }
+      // Move to focus to next field
+      if (event.target.value.length === event.target.maxLength) {
+        let nextID = `#ch${i+1}_${id}`;
+        moveFocusTo(nextID);
+        }
+      }
+    );
+  }
+
+  addBackspaceListener(input, i, id){
+    input.addEventListener("keydown", (event) => {      
+    // Move to focus to next field
+    if (event.key === "Backspace" && event.target.value === '') {
+      let lastID = `#ch${i-1}_${id}`;
+      moveFocusTo(lastID);
       }
     });
   }
 
-  addInputListener(input, wordArray, i){
-    input.addEventListener("input", (event) => {
-      wordArray[i] = event.target.value.toLowerCase(); // Update wordArray with the lowercase letter
-      // Check if all inputs are filled before checking the solution
-      if (wordArray.every((letter) => letter !== "")) {
-        let userSoln = wordArray.join("");
-        if (this.anagram.checkAnswer(userSoln)) {
-          console.log(`Correct! The solution is`);
-        } else {
-          console.log(`Incorrect. Try again.`);
-        }
-      }
-    });
+  updateScore(){   
+    let content = document.querySelector(`#anaScore`);
+    content.innerText = this.userData.anaScore;
+  }
 }
 
+// UTILITY FUNCTIONS
 
-// createSolnFields() {
-//   let solnContainer = document.querySelector(`#anaForm${this.index}`);
-//   this.anagram.solutions.forEach((soln, solnIndex) => {
-//     let div = document.createElement("div");
-//     div.className = "d-flex justify-content-center align-items-center";
-//     solnContainer.appendChild(div);
-
-//     let wordArray = new Array(soln.length).fill(''); // Create an array to store each character of the word
-    
-//     // Loop through each letter of the solution and create an input for it
-//     for (let i = 0; i < soln.length; i++) {
-//       let input = document.createElement("input");
-//       input.className = "rect bg-light text-center";
-//       input.type = "text";
-//       input.id = `ch${i}_${solnIndex}`;
-//       input.name = `ch${i}`;
-//       input.pattern = "[A-Za-z]+";
-//       input.maxLength = "1";
-//       div.appendChild(input);
-
-//       // Event listener for each input to update the word array
-//       input.addEventListener("input", (event) => {
-//         wordArray[i] = event.target.value.toLowerCase(); // Update wordArray with the lowercase letter
-        
-//         // Check if all inputs are filled before checking the solution
-//         if (wordArray.every((letter) => letter !== "")) {
-//           let userSoln = wordArray.join("");
-//           if (this.anagram.checkAnswer(userSoln)) {
-//             console.log(`Correct! The solution is ${soln}`);
-//           } else {
-//             console.log(`Incorrect. Try again.`);
-//           }
-//         }
-//       });
-//     }
-//   });
-// }
+function moveFocusTo(id){
+  let field = document.querySelector(id);
+  if (field) {
+    field.focus();
+  }
 }
 
-// GET DATA
-
-
-
-window.addEventListener("DOMContentLoaded", function () {
-  fetch("../data/anagrams.json")
-    .then(response => response.json())
-    .then(data => {
-      totalCount = 0;
-      data.forEach((item, index) => {
-        let anagramData = new Anagram(item.scrambled_word, item.longest_soln, item.solutions, item.rating); // Create a new instance for each trivia question
-        new AnagramUI(anagramData, index)
-        console.log("anagrams JSON file read");
-        totalCount +=1;
-      });
-    });
-});
-
-
-
-
-// PROCESS ANAGRAM DATA
-
-
-
-
-
-
-// Create ID 
 function generateRandomID() {
   return Math.random().toString(36).substring(2, 6); // Generates a 4-character alphanumeric string
 }
-
-const randomID = generateRandomID();
-console.log(randomID); // Example output: "a1Bc"
-
-
-
-// form validation
-document.querySelectorAll("[id^='ch']").forEach((input) => input.addEventListener("input", function(e) {
-    this.value = this.value.replace(/[^A-Za-z]/g, ''); // Remove non-alphabetic characters
-    console.log("value found in " + this.id);
-})
-);
-
-//process form
-function constructWord(form){
-form.addEventListener("submit", function (event) {
-  // collect information from all the text fields...
-  event.preventDefault();
-  const formData = new FormData(event.target);
-  const data = {};
-  formData.forEach((value, key) => data[key] = value);
-  console.log(data);
-  let word = createWord(data);
-  console.log(word)
-});
-}
-
-function createWord(letters){
-  let word = ''
-  Object.values(letters).forEach((letter) => {
-    word += letter; // Append each form field value to the string
-  });    
-  console.log(word);
-  return word;
-}
-
-
-// HANDLE BUTTON ACTIONS
 
 function enableButton(buttonID, eventHandler){
   // button.disabled = false; // enable the button
   document.getElementById(buttonID).addEventListener('click', eventHandler);
   console.log("button enabled");
 }
-
 
 function disableButton(button, eventHandler) {
   // button.disabled = true; // Disable the button
@@ -235,12 +174,15 @@ function disableButton(button, eventHandler) {
 }
 
 
+
+// Anagram Functions
+
 // Play Button
 function handlePlayClick() {
   console.log('anagrams play button clicked');
 
   // Show first Question and Next button
-  let showDiv = document.querySelector("[id^='anaQ0_']");
+  let showDiv = document.querySelector(`[id^='anaQ0_']`);
   showDiv.classList.remove('hide');
 
   let nextButton = document.getElementById('anaNextButton');
@@ -284,7 +226,45 @@ function handleNextClick() {
 }
 
 
+
+
+
+// GET DATA
+window.addEventListener("DOMContentLoaded", function () {
+  fetch("../data/anagrams.json")
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      totalCount = 0;
+      data.forEach((item, index) => {
+        let anagramData = new Anagram(item.scrambled_word, item.longest_soln, item.solutions, item.rating); // Create a new instance for each trivia question
+        new AnagramUI(anagramData, index, newUser);
+        totalCount +=1;
+      });
+      console.log("Anagrams JSON file read and divs created");
+    })
+    .catch(error => {
+      console.error("Failed to load the anagrams JSON file:", error);
+    });
+  });
+
+
+// create user
+
+function createUser(){
+  let userID = generateRandomID();
+  console.log(userID); // Example output: "a1Bc"
+  return new userData(userID);
+}
+
+
+
 // play Anagrams
+const newUser = createUser();
 document.getElementById('anaPlayButton').addEventListener('click', handlePlayClick);
 document.getElementById('anaNextButton').addEventListener('click', handleNextClick);
 
