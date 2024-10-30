@@ -1,8 +1,14 @@
 console.log("Trivia JS loaded");
+
+// INITIALIZE VARIABLES
+
 let currTriviaCount =0;
 let totalTriviaCount = 0;
+let triviaScore = 0; 
+
 
 // CREATE CLASSES 
+
 // to store user data  
 class userTriviaData {
   constructor(id, userSolns = [], triviaScore = 0){
@@ -107,8 +113,7 @@ class triviaUI {
   }
 }
 
-// create score
-let triviaScore = 0; 
+
 
 // TRIVIA FUNCTIONS 
 
@@ -129,29 +134,6 @@ function removeAfterTimeout(className, btn, time) {
 }
 
 
-// function showAlert(msg, className, btnID) {
-//   let span = document.createElement("span");
-//   span.innerText = msg;
-//   span.className = className;
-//   span.id = `alert`;  
-//   let button = document.querySelector(`#${btnID}`)
-//   button.insertAdjacentElement('afterend', span);  
-//   removeAfterTimeout(`#alert`, 2000); 
-// }
-
-// // clear alert
-// function removeAfterTimeout(btn, time) {
-//   setTimeout(function() {
-//     let element = document.querySelector(id)
-//     if (element){
-//       element.remove();
-//     }
-//   }, time);
-// }
-
-
-// Function to handle "Next" button click
-
 function handleTriviaClick() {
 
   console.log(currTriviaCount, "of", totalTriviaCount);
@@ -170,9 +152,9 @@ function handleTriviaClick() {
     //Disable Button
       if (newCount == (totalTriviaCount-1)){
       let nextButton = document.getElementById('nextButton');
-    // nextButton.classList.remove('button-primary'); // Disable the button  
       nextButton.className = ''; // Disable the button
-      nextButton.removeEventListener("click", handleTriviaClick);   
+      disableButton(nextButton, handleTriviaClick);
+      //nextButton.removeEventListener("click", handleTriviaClick);   
       }
     }
   currTriviaCount +=1;
@@ -180,30 +162,12 @@ function handleTriviaClick() {
 }
 
 
-// Disable the button and remove the event listener
-function disableButton(button) {
-  //button.className = 'button'; // Disable the button
-  button.disabled = true; // Disable the button
-  button.removeEventListener("click", handleTriviaClick); // Remove event listener
-  console.log("button disabled");
-}
-
-function getUserID(){
-  let userID = localStorage.getItem("userID") || generateRandomID();
-  console.log(`userID: ${userID}`); // Example output: "a1Bc"
-  return userID;
-}
-
-function createUser(){
-  let userID = getUserID();
-  return new userTriviaData(userID);
-}
-
 
 window.addEventListener("DOMContentLoaded", function () {
 
-  const newTriviaUser = createUser();
-  // Add event listener to the "Next" button
+const newTriviaUser = createUser();
+
+// Add event listener to the "Next" button
 document.getElementById('nextButton').addEventListener('click', handleTriviaClick);
 
   fetch("../data/trivia.json")
@@ -216,9 +180,4 @@ document.getElementById('nextButton').addEventListener('click', handleTriviaClic
         totalTriviaCount +=1;
       });
     });
-
-
-
 });
-
-
