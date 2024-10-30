@@ -35,7 +35,7 @@ class trivia{
   }
     // Provide feedback on button press
     /* ***Can disable other buttons and provide more feedback, too  */
-    validateSelection(btn, btnID, userTriviaData){
+    validateSelection(btn, btnID, userSoln){
       console.log(btnID);
       let qscore = 0;  
       let btnSoln = btn.querySelector('#text')
@@ -45,6 +45,7 @@ class trivia{
         // btn.classList.remove('btn-light');
         // btn.classList.add('btn-success');
         if (qscore === 0){
+          console.log(`qscore=${qscore}`)
           userTriviaData.updateTriviaData(this.solution);
           return triviaScore +=1;};
         qscore +=1;
@@ -53,6 +54,7 @@ class trivia{
         showValidation('btn-danger', btn)
         qscore +=1;
         console.log(triviaScore);
+        console.log(`qscore=${qscore}`)
       }
       console.log("selection validated")
     }

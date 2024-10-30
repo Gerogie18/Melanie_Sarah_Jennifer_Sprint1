@@ -217,21 +217,17 @@
 
 /* alert */
 
-.success,
-.error {
-  width: 370px;
-  font-size: 1em;
-  color: white;
-  padding: 10px;
-  margin-bottom: 10px;
-}
+.alert {
+  box-shadow: 0 0 50px 5px purple;
+  border-radius: 15em;
 
+}
 .success {
   background-color: green;
 }
 
-.error {
-  background-color: red;
+.fail {
+  animation: shake 0.5s;
 }
 
 
