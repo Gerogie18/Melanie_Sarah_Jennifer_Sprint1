@@ -2,3 +2,36 @@
     background-color: grey;
     color: white;
 }
+
+.info {
+    background-color: grey;
+    color: white;
+    border-radius: 20px;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    position: relative; 
+  }
+  
+  .info:hover .tooltip {
+    display: block; 
+  }
+  
+  .tooltip {
+    display: none; 
+    position: absolute; 
+    background-color: #000;
+    border-radius: 5px;
+    padding: 5px;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    width: fit-content;
+    text-align: center;
+
+    white-space: pre; /* Preserve line breaks */
+    word-wrap: break-word; /* Optional: break long words */
+    overflow-wrap: break-word; /* For older browsers */
+    
+  }
