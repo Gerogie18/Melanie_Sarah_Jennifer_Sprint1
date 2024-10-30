@@ -13,6 +13,9 @@
     display: none;
   }
 
+.inline-elements {
+    display: inline-block;
+}
 .flex-center {
     display: flex;
     justify-content: center;
@@ -31,14 +34,32 @@
 
 .joke-container {
   position: relative;
-  width: 50%;
+  width: 100%;
 }
 
 .joke-image {
-  display: block;
+  /* display: block; */
   width: 100%;
   height: auto;
   border-radius: 5px;
+}
+
+
+.joke-overlay-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
+
+.joke-container:hover .joke-overlay-fade {
+  opacity: 1;
 }
 
 .joke-overlay-bottom {
@@ -50,7 +71,7 @@
   overflow: hidden;
   width: 100%;
   height: 0;
-  transition: .5s ease;
+  transition: .3s ease;
 }
 
 .joke-container:hover .joke-overlay-bottom {
@@ -74,6 +95,45 @@
   bottom: 0;
   height: 100%;
 }
+
+
+
+.joke-overlay-right {
+  position: absolute;
+  bottom: 0;
+  left: 100%;
+  right: 0;
+  background-color: rgb(241, 193, 48);
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  transition: .5s ease;
+}
+
+.joke-container:hover .joke-overlay-right {
+  width: 100%;
+  left: 0;
+}
+
+
+.joke-overlay-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 100%;
+  background-color: rgb(241, 193, 48);
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  transition: .5s ease;
+}
+
+.joke-container:hover .joke-overlay-left {
+  width: 100%;
+  right: 0;
+}
+
+
 
 .joke-text {
   color: black;

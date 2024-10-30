@@ -26,7 +26,7 @@
       <section id="trivia" class="container pt-4">
         <h2 id="triviaTitle">Trivia Draft</h2>
         <div class="row">
-          <div id="triviaBox" class="game-box col-6">
+          <div id="triviaBox" class="game-box col-sm-12 col-md-7">
             <div id="" class="row pt-4">
               <div id="questions" class="col-12"></div>
               <div id="triviaButtonBox" class="col-12">
@@ -37,9 +37,9 @@
             </div>
           </div>
 
-          <div id="fadeBox" class="col-6">
-            <div class="row">
-              <div class="fade-container col-6">
+          <div id="fadeBox" class="col-sm-12 col-md-5">
+            <div class="row pt-4">
+              <div class="fade-container col-12">
                 <img
                   class="fade-image"
                   src="/images/Possible_Images/Sheri Silver Unsplash.jpg"
@@ -47,24 +47,24 @@
               </div>
             </div>
             <div class="row pt-4">
-              <div id="triviaScoreBox" class="card" style="width: 18rem">
+              <div id="triviaScoreBox" class="col-12">
                 <!-- <img src="..." class="card-img-top" alt="..." /> -->
-                <div class="card-body">
-                  <h5 class="card-title">Trivia Score</h5>
-                  <p id="triviaScore" class="card-text">0</p>
-                </div>
+
+                <p class="inline-elements">Trivia Score:</p>
+                <p id="triviaScore" class="inline-elements">0</p>
+                <p class="inline-elements">pts</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <hr class="hr hr-blurry" />
+      <hr class="hr hr-blurry pt-4" />
 
       <section id="anagrams" class="container pt-4">
-        <h2 id="anaTitle">Anagrams Draft</h2>
+        <h2 id="anaTitle" class="">Anagrams Draft</h2>
         <div class="row">
-          <div id="shakeBox" class="col-4">
+          <div id="shakeBox" class="col-sm-12 col-md-5">
             <div class="shake-container">
               <img
                 src="/images/Possible_Images/Sheri Silver Unsplash2.jpg"
@@ -72,15 +72,16 @@
                 class="shake-img"
               />
             </div>
-            <div id="scoreBox" class="card pt-4" style="width: 18rem">
+            <div id="scoreBox" class="pt-4 col-12">
               <!-- <img src="..." class="card-img-top" alt="..." /> -->
-              <div class="card-body">
-                <h5 class="card-title">Anagrams Score</h5>
-                <p id="anaScore" class="card-text">0</p>
+              <div class="">
+                <h5 class="inline-elements">Anagrams Score:</h5>
+                <p id="anaScore" class="inline-elements">0</p>
+                <p class="inline-elements">pts</p>
               </div>
             </div>
           </div>
-          <div id="anaQuestionBox" class="game-box col-6">
+          <div id="anaQuestionBox" class="game-box col-sm-12 col-md-7">
             <div id="anaQuestionRow" class="">
               <div id="anaDemo" class="container pt-4">
                 <div class="col-12 games-header"><h2>mymum</h2></div>
@@ -131,58 +132,75 @@
       <hr class="hr hr-blurry pt-4" />
 
       <section id="jokes" class="container pt-4">
-        <div class="row"></div>
-        <div class="col-12">
-          <h2>Halloween Jokes</h2>
+        <div class="row">
+          <div class="col-12">
+            <h2>Halloween Jokes</h2>
+          </div>
         </div>
-        <div id="jokeBox" class="col-6">
-          <div class="joke-container">
-            <img
-              src="/images/Possible_Images/Sheri Silver Unsplash.jpg"
-              alt=""
-              class="joke-image"
-            />
-            <div class="joke-overlay-bottom">
-              <div class="joke-text">
-                <p>What was the witch's favourite subject?</p>
-                <p></p>
+        <div class="row">
+          <div id="jokeBox1" class="col-sm-12 col-md-3">
+            <div class="joke-container card">
+              <p class="card-text">What was the witch's favourite subject?</p>
+
+              <div class="joke-overlay-bottom">
+                <img
+                  src="/images/Possible_Images/Sheri Silver Unsplash2.jpg"
+                  alt=""
+                  class="joke-text"
+                />
+              </div>
+            </div>
+
+            <div class="joke-container">
+              <img
+                src="/images/Possible_Images/Sheri Silver Unsplash2.jpg"
+                alt=""
+                class="joke-image"
+              />
+              <div class="joke-overlay-top">
+                <div class="joke-text">Spelling</div>
               </div>
             </div>
           </div>
-
-          <div class="joke-container">
-            <img
-              src="/images/Possible_Images/Sheri Silver Unsplash.jpg"
-              alt=""
-              class="joke-image"
-            />
-            <div class="joke-overlay-top">
-              <div class="joke-text">Spelling</div>
+          <div id="jokeBox2" class="d-flex col-sm-12 col-md-6">
+            <div class="joke-container inline-elements">
+              <img
+                src="/images/Possible_Images/Nellie Adamyan Unsplash (1).jpg"
+                alt=""
+                class="joke-image"
+              />
+              <div class="joke-overlay-right">
+                <div class="joke-text">
+                  <p>What was the witch's favourite subject?</p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div id="jokeBox" class="col-6">
-          <div class="joke-container">
-            <img
-              src="/images/Possible_Images/Sheri Silver Unsplash.jpg"
-              alt=""
-              class="joke-image"
-            />
-            <div class="joke-overlay-bottom">
-              <div class="joke-text">
-                <p>What was the witch's favourite subject?</p>
+
+            <div class="joke-container inline-elements">
+              <img
+                src="/images/Possible_Images/Nellie Adamyan Unsplash (1).jpg"
+                alt=""
+                class="joke-image"
+              />
+              <div class="joke-overlay-left">
+                <div class="joke-text">Spelling</div>
               </div>
             </div>
           </div>
+          <div id="jokeBox3" class="col-sm-12 col-md-3">
+            <div class="container">
+              <p>What was the witch's favourite subject?</p>
+            </div>
 
-          <div class="joke-container">
-            <img
-              src="/images/Possible_Images/Sheri Silver Unsplash.jpg"
-              alt=""
-              class="joke-image"
-            />
-            <div class="joke-overlay-top">
-              <div class="joke-text">Spelling</div>
+            <div class="joke-container">
+              <img
+                src="/images/Possible_Images/Sheri Silver Unsplash.jpg"
+                alt=""
+                class="joke-image"
+              />
+              <div class="joke-overlay-fade">
+                <div class="joke-text">Spelling</div>
+              </div>
             </div>
           </div>
         </div>
