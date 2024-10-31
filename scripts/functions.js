@@ -59,6 +59,7 @@ hoverEventListner('fade-image')
 // Add event listener for mouseleave
 
 function hoverEventListner(imageID){
+  let image = document.getElementById(imageID);
   if (image) {
     enterImageEffect(image);
     leaveImageEffect(image);
@@ -78,7 +79,7 @@ function enterImageEffect(image){
 
 function leaveImageEffect(image){
   image.addEventListener('mouseleave', () => {
-    if (hoverCount == 3){ 
+    if (hoverCount == 2){ 
       image.src = '/images/ghost-sookybaby.png';
     }
   console.log('Mouse left the div!');

@@ -26,6 +26,9 @@
   text-align: center;
 }
 
+.bigLetters{
+  font-size: 40px;
+}
 .font-script{
   font-family: "Imprima", sans-serif;
   font-weight: 400;

@@ -1,5 +1,6 @@
 console.log("Anagrams JS loaded")
 
+let anaScore = 0;
 // SET UP CLASSES
 
 // to store user data  
@@ -32,12 +33,11 @@ class Anagram{
   checkSolution(userSoln, divID) {
     if (this.solutions.includes(userSoln.toLowerCase())) {
       console.log(`Correct! ${userSoln} is a possible solution`);
-      showAnaAlert('alert', divID);
-      return 'pass';
+      showAnaCorrect(userSoln, divID);
+      updateScore();
     } else {
       console.log(`Incorrect. Try again.`);
       showAnaAlert('fail', divID);
-      return 'fail';
     }
   }
 }
@@ -120,8 +120,7 @@ class AnagramUI{
       // Check if all inputs are filled before checking the solution
       if (wordArray.every((letter) => letter !== "")) {
         let userSoln = wordArray.join("");
-        let valueStatus = this.anagram.checkSolution(userSoln, id);
-        this.updateScore(valueStatus);
+        this.anagram.checkSolution(userSoln, id);
       }
       // Move to focus to next field
       if (event.target.value.length === event.target.maxLength) {
@@ -142,18 +141,26 @@ class AnagramUI{
     });
   }
 
-  updateScore(valueStatus){
-    if (valueStatus == true){this.userData.anaScore++};  
-    // let content = document.querySelector(`#anaScore`);
-    // content.innerText = this.userData.anaScore;
-  }
 }
 
 
-// ANAGRAM FUNCTIONS
 
+// ANAGRAM FUNCTIONS
+function updateScore(){
+  anaScore++ ;
+  let content = document.querySelector(`#anaScore`);
+  content.innerText = anaScore;
+}
 
 // Alert
+
+function showAnaCorrect(userSoln, divID){
+  let div = document.querySelector(`#solnRow${divID}`);
+  div.className = "bigLetters";
+  div.style = "font"
+  div.innerHTML= userSoln;
+}
+
 function showAnaAlert(value, divID){
   let div = document.querySelector(`#solnRow${divID}`);
   div.classList.add(value);

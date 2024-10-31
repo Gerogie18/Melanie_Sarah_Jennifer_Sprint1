@@ -21,6 +21,7 @@ class userTriviaData {
     if (!this.userSolns.includes(userSoln)) {
       this.userSolns.push(userSoln);
       this.triviaScore++;
+      updateScore();
       console.log(`Stored ${userSoln} in user data`)
     } else{
       console.log(`${userSoln} already stored in user data`)}
@@ -35,7 +36,7 @@ class trivia{
   }
     // Provide feedback on button press
     /* ***Can disable other buttons and provide more feedback, too  */
-    validateSelection(btn, btnID, userSoln){
+    validateSelection(btn, btnID){
       console.log(btnID);
       let qscore = 0;  
       let btnSoln = btn.querySelector('#text')
@@ -43,8 +44,8 @@ class trivia{
         showValidation('green', btn);
         if (qscore === 0){
           console.log(`qscore=${qscore}`)
-          userTriviaData.updateTriviaData(this.solution);
-          return triviaScore +=1;};
+          // userTriviaData.updateTriviaData(this.solution);
+          updateScore();};
         qscore +=1;
         console.log(triviaScore);
       } else {
@@ -100,19 +101,20 @@ class triviaUI {
       btn.addEventListener("click", () => {
         console.log("click")
         this.trivia.validateSelection(btn, btnID, this.userTriviaData);
-        this.updateScore();
+
       });
     });
     console.log("Option buttons created")
   }
 
-  updateScore(){   
-    let content = document.querySelector(`#triviaScore`);
-    content.innerText = this.userTriviaData.triviaScore;
-  }
+
 }
 
-
+function updateScore(){
+  triviaScore++;   
+  let content = document.getElementById('triviaScore');
+  content.innerText = triviaScore;
+}
 
 // TRIVIA FUNCTIONS 
 
@@ -162,7 +164,8 @@ function handleTriviaClick() {
 
 window.addEventListener("DOMContentLoaded", function () {
 
-const newTriviaUser = createUser();
+let newUser = createUser();
+new userTriviaData(newUser);
 
 // Add event listener to the "Next" button
 document.getElementById('nextButton').addEventListener('click', handleTriviaClick);
@@ -172,7 +175,7 @@ document.getElementById('nextButton').addEventListener('click', handleTriviaClic
     .then(data => {
       data.forEach((item, index) => {
         let triviaData = new trivia(item.question, item.options, item.solution); // Create a new instance for each trivia question
-        new triviaUI(triviaData, index, newTriviaUser);
+        new triviaUI(triviaData, index, newUser);
         console.log("JSON file read");
         totalTriviaCount +=1;
       });
