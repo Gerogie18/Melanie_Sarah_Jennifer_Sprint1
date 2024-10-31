@@ -40,10 +40,7 @@ class trivia{
       let qscore = 0;  
       let btnSoln = btn.querySelector('#text')
       if (btnSoln.innerText.trim().toUpperCase() === this.solution.toUpperCase()) {
-        // showAlert("yay!", "success", btnID);
-        showValidation('btn-success', btn)
-        // btn.classList.remove('btn-light');
-        // btn.classList.add('btn-success');
+        showValidation('green', btn);
         if (qscore === 0){
           console.log(`qscore=${qscore}`)
           userTriviaData.updateTriviaData(this.solution);
@@ -51,7 +48,7 @@ class trivia{
         qscore +=1;
         console.log(triviaScore);
       } else {
-        showValidation('btn-danger', btn)
+        showValidation('pink-dark', btn)
         qscore +=1;
         console.log(triviaScore);
         console.log(`qscore=${qscore}`)
@@ -88,7 +85,7 @@ class triviaUI {
       let btn = document.createElement("button");
       let btnID = `btn${this.index}-${count}`
       btn.id = btnID;
-      btn.className = "btn btn-light btn-lg btn-block rounded";
+      btn.className = "btn btn-light white btn-lg btn-block rounded";
 
       let icon; // create icon dictionary
       if (count === 0){icon = "&#9312;"};
@@ -122,7 +119,7 @@ class triviaUI {
 // create alert
 
 function showValidation(className, btn){
-  btn.classList.remove('btn-light');
+  btn.classList.remove('white');
   btn.classList.add(className);
   removeAfterTimeout(className, btn, 1500);
 }
@@ -130,7 +127,7 @@ function showValidation(className, btn){
 
 function removeAfterTimeout(className, btn, time) {
   setTimeout(function() {
-    btn.classList.add('btn-light');
+    btn.classList.add('white');
     btn.classList.remove(className);
   }, time);
 }
@@ -153,10 +150,8 @@ function handleTriviaClick() {
 
     //Disable Button
       if (newCount == (totalTriviaCount-1)){
-      let nextButton = document.getElementById('nextButton');
-      nextButton.className = ''; // Disable the button
-      disableButton(nextButton, handleTriviaClick);
-      //nextButton.removeEventListener("click", handleTriviaClick);   
+        let nextButton = document.getElementById('nextButton');
+        disableButton(nextButton, handleTriviaClick); 
       }
     }
   currTriviaCount +=1;

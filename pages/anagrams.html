@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Games while you wait</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../styles/games.css" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jolly+Lodger&family=Ruda&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main class="container my-5">
+      <section id="intro" class="container pt-4">
+        <h1 id="title">Games</h1>
+        <p>Games while you wait</p>
+      </section>
+
+      <section id="anagrams" class="container pt-4">
+        <h2 id="anaTitle" class="">Anagrams Draft</h2>
+        <div class="row">
+          <div id="shakeBox" class="col-sm-12 col-md-5">
+            <div class="shake-container">
+              <img
+                src="/images/Possible_Images/Sheri Silver Unsplash2.jpg"
+                alt=""
+                class="shake-img"
+              />
+            </div>
+            <div id="scoreBox" class="pt-4 col-12">
+              <!-- <img src="..." class="card-img-top" alt="..." /> -->
+              <div class="">
+                <h5 class="inline-elements">Anagrams Score:</h5>
+                <p id="anaScore" class="inline-elements">0</p>
+                <p class="inline-elements">pts</p>
+              </div>
+            </div>
+          </div>
+          <div id="anaQuestionBox" class="game-box col-sm-12 col-md-7">
+            <div id="anaQuestionRow" class="">
+              <div id="anaDemo" class="container pt-4">
+                <div class="col-12 games-header"><h2>mymum</h2></div>
+                <div class="flex-center">
+                  <div class="letter-box">M</div>
+                  <div class="letter-box">U</div>
+                  <div class="letter-box">M</div>
+                  <div class="letter-box">M</div>
+                  <div class="letter-box">Y</div>
+                </div>
+                <div class="flex-center">
+                  <div class="letter-box">M</div>
+                  <div class="letter-box">U</div>
+                  <div class="letter-box">M</div>
+                </div>
+                <div class="flex-center">
+                  <div class="letter-box">M</div>
+                  <div class="letter-box">Y</div>
+                </div>
+                <div class="flex-center">
+                  <div class="letter-box">Y</div>
+                  <div class="letter-box">U</div>
+                  <div class="letter-box">M</div>
+                </div>
+              </div>
+            </div>
+            <div
+              id="anaButtonBox"
+              class="col-12 d-flex justify-content-center pt-4"
+            >
+              <button
+                id="anaNextButton"
+                class="btn-primary btn-warning rounded hide"
+              >
+                next >
+              </button>
+              <button
+                id="anaPlayButton"
+                class="btn-primary btn-warning rounded"
+              >
+                play
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- JavaScript for games -->
+    <script src="../scripts/functions.js"></script>
+    <script src="../scripts/anagrams.js"></script>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
