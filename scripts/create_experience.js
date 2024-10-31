@@ -4,24 +4,8 @@
 
 console.log("JS loaded")
 
-//fetching image data when needed 
-let imageData = ""
-async function loadImageData() {
-    try {
-      const response = await fetch('../data/images.json');
-      const data = await response.json();
-      imageData = data;
-      //console.log(imageData); //error handling - see json data
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-loadImageData();
-
 //fetching booking data
 var bookings = {};
-
 async function fetchBookings() {
   try {
     const response = await fetch('../data/bookings.json');
@@ -32,8 +16,6 @@ async function fetchBookings() {
     console.error(error);
   }
 }
-
-
 
 function populateTimeSlots(timeSelect, ageRange) {
     // Define time slots
@@ -95,6 +77,80 @@ function populateTimeSlots(timeSelect, ageRange) {
     });
   }
 
+function createActivityDivs(ageRange) {
+    // Define Activities:
+    var ActivityCook = [
+        {
+            name: 'Monster Cookies', 
+            tooltip: 'Mix together a monster mash of cookie dough - create a monster mash with many spooky mix-ins',
+            ageRange: ['ageRange3-6', 'ageRange7-11'],
+            price: 0,
+            img: '',
+            alt: '',
+        },
+        {
+            name: 'Spooky cocktails', 
+            tooltip: 'Mix together some spooky drinks, and prepare our cauldron punchbowl',
+            ageRange: ['ageRange18+'],
+            price: 0,
+            img: '',
+            alt: '',
+            },
+        {
+            name: '', 
+            tooltip: '',
+            ageRange: [],
+            price: 0,
+            img: '',
+            alt: '',
+        }
+        ]
+    const ActivityCookDiv = document.getElementById('activityConainerCook');
+    if (ageRange === 'ageRange3-6') {
+        ActivityCookDiv.innerHTML = `
+    <h2>AgeRange3-6</h2>`
+    }
+    if (ageRange === 'ageRange7-11') {
+        ActivityCookDiv.innerHTML = `
+    <h2>AgeRange7-11</h2>`
+    }
+    if (ageRange === 'ageRange12-18') {
+        ActivityCookDiv.innerHTML = `
+    <h2>AgeRange12-18</h2>`
+    }
+    if (ageRange === 'ageRange19+') {
+        ActivityCookDiv.innerHTML = `
+    <h2>AgeRange19+</h2>`
+    }
+    
+    var ActivityCraft = [
+        {
+            name: 'Felt Costume Hats', 
+            tooltip: '',
+            ageRange: [],
+            price: 0,
+            img: '',
+            alt: '',
+        }, 
+    ]
+    const activityContainerDiv = document.getElementById('activityContainerCraft');
+    if (ageRange === 'ageRange3-6') {
+        activityContainerDiv.innerHTML = `
+    <h2>AgeRange3-6</h2>`
+    }
+    if (ageRange === 'ageRange7-11') {
+        activityContainerDiv.innerHTML = `
+    <h2>AgeRange7-11</h2>`
+    }
+    if (ageRange === 'ageRange12-18') {
+        activityContainerDiv.innerHTML = `
+    <h2>AgeRange12-18</h2>`
+    }
+    if (ageRange === 'ageRange19+') {
+        activityContainerDiv.innerHTML = `
+    <h2>AgeRange19+</h2>`
+    }
+}
 //Creating a min date, and blocking out dates
 let dateInput = document.getElementById('date');
 const today = new Date();
@@ -131,6 +187,8 @@ ageRangeButtons.forEach((button) => {
 
     //resetting the timeslots 
     populateTimeSlots(timeSelect, ageRange); 
+    //restting activities:
+    createActivityDivs(ageRange); //
     // checking to see if logging correctly
     console.log(`Clicked button value: ${button.getAttribute('value') || button.textContent}`); 
   });
@@ -155,14 +213,6 @@ groupSizeButtons.forEach((button) => {
     console.log(`Selected group size: ${groupSize}`);
   });
 });
-
-//looping through bookings to grey out timeslots:
-for (let i = 0; i < bookings.length; i++) {
-    if (bookings.Date === selectedDate) {
-
-    }
-}
-
 
 // Get the time selected
 let selectedTime = '';
