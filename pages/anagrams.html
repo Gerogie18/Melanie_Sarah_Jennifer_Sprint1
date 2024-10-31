@@ -24,81 +24,89 @@
       rel="stylesheet"
     />
   </head>
-  <body>
-    <main class="container my-5">
-      <section id="intro" class="container pt-4">
-        <h1 id="title">Games</h1>
-        <p>Games while you wait</p>
-      </section>
+  <body class="body">
+    <div class="site-container">
+      <main class="container my-5">
+        <section id="intro" class="container pt-4">
+          <h1 id="title">Anagrams Draft</h1>
+          <p>Games while you wait</p>
+        </section>
 
-      <section id="anagrams" class="container pt-4">
-        <h2 id="anaTitle" class="">Anagrams Draft</h2>
-        <div class="row">
-          <div id="shakeBox" class="col-sm-12 col-md-5">
-            <div class="shake-container">
-              <img
-                src="/images/Possible_Images/Sheri Silver Unsplash2.jpg"
-                alt=""
-                class="shake-img"
-              />
-            </div>
-            <div id="scoreBox" class="pt-4 col-12">
-              <!-- <img src="..." class="card-img-top" alt="..." /> -->
-              <div class="">
-                <h5 class="inline-elements">Anagrams Score:</h5>
-                <p id="anaScore" class="inline-elements">0</p>
-                <p class="inline-elements">pts</p>
+        <section id="anagrams" class="container pt-4">
+          <div class="row">
+            <div id="jokeBox1" class="col-sm-12 col-md-4">
+              <div class="joke-container">
+                <img
+                  src="/images/ghost-pumpkinhead.png"
+                  alt=""
+                  class="joke-image"
+                  caption="What was the witch's favourite subject?"
+                />
+
+                <div class="joke-overlay-bottom">
+                  <img
+                    src="/images/ghost-spider.png"
+                    alt=""
+                    class="joke-image"
+                  />
+                </div>
               </div>
-            </div>
-          </div>
-          <div id="anaQuestionBox" class="game-box col-sm-12 col-md-7">
-            <div id="anaQuestionRow" class="">
-              <div id="anaDemo" class="container pt-4">
-                <div class="col-12 games-header"><h2>mymum</h2></div>
-                <div class="flex-center">
-                  <div class="letter-box">M</div>
-                  <div class="letter-box">U</div>
-                  <div class="letter-box">M</div>
-                  <div class="letter-box">M</div>
-                  <div class="letter-box">Y</div>
-                </div>
-                <div class="flex-center">
-                  <div class="letter-box">M</div>
-                  <div class="letter-box">U</div>
-                  <div class="letter-box">M</div>
-                </div>
-                <div class="flex-center">
-                  <div class="letter-box">M</div>
-                  <div class="letter-box">Y</div>
-                </div>
-                <div class="flex-center">
-                  <div class="letter-box">Y</div>
-                  <div class="letter-box">U</div>
-                  <div class="letter-box">M</div>
+
+              <div class="joke-container orange">
+                <img
+                  src="/images/ghost-batface.png"
+                  alt=""
+                  class="joke-image"
+                />
+                <div class="joke-overlay-top">
+                  <div class="joke-text">Spelling</div>
                 </div>
               </div>
             </div>
-            <div
-              id="anaButtonBox"
-              class="col-12 d-flex justify-content-center pt-4"
-            >
-              <button
-                id="anaNextButton"
-                class="btn-primary btn-warning rounded hide"
+
+            <div id="anaQuestionBox" class="game-box col-sm-12 col-md-8">
+              <div id="anaQuestionRow" class="">
+                <div id="anaDemo" class="container pt-4">
+                  <div class="col-12 games-header"><h2>mymum</h2></div>
+                  <div class="flex-center">
+                    <div class="letter-box">M</div>
+                    <div class="letter-box">U</div>
+                    <div class="letter-box">M</div>
+                    <div class="letter-box">M</div>
+                    <div class="letter-box">Y</div>
+                  </div>
+                  <div class="flex-center">
+                    <div class="letter-box">M</div>
+                    <div class="letter-box">U</div>
+                    <div class="letter-box">M</div>
+                  </div>
+                  <div class="flex-center">
+                    <div class="letter-box">M</div>
+                    <div class="letter-box">Y</div>
+                  </div>
+                  <div class="flex-center">
+                    <div class="letter-box">Y</div>
+                    <div class="letter-box">U</div>
+                    <div class="letter-box">M</div>
+                  </div>
+                </div>
+              </div>
+              <div
+                id="anaButtonBox"
+                class="col-12 d-flex justify-content-center pt-4"
               >
-                next >
-              </button>
-              <button
-                id="anaPlayButton"
-                class="btn-primary btn-warning rounded"
-              >
-                play
-              </button>
+                <button id="anaNextButton" class="btn green rounded hide">
+                  next >
+                </button>
+                <button id="anaPlayButton" class="btn green rounded">
+                  play
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </div>
     <!-- JavaScript for games -->
     <script src="../scripts/functions.js"></script>
     <script src="../scripts/anagrams.js"></script>

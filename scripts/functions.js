@@ -59,9 +59,12 @@ hoverEventListner('fade-image')
 // Add event listener for mouseleave
 
 function hoverEventListner(imageID){
-  let image = document.getElementById(imageID);
-  enterImageEffect(image);
-  leaveImageEffect(image);
+  if (image) {
+    enterImageEffect(image);
+    leaveImageEffect(image);
+  } else {
+    console.warn(`Image with ID "${imageID}" not found.`);
+  }
 }
 
 function enterImageEffect(image){

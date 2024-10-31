@@ -29,15 +29,15 @@ class Anagram{
     this.index = index;
   }
   // Check if the user solution is correct
-    checkSolution(userSoln, divID) {
+  checkSolution(userSoln, divID) {
     if (this.solutions.includes(userSoln.toLowerCase())) {
       console.log(`Correct! ${userSoln} is a possible solution`);
       showAnaAlert('alert', divID);
-      return true;
+      return 'pass';
     } else {
       console.log(`Incorrect. Try again.`);
       showAnaAlert('fail', divID);
-      return false;
+      return 'fail';
     }
   }
 }
@@ -144,8 +144,8 @@ class AnagramUI{
 
   updateScore(valueStatus){
     if (valueStatus == true){this.userData.anaScore++};  
-    let content = document.querySelector(`#anaScore`);
-    content.innerText = this.userData.anaScore;
+    // let content = document.querySelector(`#anaScore`);
+    // content.innerText = this.userData.anaScore;
   }
 }
 
