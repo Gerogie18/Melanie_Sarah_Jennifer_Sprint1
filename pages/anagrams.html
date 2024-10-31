@@ -20,6 +20,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      href="https://fonts.googleapis.com/css2?family=Imprima&display=swap"
+      rel="stylesheet"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Jolly+Lodger&family=Ruda&display=swap"
       rel="stylesheet"
     />
@@ -28,55 +32,18 @@
     <div class="site-container">
       <main class="container my-5">
         <section id="intro" class="container pt-4">
-          <h1 id="title">Anagrams Draft</h1>
+          <h1 id="title" class="jolly-lodger-regular">Anagrams</h1>
           <p>Games while you wait</p>
         </section>
 
         <section id="anagrams" class="container pt-4">
           <div class="row">
-            <div id="jokeBox1" class="col-sm-12 col-md-4">
-              <div class="joke-container">
-                <img
-                  src="/images/ghost-pumpkinhead.png"
-                  alt=""
-                  class="joke-image"
-                  caption="What was the witch's favourite subject?"
-                />
-
-                <div class="joke-overlay-bottom">
-                  <img
-                    src="/images/ghost-spider.png"
-                    alt=""
-                    class="joke-image"
-                  />
-                </div>
-              </div>
-
-              <div class="joke-container orange">
-                <img
-                  src="/images/ghost-batface.png"
-                  alt=""
-                  class="joke-image"
-                />
-                <div class="joke-overlay-top">
-                  <div class="joke-text">Spelling</div>
-                </div>
-              </div>
-              <div class="row pt-4">
-                <div id="anaScoreBox" class="col-12">
-                  <!-- <img src="..." class="card-img-top" alt="..." /> -->
-
-                  <p class="inline-elements">Anagrams Score:</p>
-                  <p id="anaScore" class="inline-elements">0</p>
-                  <p class="inline-elements">pts</p>
-                </div>
-              </div>
-            </div>
-
             <div id="anaQuestionBox" class="game-box col-sm-12 col-md-8">
               <div id="anaQuestionRow" class="">
                 <div id="anaDemo" class="container pt-4">
-                  <div class="col-12 games-header"><h2>mymum</h2></div>
+                  <div class="col-12 games-header" style="color">
+                    <h2>mymum</h2>
+                  </div>
                   <div class="flex-center">
                     <div class="letter-box">M</div>
                     <div class="letter-box">U</div>
@@ -110,6 +77,41 @@
                 <button id="anaPlayButton" class="btn green rounded">
                   play
                 </button>
+              </div>
+            </div>
+            <div id="jokeBox1" class="rounded col-sm-8 col-md-4">
+              <div class="joke-container card orange">
+                <div class="card-body">
+                  <div
+                    class="card-text"
+                    style="color: black; text-align: center; min-height: 120px"
+                  >
+                    <p style="font-size: 1.5em">
+                      What did the ghost use to wash their hair?
+                    </p>
+                    <p>(check below for answer)</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="joke-container orange rounded">
+                <img
+                  src="/images/ghost-batface.png"
+                  alt=""
+                  class="rounded joke-image"
+                />
+                <div class="joke-overlay-top">
+                  <div class="joke-text">ShamBOO!</div>
+                </div>
+              </div>
+              <div class="row pt-4">
+                <div id="anaScoreBox" class="col-12">
+                  <!-- <img src="..." class="card-img-top" alt="..." /> -->
+
+                  <p class="inline-elements">Anagrams Score:</p>
+                  <p id="anaScore" class="inline-elements">0</p>
+                  <p class="inline-elements">pts</p>
+                </div>
               </div>
             </div>
           </div>
