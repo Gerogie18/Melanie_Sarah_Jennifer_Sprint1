@@ -13,118 +13,168 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../styles/games.css" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Imprima&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jolly+Lodger&family=Ruda&display=swap"
+      rel="stylesheet"
+    />
     <title>MadLibs</title>
   </head>
 
-  <body>
-    <main class="container my-4">
-      <h1>Madlibs Draft</h1>
-      <p>Provide an example of each of the following to play madlibs.</p>
-      <br />
-      <form id="storyForm">
-        <div class="row">
-          <div class="col-md-3 mb-3 mt-3">
-            <label for="adjs" class="form-label">Four adjectives</label>
-            <br />
-            <input
-              type="text"
-              class="form-control"
-              id="adj1"
-              name="adj1"
-              placeholder="adjective"
-            /><br />
-            <input
-              type="text"
-              class="form-control"
-              id="adj2"
-              name="adj2"
-              placeholder="adjective"
-            /><br />
-            <input
-              type="text"
-              class="form-control"
-              id="adj3"
-              name="adj3"
-              placeholder="adjective"
-            /><br />
-            <input
-              type="text"
-              class="form-control"
-              id="adj4"
-              name="adj4"
-              placeholder="adjective"
-            /><br />
-          </div>
-          <div class="col-md-3 mb-3 mt-3">
-            <label for="objs" class="form-label">Two objects</label>
-            <br />
-            <input
-              type="text"
-              class="form-control"
-              id="obj1"
-              name="obj1"
-              placeholder="object"
-            /><br />
-            <input
-              type="text"
-              class="form-control"
-              id="obj2"
-              name="obj2"
-              placeholder="object"
-            /><br />
-          </div>
-          <div class="col-md-3 mb-3 mt-3">
-            <label for="creatures" class="form-label">Two creatures</label>
-            <br />
-            <input
-              type="text"
-              class="form-control"
-              id="spookyCreature"
-              name="spookyCreature"
-              placeholder="spooky creature"
-            /><br />
-            <input
-              type="text"
-              class="form-control"
-              id="funnyCreature"
-              name="funnyCreature"
-              placeholder="funny creature"
-            /><br />
-          </div>
-          <br />
-
-          <div class="col-md-3 mb-3 mt-3">
-            <label for="other" class="form-label">A sound & room</label>
-            <br />
-            <input
-              type="text"
-              class="form-control"
-              id="sound"
-              name="sound"
-              placeholder="sound"
-            /><br />
-            <input
-              type="text"
-              class="form-control"
-              id="room"
-              name="room"
-              placeholder="room"
-            /><br />
-          </div>
-          <br />
-        </div>
+  <body class="body blue-light">
+    <div class="site-container">
+      <main class="container my-4">
+        <h1 class="jolly-lodger-regular">Madlibs Draft</h1>
+        <p>Provide an example of each of the following to play madlibs.</p>
         <br />
-        <button id="submitButton" type="submit" class="btn btn-primary">
-          get your story
-        </button>
-        <button id="randomButton" type="submit" class="btn btn-primary">
-          create a random story
-        </button>
-      </form>
+        <section id="userInput">
+          <form id="storyForm">
+            <div class="row">
+              <div class="col-md-3 mb-3 mt-3">
+                <label for="adjs" class="form-label">Four adjectives</label>
+                <br />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="adj1"
+                  name="adj1"
+                  placeholder="adjective"
+                /><br />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="adj2"
+                  name="adj2"
+                  placeholder="adjective"
+                /><br />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="adj3"
+                  name="adj3"
+                  placeholder="adjective"
+                /><br />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="adj4"
+                  name="adj4"
+                  placeholder="adjective"
+                /><br />
+              </div>
+              <div class="col-md-3 mb-3 mt-3">
+                <label for="objs" class="form-label">Two objects</label>
+                <br />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="obj1"
+                  name="obj1"
+                  placeholder="object"
+                /><br />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="obj2"
+                  name="obj2"
+                  placeholder="object"
+                /><br />
+              </div>
+              <div class="col-md-3 mb-3 mt-3">
+                <label for="creatures" class="form-label">Two creatures</label>
+                <br />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="spookyCreature"
+                  name="spookyCreature"
+                  placeholder="spooky creature"
+                /><br />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="funnyCreature"
+                  name="funnyCreature"
+                  placeholder="funny creature"
+                /><br />
+              </div>
+              <br />
 
-      <br />
-      <div id="userStory" class="container"></div>
-    </main>
+              <div class="col-md-3 mb-3 mt-3">
+                <label for="other" class="form-label">A sound & room</label>
+                <br />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="sound"
+                  name="sound"
+                  placeholder="sound"
+                /><br />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="room"
+                  name="room"
+                  placeholder="room"
+                /><br />
+              </div>
+              <br />
+            </div>
+            <br />
+            <div id="button-container" class="row">
+              <div class="col-md-3">
+                <button
+                  id="submitButton"
+                  type="submit"
+                  class="btn btn-light green"
+                  style="border: 2px solid #8fa13b"
+                >
+                  get your story
+                </button>
+              </div>
+              <div class="col-md-3">
+                <button
+                  id="randomButton"
+                  type="submit"
+                  class="btn btn-light green"
+                  style="border: 2px solid #8fa13b"
+                >
+                  create a random story
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <br />
+        </section>
+
+        <hr class="white" />
+
+        <section id="story" class="container">
+          <div class="row">
+            <div id="userStory" class="col-md-8 story">
+              <h2>Your story will appear here</h2>
+            </div>
+            <div id="shakeBox" class="col-sm-6 col-md-4">
+              <div class="shake-container align-bottom">
+                <img
+                  src="/images/ghost-pumpkinhead.png"
+                  alt=""
+                  class="shake-img img-fluid"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
     <script src="../scripts/madlibs.js"></script>
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

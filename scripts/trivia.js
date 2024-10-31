@@ -21,6 +21,7 @@ class userTriviaData {
     if (!this.userSolns.includes(userSoln)) {
       this.userSolns.push(userSoln);
       this.triviaScore++;
+      updateScore();
       console.log(`Stored ${userSoln} in user data`)
     } else{
       console.log(`${userSoln} already stored in user data`)}
@@ -35,24 +36,23 @@ class trivia{
   }
     // Provide feedback on button press
     /* ***Can disable other buttons and provide more feedback, too  */
-    validateSelection(btn, btnID, userTriviaData){
+    validateSelection(btn, btnID){
       console.log(btnID);
       let qscore = 0;  
       let btnSoln = btn.querySelector('#text')
       if (btnSoln.innerText.trim().toUpperCase() === this.solution.toUpperCase()) {
-        // showAlert("yay!", "success", btnID);
-        showValidation('btn-success', btn)
-        // btn.classList.remove('btn-light');
-        // btn.classList.add('btn-success');
+        showValidation('green', btn);
         if (qscore === 0){
-          userTriviaData.updateTriviaData(this.solution);
-          return triviaScore +=1;};
+          console.log(`qscore=${qscore}`)
+          // userTriviaData.updateTriviaData(this.solution);
+          updateScore();};
         qscore +=1;
         console.log(triviaScore);
       } else {
-        showValidation('btn-danger', btn)
+        showValidation('pink-dark', btn)
         qscore +=1;
         console.log(triviaScore);
+        console.log(`qscore=${qscore}`)
       }
       console.log("selection validated")
     }
@@ -86,7 +86,7 @@ class triviaUI {
       let btn = document.createElement("button");
       let btnID = `btn${this.index}-${count}`
       btn.id = btnID;
-      btn.className = "btn btn-light btn-lg btn-block rounded";
+      btn.className = "btn btn-light white btn-lg btn-block rounded";
 
       let icon; // create icon dictionary
       if (count === 0){icon = "&#9312;"};
@@ -101,26 +101,27 @@ class triviaUI {
       btn.addEventListener("click", () => {
         console.log("click")
         this.trivia.validateSelection(btn, btnID, this.userTriviaData);
-        this.updateScore();
+
       });
     });
     console.log("Option buttons created")
   }
 
-  updateScore(){   
-    let content = document.querySelector(`#triviaScore`);
-    content.innerText = this.userTriviaData.triviaScore;
-  }
+
 }
 
-
+function updateScore(){
+  triviaScore++;   
+  let content = document.getElementById('triviaScore');
+  content.innerText = triviaScore;
+}
 
 // TRIVIA FUNCTIONS 
 
 // create alert
 
 function showValidation(className, btn){
-  btn.classList.remove('btn-light');
+  btn.classList.remove('white');
   btn.classList.add(className);
   removeAfterTimeout(className, btn, 1500);
 }
@@ -128,7 +129,7 @@ function showValidation(className, btn){
 
 function removeAfterTimeout(className, btn, time) {
   setTimeout(function() {
-    btn.classList.add('btn-light');
+    btn.classList.add('white');
     btn.classList.remove(className);
   }, time);
 }
@@ -151,10 +152,8 @@ function handleTriviaClick() {
 
     //Disable Button
       if (newCount == (totalTriviaCount-1)){
-      let nextButton = document.getElementById('nextButton');
-      nextButton.className = ''; // Disable the button
-      disableButton(nextButton, handleTriviaClick);
-      //nextButton.removeEventListener("click", handleTriviaClick);   
+        let nextButton = document.getElementById('nextButton');
+        disableButton(nextButton, handleTriviaClick); 
       }
     }
   currTriviaCount +=1;
@@ -165,7 +164,8 @@ function handleTriviaClick() {
 
 window.addEventListener("DOMContentLoaded", function () {
 
-const newTriviaUser = createUser();
+let newUser = createUser();
+new userTriviaData(newUser);
 
 // Add event listener to the "Next" button
 document.getElementById('nextButton').addEventListener('click', handleTriviaClick);
@@ -175,7 +175,7 @@ document.getElementById('nextButton').addEventListener('click', handleTriviaClic
     .then(data => {
       data.forEach((item, index) => {
         let triviaData = new trivia(item.question, item.options, item.solution); // Create a new instance for each trivia question
-        new triviaUI(triviaData, index, newTriviaUser);
+        new triviaUI(triviaData, index, newUser);
         console.log("JSON file read");
         totalTriviaCount +=1;
       });

@@ -1,5 +1,6 @@
 console.log("Anagrams JS loaded")
 
+let anaScore = 0;
 // SET UP CLASSES
 
 // to store user data  
@@ -29,12 +30,14 @@ class Anagram{
     this.index = index;
   }
   // Check if the user solution is correct
-    checkSolution(userSoln, userData) {
+  checkSolution(userSoln, divID) {
     if (this.solutions.includes(userSoln.toLowerCase())) {
       console.log(`Correct! ${userSoln} is a possible solution`);
-      userData.addCorrectSolns(userSoln);
+      showAnaCorrect(userSoln, divID);
+      updateScore();
     } else {
       console.log(`Incorrect. Try again.`);
+      showAnaAlert('fail', divID);
     }
   }
 }
@@ -81,9 +84,10 @@ class AnagramUI{
     this.anagram.solutions.forEach((soln) => {
       // Create an array to store each character of the word
       let wordArray = new Array(soln.length).fill(''); 
-
+     
       // Create solution container
       let div = document.createElement("div");
+      div.id = `solnRow${this.index}${k}`
       div.className = "flex-center";
       solnContainer.appendChild(div);
 
@@ -116,8 +120,7 @@ class AnagramUI{
       // Check if all inputs are filled before checking the solution
       if (wordArray.every((letter) => letter !== "")) {
         let userSoln = wordArray.join("");
-        this.anagram.checkSolution(userSoln, this.userData);
-        this.updateScore();
+        this.anagram.checkSolution(userSoln, id);
       }
       // Move to focus to next field
       if (event.target.value.length === event.target.maxLength) {
@@ -138,14 +141,30 @@ class AnagramUI{
     });
   }
 
-  updateScore(){   
-    let content = document.querySelector(`#anaScore`);
-    content.innerText = this.userData.anaScore;
-  }
 }
 
 
+
 // ANAGRAM FUNCTIONS
+function updateScore(){
+  anaScore++ ;
+  let content = document.querySelector(`#anaScore`);
+  content.innerText = anaScore;
+}
+
+// Alert
+
+function showAnaCorrect(userSoln, divID){
+  let div = document.querySelector(`#solnRow${divID}`);
+  div.className = "bigLetters";
+  div.style = "font"
+  div.innerHTML= userSoln;
+}
+
+function showAnaAlert(value, divID){
+  let div = document.querySelector(`#solnRow${divID}`);
+  div.classList.add(value);
+}
 
 // Play Button
 function handlePlayClick() {

@@ -1,11 +1,121 @@
-* {
+.body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #72AAAC;
+  color:#F4F4F5;
+  font-family: "Imprima", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
+
+.site-container{
+  background-color: #333134;
+  padding: 20px;
+  border-radius: 0px;
+  max-width: 800px; /* Optional max-width */
+  margin: 0px auto; /* Center the container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}  
+
+.game-box {
+  border: 4px solid #3D1C4E;
+  border-radius: 10px;
+  background-color: #52276A;
+}
+
+.story{
+  background-color: #F4F4F5;;
+  padding: 20px;
+  border: 8px solid #52276A;
+  border-radius: 10px;
+  color: black;
+}
+
+
+
+/* background colours */
+
+.blue-light{
+  background-color: #72AAAC;
+}
+.btn:hover .green{
+  background-color: #C0D730;
+}
+.white{
+  background-color: #F4F4F5;
+}
+.purple{
+background-color: #52276A;
+}
+.purple-light{
+  background-color: #9278A1
+}
+.green{
+  background-color: #C0D730;
+  }
+
+.green:hover{
+  background-color: #C0D730;
+  }
+
+.black {
+  background-color: #333134
+}
+.orange {
+  background-color: #F78E1E
+}
+
+.orange:hover {
+  /* background-color: #F78E1E; */
+  background-color: #F7AA57;  /*light option */
+}
+.pink-dark{
+  background-color: #AE606A;
+}
+
+.pink-light{
+  background-color: #F1AFB8; /*light option */
+}
+
+.pink-dark:hover {
+  background-color: #AE606A;
+}
+
+/* Fonts */
+
+.bigLetters{
+  font-size: 40px;
+}
+.font-script{
+  font-family: "Imprima", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.imprima-regular {
+  font-family: "Imprima", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.jolly-lodger-regular {
+  font-family: "Jolly Lodger", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ruda-bodyfont {
+  font-family: "Ruda", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+} 
+
+
 .games-header {
-  color: white;
+  color: #F4F4F5;
   text-align: center;
 }
 
@@ -21,13 +131,6 @@
     justify-content: center;
     align-items: center;
 }
-
-.game-box {
-    border: 2px solid #A9A9A9;
-    border-radius: 10px;
-    background-color: purple;
-}
-
 
 
 /* Handle Images */
@@ -67,7 +170,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgb(241, 193, 48);
+  background-color:#F7AA57;
   overflow: hidden;
   width: 100%;
   height: 0;
@@ -84,7 +187,7 @@
   bottom: 100%;
   left: 0%;
   right: 0;
-  background-color: rgb(241, 193, 48);
+  background-color: #F7AA57;
   overflow: hidden;
   width: 100%;
   height: 0;
@@ -164,10 +267,10 @@
   transition: opacity 0.5s ease; /* Smooth fade effect */
   opacity: 1; /* Full visibility */
 }
-
+/* 
 .fade-image:hover {
-  opacity: 0; /* Fully transparent on hover */
-}
+  opacity: 0; 
+} */
 
 /* image shake */
 .shake-container {
@@ -205,21 +308,17 @@
 
 /* alert */
 
-.success,
-.error {
-  width: 370px;
-  font-size: 1em;
-  color: white;
-  padding: 10px;
-  margin-bottom: 10px;
-}
+.alert {
+  box-shadow: 0 0 50px 5px purple;
+  border-radius: 15em;
 
+}
 .success {
   background-color: green;
 }
 
-.error {
-  background-color: red;
+.fail {
+  animation: shake 0.5s;
 }
 
 
@@ -237,6 +336,7 @@
   margin: 5px;
   background-color: #f8f9fa; /* This is Bootstrap's bg-light colour*/
   text-align: center;
+  color:#333134;
   
 }
 
