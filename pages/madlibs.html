@@ -13,19 +13,25 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../styles/games.css" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Imprima&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jolly+Lodger&family=Ruda&display=swap"
+      rel="stylesheet"
+    />
     <title>MadLibs</title>
   </head>
 
-  <body class="body">
+  <body class="body blue-light">
     <div class="site-container">
       <main class="container my-4">
-        <h1>Madlibs Draft</h1>
+        <h1 class="jolly-lodger-regular">Madlibs Draft</h1>
         <p>Provide an example of each of the following to play madlibs.</p>
         <br />
         <section id="userInput">
@@ -127,8 +133,8 @@
                 <button
                   id="submitButton"
                   type="submit"
-                  class="btn btn-light blue-light"
-                  style="border: 2px solid #165b5d"
+                  class="btn btn-light green"
+                  style="border: 2px solid #8fa13b"
                 >
                   get your story
                 </button>
@@ -137,8 +143,8 @@
                 <button
                   id="randomButton"
                   type="submit"
-                  class="btn btn-dark pink-dark"
-                  style="border: 2px solid #3d1c4e"
+                  class="btn btn-light green"
+                  style="border: 2px solid #8fa13b"
                 >
                   create a random story
                 </button>
@@ -154,14 +160,14 @@
         <section id="story" class="container">
           <div class="row">
             <div id="userStory" class="col-md-8 story">
-              <h2>Story will appear here</h2>
+              <h2>Your story will appear here</h2>
             </div>
-            <div id="shakeBox" class="col-sm-12 col-md-4">
-              <div class="shake-container">
+            <div id="shakeBox" class="col-sm-6 col-md-4">
+              <div class="shake-container align-bottom">
                 <img
                   src="/images/ghost-pumpkinhead.png"
                   alt=""
-                  class="shake-img"
+                  class="shake-img img-fluid"
                 />
               </div>
             </div>
