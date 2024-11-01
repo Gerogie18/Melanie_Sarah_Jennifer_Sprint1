@@ -15,23 +15,30 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../styles/games.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Imprima&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Jolly+Lodger&family=Ruda&display=swap"
-      rel="stylesheet"
-    />
   </head>
 
   <body class="body">
-    <div class="site-container">
-      <main class="container my-5">
+    <div class="site-container content">
+      <nav>
+        <ul class="topnav">
+          <li><a href="../pages/home.html">Home</a></li>
+          <li><a href="../pages/create_experience.html">Booking</a></li>
+          <li class="dropdown">
+            <a class="dropbtn" href="javascript:void(0)">Games</a>
+            <div class="dropdown-content">
+              <a href="../pages/anagrams.html">Anagrams</a>
+              <a class="active" href="../pages/trivia.html">Trivia</a>
+              <a href="../pages/madlibs.html">Madlibs</a>
+            </div>
+          </li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+
+      <main class="container mb-5">
         <section id="intro" class="container pt-4">
           <h1 id="title" class="jolly-lodger-regular">Trivia</h1>
           <p>Games while you wait</p>
@@ -42,7 +49,10 @@
             <div id="triviaBox" class="game-box col-sm-12 col-md-7">
               <div id="" class="row pt-4">
                 <div id="questions" class="col-12"></div>
-                <div id="triviaButtonBox" class="col-12">
+                <div
+                  id="triviaButtonBox"
+                  class="col-12 d-flex justify-content-center pb-4"
+                >
                   <button id="nextButton" class="btn orange rounded">
                     Next
                   </button>

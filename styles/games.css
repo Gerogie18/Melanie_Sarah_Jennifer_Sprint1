@@ -1,22 +1,29 @@
-.body {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.body {
+  /* margin: 0;
+  padding: 0;
+  box-sizing: border-box; */
   background-color: #72AAAC;
   color:#F4F4F5;
-  font-family: "Imprima", sans-serif;
+  font-family: "ruda";
   font-weight: 400;
   font-style: normal;
 }
 
 
+
 .site-container{
   background-color: #333134;
-  padding: 20px;
+  padding: 0px 20px 20px 20px; /* top right bottom left  */
   border-radius: 0px;
-  max-width: 800px; /* Optional max-width */
+  max-width: 800px;
   margin: 0px auto; /* Center the container */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }  
 
 .game-box {
@@ -41,13 +48,25 @@
 }
 
 /* background colours */
-
-.blue-light{
-  background-color: #72AAAC;
-}
 .btn:hover .green{
   background-color: #C0D730;
 }
+
+.green:hover{
+  background-color: #C0D730;
+  }
+  .pink-dark:hover {
+    background-color: #AE606A;
+  }
+  .orange:hover {
+    /* background-color: #F78E1E; */
+    background-color: #F7AA57;  /*light option */
+  }
+
+/* .blue-light{
+  background-color: #72AAAC;
+}
+
 .white{
   background-color: #F4F4F5;
 }
@@ -61,12 +80,10 @@ background-color: #52276A;
   background-color: #C0D730;
   }
 
-.green:hover{
-  background-color: #C0D730;
-  }
+
 
 .black {
-  background-color: #333134
+  background-color: #333134;
 }
 .orange-light {
   background-color: #F7AA57;
@@ -77,21 +94,15 @@ background-color: #52276A;
 .orange-dark {
   background-color: #B86B29;
 }
-.orange:hover {
-  /* background-color: #F78E1E; */
-  background-color: #F7AA57;  /*light option */
-}
+
 .pink-dark{
   background-color: #AE606A;
 }
 
 .pink-light{
-  background-color: #F1AFB8; /*light option */
+  background-color: #F1AFB8;
 }
-
-.pink-dark:hover {
-  background-color: #AE606A;
-}
+ */
 
 
 /* Fonts */
@@ -104,20 +115,6 @@ background-color: #52276A;
   font-weight: 400;
   font-style: italic;
 }
-
-.jolly-lodger-regular {
-  font-family: "Jolly Lodger", system-ui;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.ruda-bodyfont {
-  font-family: "Ruda", serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-} 
-
 
 /* div control */
 

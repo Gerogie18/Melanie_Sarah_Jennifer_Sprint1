@@ -91,10 +91,15 @@ class triviaUI {
       btn.id = btnID;
       btn.className = "btn btn-light white btn-lg btn-block rounded";
 
-      let icon; // create icon dictionary
-      if (count === 0){icon = "&#9312;"};
-      if (count === 1){icon = "&#9313;"};
-      if (count === 2){icon = "&#9314;"};
+      let icon; 
+      if (count >= 0 && count <= 4) {
+        icon = `&#${9312 + count};`; 
+        console.log(icon); // Log the value to verify
+      } else {
+        icon = ''; // ensure no error
+        console.log("Count is out of range");
+      }
+      
 
       btn.innerHTML = `<span>${icon}</span> <span id="text">${option}</span>` //might want to update ID
       buttonContainer.appendChild(btn);
