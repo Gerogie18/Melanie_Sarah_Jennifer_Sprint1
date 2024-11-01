@@ -37,7 +37,10 @@ function populateTimeSlots(timeSelect, ageRange) {
   
     // Filter time slots based on age range
     if (ageRange === 'ageRange3-6') {
-      timeSlots.splice(3, 5);
+      timeSlots.splice(1, 8);  //testing for booked option
+      //timeSlots.splice(3, 5);  //actual time slots
+      console.log(timeSlots.length) 
+      
     }
     if (ageRange === 'ageRange7-11') {
         timeSlots.splice(4, 4);
@@ -50,23 +53,6 @@ function populateTimeSlots(timeSelect, ageRange) {
     if (ageRange === 'ageRange19+') {
         timeSlots.splice(1, 4);
     }
-    // fetch bookings and take off time slots
-    //let bookings = fetchBookings();
-    //let bookedDate = bookings['Date'];
-    //console.log(bookedDate);
-    //let bookedTime = bookings['Time'];
-    //console.log(bookedTime);
-    //if (selectedDate === bookedDate)  {
-    //  timeSlots.forEach((timeSlot) => {
-    //    if (timeSlot.value === bookedTime) {
-    //      timeSlots.splice(timeSlots.indexOf(timeSlot), 1);
-    //    }
-    //  });
-    //}
-    //Change value to booked if no time slots available
-    if (timeSlots.length === 1) {
-        timeSlots[0].text = 'No available time slots';
-    }
 
     // Populate time slots
     timeSlots.forEach((timeSlot) => {
@@ -77,81 +63,6 @@ function populateTimeSlots(timeSelect, ageRange) {
     });
   }
 
-function createActivityDivs(ageRange) {
-    // Define Activities:
-    var ActivityCook = [
-        {
-            name: 'Monster Cookies', 
-            tooltip: 'Mix together a monster mash of cookie dough - create a monster mash with many spooky mix-ins',
-            ageRange: ['ageRange3-6', 'ageRange7-11'],
-            price: 0,
-            img: '',
-            alt: '',
-        },
-        {
-            name: 'Spooky cocktails', 
-            tooltip: 'Mix together some spooky drinks, and prepare our cauldron punchbowl',
-            ageRange: ['ageRange18+'],
-            price: 0,
-            img: '',
-            alt: '',
-            },
-        {
-            name: '', 
-            tooltip: '',
-            ageRange: [],
-            price: 0,
-            img: '',
-            alt: '',
-        }
-        ]
-    const ActivityCookDiv = document.getElementById('activityConainerCook');
-    if (ageRange === 'ageRange3-6') {
-        ActivityCookDiv.innerHTML = `
-    <h2>AgeRange3-6</h2>`
-    }
-    if (ageRange === 'ageRange7-11') {
-        ActivityCookDiv.innerHTML = `
-    <h2>AgeRange7-11</h2>`
-    }
-    if (ageRange === 'ageRange12-18') {
-        ActivityCookDiv.innerHTML = `
-    <h2>AgeRange12-18</h2>`
-    }
-    if (ageRange === 'ageRange19+') {
-        ActivityCookDiv.innerHTML = `
-    <h2>AgeRange19+</h2>`
-    }
-    
-    var ActivityCraft = [
-        {
-            name: 'Felt Costume Hats', 
-            tooltip: '',
-            ageRange: [],
-            price: 0,
-            img: '',
-            alt: '',
-        }, 
-    ]
-
-    const activityContainerDiv = document.getElementById('activityContainerActivity');
-    if (ageRange === 'ageRange3-6') {
-        activityContainerDiv.innerHTML = `
-    <h2>AgeRange3-6</h2>`
-    }
-    if (ageRange === 'ageRange7-11') {
-        activityContainerDiv.innerHTML = `
-    <h2>AgeRange7-11</h2>`
-    }
-    if (ageRange === 'ageRange12-18') {
-        activityContainerDiv.innerHTML = `
-    <h2>AgeRange12-18</h2>`
-    }
-    if (ageRange === 'ageRange19+') {
-        activityContainerDiv.innerHTML = `
-    <h2>AgeRange19+</h2>`
-    }
-}
 //Creating a min date, and blocking out dates
 let dateInput = document.getElementById('date');
 const today = new Date();
@@ -188,8 +99,28 @@ ageRangeButtons.forEach((button) => {
 
     //resetting the timeslots 
     populateTimeSlots(timeSelect, ageRange); 
+
+    //Change value to booked if no time slots available
+    if (timeSelect.options.length === 1) {  
+        let booked = document.getElementById('timeSlot')
+        booked.innerHTML = `
+        <h2>Time Slots</h2>
+        <h3>Sorry We're Booked</h3>
+        <select id="timeSelect">
+            <option value="">No available time slots </option>
+        </select>
+        <br>
+        <div class = imgContainer>
+        <img src='../images/ghost-sookybaby.png' 
+        alt='contrary ghost with rain clouds behind them'
+        height = '25%'
+        width = '25%'>
+        </div>
+        `
+        //could set up a sound here
+    }
     //restting activities:
-    createActivityDivs(ageRange); //
+    
     // checking to see if logging correctly
     console.log(`Clicked button value: ${button.getAttribute('value') || button.textContent}`); 
   });
@@ -224,4 +155,3 @@ timeSelect.addEventListener('change', (event) => {
 
   console.log('Selected Time:', selectedTime);
 
-made a change
