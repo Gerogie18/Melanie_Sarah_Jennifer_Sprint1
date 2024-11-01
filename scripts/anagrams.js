@@ -1,9 +1,16 @@
+// Name: SD 12 group: Jenn, Melanie, Sarah
+// Date: Oct 23, 2024 - Nov 1, 2024
+// Description: JS to manipulate DOM for an Anagrams-type game
+
 console.log("Anagrams JS loaded")
 
+// INITIALIZE VARIABLES
+
 let anaScore = 0;
+
 // SET UP CLASSES
 
-// to store user data  
+
 class userData {
   constructor(id, userSolns = [], anaScore = 0){
     this.id = id;
@@ -33,11 +40,11 @@ class Anagram{
   checkSolution(userSoln, divID) {
     if (this.solutions.includes(userSoln.toLowerCase())) {
       console.log(`Correct! ${userSoln} is a possible solution`);
-      showAnaCorrect(userSoln, divID);
+      showCorrect(userSoln, divID);
       updateScore();
     } else {
       console.log(`Incorrect. Try again.`);
-      showAnaAlert('fail', divID);
+      showAlert('fail', divID);
     }
   }
 }
@@ -49,14 +56,14 @@ class AnagramUI{
     this.userData = userData;
 
     // Initialize the creation of DOM elements
-    this.createQuestionDiv();
-    this.createSolutionsDiv();
-    this.createForm();
-    this.createSolnFields();
+    this.propogateQuestionDiv();
+    this.propogateSolutionsDiv();
+    this.propogateForm();
+    this.propogateSolnFields();
   }
 
   // Create question div and display question
-  createQuestionDiv() {
+  propogateQuestionDiv() {
     let div = document.createElement("div");
     div.id = `anaQ${this.index}_${this.anagram.challenge_rating}`;
     div.className = "container pt-4 text-center hide";
@@ -64,20 +71,20 @@ class AnagramUI{
     div.innerHTML = `<h2 class="games-header">${title}</h2>`;
     document.querySelector("#anaQuestionRow").appendChild(div);
   }
-  createSolutionsDiv(){
+  propogateSolutionsDiv(){
     let div = document.createElement("div");
     div.id = `anaQ${this.index}`;
     div.className = "container";
     document.querySelector(`#anaQ${this.index}_${this.anagram.challenge_rating}`).appendChild(div);
   };
   
-  createForm(){
+  propogateForm(){
     let form = document.createElement("form");
     form.id = `anaForm${this.index}`;
     document.querySelector(`#anaQ${this.index}`).appendChild(form);
   };
 
-  createSolnFields() {
+  propogateSolnFields() {
     let solnContainer = document.querySelector(`#anaForm${this.index}`);
 
     let k = 0; //initialize counter
@@ -154,14 +161,14 @@ function updateScore(){
 
 // Alert
 
-function showAnaCorrect(userSoln, divID){
+function showCorrect(userSoln, divID){
   let div = document.querySelector(`#solnRow${divID}`);
   div.className = "bigLetters";
   div.style = "font"
   div.innerHTML= userSoln;
 }
 
-function showAnaAlert(value, divID){
+function showAlert(value, divID){
   let div = document.querySelector(`#solnRow${divID}`);
   div.classList.add(value);
 }
@@ -216,6 +223,7 @@ function handleNextClick() {
 
 
 // GET DATA
+
 window.addEventListener("DOMContentLoaded", function () {
   fetch("../data/anagrams.json")
     .then(response => {
@@ -238,7 +246,7 @@ window.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-// play Anagrams
+// PLAY Anagrams
 const newUser = createUser();
 document.getElementById('anaPlayButton').addEventListener('click', handlePlayClick);
 document.getElementById('anaNextButton').addEventListener('click', handleNextClick);

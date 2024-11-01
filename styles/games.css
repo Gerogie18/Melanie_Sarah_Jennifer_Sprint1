@@ -25,7 +25,7 @@
   background-color: #52276A;
 }
 
-.story{
+.story-box{
   background-color: #F4F4F5;;
   padding: 20px;
   border: 8px solid #52276A;
@@ -33,7 +33,12 @@
   color: black;
 }
 
+/* headers  */
 
+.games-header {
+  color: #F4F4F5;
+  text-align: center;
+}
 
 /* background colours */
 
@@ -63,10 +68,15 @@ background-color: #52276A;
 .black {
   background-color: #333134
 }
-.orange {
-  background-color: #F78E1E
+.orange-light {
+  background-color: #F7AA57;
 }
-
+.orange {
+  background-color: #F78E1E;
+}
+.orange-dark {
+  background-color: #B86B29;
+}
 .orange:hover {
   /* background-color: #F78E1E; */
   background-color: #F7AA57;  /*light option */
@@ -83,6 +93,7 @@ background-color: #52276A;
   background-color: #AE606A;
 }
 
+
 /* Fonts */
 
 .bigLetters{
@@ -92,12 +103,6 @@ background-color: #52276A;
   font-family: "Imprima", sans-serif;
   font-weight: 400;
   font-style: italic;
-}
-
-.imprima-regular {
-  font-family: "Imprima", sans-serif;
-  font-weight: 400;
-  font-style: normal;
 }
 
 .jolly-lodger-regular {
@@ -114,10 +119,8 @@ background-color: #52276A;
 } 
 
 
-.games-header {
-  color: #F4F4F5;
-  text-align: center;
-}
+/* div control */
+
 
 .hide {
     display: none;
@@ -131,6 +134,35 @@ background-color: #52276A;
     justify-content: center;
     align-items: center;
 }
+
+
+
+/* anagrams */
+.fail {
+  animation: shake 0.5s;
+}
+
+.letter-box {
+  width: 56px;
+  height: 56px;
+  border-radius: 15px;
+  font-size: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  background-color: #f8f9fa; /* This is Bootstrap's bg-light colour*/
+  text-align: center;
+  color:#333134;
+  
+}
+
+
+[id^='anaForm'] {
+    gap: 1px; /* Add space between inputs */
+}
+
+
 
 
 /* Handle Images */
@@ -267,10 +299,7 @@ background-color: #52276A;
   transition: opacity 0.5s ease; /* Smooth fade effect */
   opacity: 1; /* Full visibility */
 }
-/* 
-.fade-image:hover {
-  opacity: 0; 
-} */
+
 
 /* image shake */
 .shake-container {
@@ -304,43 +333,4 @@ background-color: #52276A;
   80% { transform: translate(-1px, -1px) rotate(1deg); }
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
-}
-
-/* alert */
-
-.alert {
-  box-shadow: 0 0 50px 5px purple;
-  border-radius: 15em;
-
-}
-.success {
-  background-color: green;
-}
-
-.fail {
-  animation: shake 0.5s;
-}
-
-
-
-
-/* anagrams */
-.letter-box {
-  width: 56px;
-  height: 56px;
-  border-radius: 15px;
-  font-size: 2em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 5px;
-  background-color: #f8f9fa; /* This is Bootstrap's bg-light colour*/
-  text-align: center;
-  color:#333134;
-  
-}
-
-
-[id^='anaForm'] {
-    gap: 1px; /* Add space between inputs */
 }

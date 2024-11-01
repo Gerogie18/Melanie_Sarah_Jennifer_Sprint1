@@ -1,4 +1,19 @@
+// Name: SD 12 group: Jenn, Melanie, Sarah
+// Date: Oct 23, 2024 - Nov 1, 2024
+// Description: JS to manipulate DOM for a madlibs game
+
+
 console.log("madlibs JS loaded")
+
+// Set global variables and Create classes;
+
+let adjectives = [];
+let objects = [];
+let spookyCreatures = [];
+let funnyCreatures = [];
+let sounds = [];
+let rooms = [];
+
 class Story {
   constructor(adj1, adj2, adj3, adj4, obj1, obj2, spookyCreature, funnyCreature, sound, room) {
       this.adj1 = adj1;
@@ -32,26 +47,7 @@ class Story {
 }
 
 
-// Set global variables;
-let adjectives = [];
-let objects = [];
-let spookyCreatures = [];
-let funnyCreatures = [];
-let sounds = [];
-let rooms = [];
-
-
 // FUNCTIONS 
-
-
-function getRandomItem(array) {
-  // Generate a random index between 0 and array.length - 1
-  const randomIndex = Math.floor(Math.random() * array.length);
-  // Return the item at that index
-  return array[randomIndex];  
-}
-
-
 
 function getRandomVersionFrom(adjectives, objects, spookyCreatures, funnyCreatures, sounds, rooms) {
 
@@ -82,33 +78,10 @@ function handleRandomClick() {
 
 
 
-
-
 // GET DATA
 
-//from JSON
-window.addEventListener("DOMContentLoaded", function () {
-  fetch("../data/madlibs.json")
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(data => {
-      adjectives = data.adjectives;
-      objects = data.objects;
-      spookyCreatures = data.spookyCreatures;
-      funnyCreatures = data.funnyCreatures;
-      sounds = data.sounds;
-      rooms = data.rooms;
-    });
-  });    
 
-
-
-
-//from user
+// data from user
 window.addEventListener("DOMContentLoaded", function () {  
     let form = document.querySelector("#storyForm");
     form.addEventListener("submit", function (event) {
@@ -165,16 +138,29 @@ window.addEventListener("DOMContentLoaded", function () {
   
       console.log(data);
 
-
       let userStory = new Story(data.adj1, data.adj2, data.adj3, data.adj4,  data.obj1, data.obj2, data.spookyCreature, data.funnyCreature, data.sound, data.room);
-
-//not sure why this function has to be in here?
-      function handleMadlibClick() {
-        userStory.createStory(); 
-      }
-      document.getElementById('submitButton').addEventListener('click', handleMadlibClick);
+      userStory.createStory(); 
     });
 });
+
+// data from JSON
+window.addEventListener("DOMContentLoaded", function () {
+  fetch("../data/madlibs.json")
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      adjectives = data.adjectives;
+      objects = data.objects;
+      spookyCreatures = data.spookyCreatures;
+      funnyCreatures = data.funnyCreatures;
+      sounds = data.sounds;
+      rooms = data.rooms;
+    });
+  });    
 
 
 document.getElementById('randomButton').addEventListener('click', handleRandomClick);
