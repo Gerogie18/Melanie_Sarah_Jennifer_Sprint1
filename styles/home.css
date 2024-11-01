@@ -1,0 +1,99 @@
+.jolly-lodger-regular {
+    font-family: "Jolly Lodger", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.ruda-bodyfont {
+    font-family: "Ruda", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+@media only screen and (max-device-width: 1600px) {
+    .bgimg-1 {
+        background-attachment: scroll;
+        min-height: 400px;
+    }
+}
+
+body {
+    background-color: #3d1c4e;
+    background-image: url('hiousebg.svg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+ 
+    font-family: 'ruda-bodyfont', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1000px;
+} 
+
+.parent {
+    display: grid;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: auto;
+    width: 50%;
+    grid-template-columns: repeat(13, 50px);
+    grid-template-rows: repeat(17, 50px);
+    gap: 0px;
+    font-family: 'ruda-bodyfont', sans-serif;
+    width: 900px;
+    /* margin-left: 160px; */
+}
+
+.attic,
+.thrdfloor1,
+.sndfloor1,
+.sndfloor2,
+.sidedoor,
+.maindoor,
+.frstfloor1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+}
+
+ 
+.attic {
+    grid-column: 8 / span 3;
+    grid-row: 3 / span 7;
+    font-family: "Jolly Lodger", system-ui;
+    color: darkorchid;
+    font-size: 1.5em;
+}
+
+.thrdfloor1 {
+    grid-column: 4 / span 4;
+    grid-row: 6 / span 4;
+}
+
+.sndfloor2 {
+    grid-column: 8 / span 3;
+    grid-row: 10 / span 3;
+}
+
+.sndfloor1 {
+    grid-column: 4 / span 4;
+    grid-row: 10 / span 3;
+}
+
+.sidedoor {
+    grid-column: 2 / span 2;
+    grid-row: 13 / span 4;
+}
+
+.maindoor {
+    grid-column: 4 / span 4;
+    grid-row: 13 / span 4;
+}
+
+.frstfloor1 {
+    grid-column: 8 / span 3;
+    grid-row: 13 / span 4;
+} 
