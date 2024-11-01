@@ -20,7 +20,7 @@
 
 body {
     background-color: #3d1c4e;
-    background-image: url('hiousebg.svg');
+    background-image: url('/images/bg.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
  
@@ -32,6 +32,12 @@ body {
 } 
 
 .parent {
+        background-image: url('/images/house.svg');
+            background-size: cover;
+            /* Cover the entire div */
+            background-position: center;
+            background-repeat: no-repeat;
+        
     display: grid;
     position: fixed;
     top: 0;
