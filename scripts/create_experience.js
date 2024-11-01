@@ -133,7 +133,8 @@ function createActivityDivs(ageRange) {
             alt: '',
         }, 
     ]
-    const activityContainerDiv = document.getElementById('activityContainerCraft');
+
+    const activityContainerDiv = document.getElementById('activityContainerActivity');
     if (ageRange === 'ageRange3-6') {
         activityContainerDiv.innerHTML = `
     <h2>AgeRange3-6</h2>`
@@ -223,3 +224,4 @@ timeSelect.addEventListener('change', (event) => {
 
   console.log('Selected Time:', selectedTime);
 
+made a change
