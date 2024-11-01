@@ -1,22 +1,29 @@
-.body {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.body {
+  /* margin: 0;
+  padding: 0;
+  box-sizing: border-box; */
   background-color: #72AAAC;
   color:#F4F4F5;
-  font-family: "Imprima", sans-serif;
+  font-family: "ruda";
   font-weight: 400;
   font-style: normal;
 }
 
 
+
 .site-container{
   background-color: #333134;
-  padding: 20px;
+  padding: 0px 20px 20px 20px; /* top right bottom left  */
   border-radius: 0px;
-  max-width: 800px; /* Optional max-width */
+  max-width: 800px;
   margin: 0px auto; /* Center the container */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }  
 
 .game-box {
@@ -25,7 +32,7 @@
   background-color: #52276A;
 }
 
-.story{
+.story-box{
   background-color: #F4F4F5;;
   padding: 20px;
   border: 8px solid #52276A;
@@ -33,16 +40,33 @@
   color: black;
 }
 
+/* headers  */
 
+.games-header {
+  color: #F4F4F5;
+  text-align: center;
+}
 
 /* background colours */
-
-.blue-light{
-  background-color: #72AAAC;
-}
 .btn:hover .green{
   background-color: #C0D730;
 }
+
+.green:hover{
+  background-color: #C0D730;
+  }
+  .pink-dark:hover {
+    background-color: #AE606A;
+  }
+  .orange:hover {
+    /* background-color: #F78E1E; */
+    background-color: #F7AA57;  /*light option */
+  }
+
+/* .blue-light{
+  background-color: #72AAAC;
+}
+
 .white{
   background-color: #F4F4F5;
 }
@@ -56,32 +80,30 @@ background-color: #52276A;
   background-color: #C0D730;
   }
 
-.green:hover{
-  background-color: #C0D730;
-  }
+
 
 .black {
-  background-color: #333134
+  background-color: #333134;
+}
+.orange-light {
+  background-color: #F7AA57;
 }
 .orange {
-  background-color: #F78E1E
+  background-color: #F78E1E;
+}
+.orange-dark {
+  background-color: #B86B29;
 }
 
-.orange:hover {
-  /* background-color: #F78E1E; */
-  background-color: #F7AA57;  /*light option */
-}
 .pink-dark{
   background-color: #AE606A;
 }
 
 .pink-light{
-  background-color: #F1AFB8; /*light option */
+  background-color: #F1AFB8;
 }
+ */
 
-.pink-dark:hover {
-  background-color: #AE606A;
-}
 
 /* Fonts */
 
@@ -94,30 +116,8 @@ background-color: #52276A;
   font-style: italic;
 }
 
-.imprima-regular {
-  font-family: "Imprima", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
+/* div control */
 
-.jolly-lodger-regular {
-  font-family: "Jolly Lodger", system-ui;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.ruda-bodyfont {
-  font-family: "Ruda", serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-} 
-
-
-.games-header {
-  color: #F4F4F5;
-  text-align: center;
-}
 
 .hide {
     display: none;
@@ -131,6 +131,35 @@ background-color: #52276A;
     justify-content: center;
     align-items: center;
 }
+
+
+
+/* anagrams */
+.fail {
+  animation: shake 0.5s;
+}
+
+.letter-box {
+  width: 56px;
+  height: 56px;
+  border-radius: 15px;
+  font-size: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  background-color: #f8f9fa; /* This is Bootstrap's bg-light colour*/
+  text-align: center;
+  color:#333134;
+  
+}
+
+
+[id^='anaForm'] {
+    gap: 1px; /* Add space between inputs */
+}
+
+
 
 
 /* Handle Images */
@@ -267,10 +296,7 @@ background-color: #52276A;
   transition: opacity 0.5s ease; /* Smooth fade effect */
   opacity: 1; /* Full visibility */
 }
-/* 
-.fade-image:hover {
-  opacity: 0; 
-} */
+
 
 /* image shake */
 .shake-container {
@@ -304,43 +330,4 @@ background-color: #52276A;
   80% { transform: translate(-1px, -1px) rotate(1deg); }
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
-}
-
-/* alert */
-
-.alert {
-  box-shadow: 0 0 50px 5px purple;
-  border-radius: 15em;
-
-}
-.success {
-  background-color: green;
-}
-
-.fail {
-  animation: shake 0.5s;
-}
-
-
-
-
-/* anagrams */
-.letter-box {
-  width: 56px;
-  height: 56px;
-  border-radius: 15px;
-  font-size: 2em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 5px;
-  background-color: #f8f9fa; /* This is Bootstrap's bg-light colour*/
-  text-align: center;
-  color:#333134;
-  
-}
-
-
-[id^='anaForm'] {
-    gap: 1px; /* Add space between inputs */
 }
