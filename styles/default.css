@@ -1,37 +1,128 @@
-.selected {
-    background-color: grey;
-    color: white;
+body {
+    background-color: #3D1C4E;
 }
 
-.info {
-    background-color: grey;
-    color: white;
-    border-radius: 20px;
-    height: 20px;
-    width: 20px;
+h1 {
+    color: #C0D730;
+}
+
+h2 {
+    color: #333134;
+}
+
+h3 {
+    color: #333134;
+}
+
+br {
+    margin: 0;
+    padding: 0;
+}
+.pageContainer {
+    justify-content: center;
+    width: 100%;
+    max-width: 900px;
+}
+button {
+    background-color: #D7E37E;
+    border: 3px solid #52276A;
+    border-radius: 5px;
+    padding: 3px;
+    width: 100px;
+}
+.selected{
+    background-color: #52276A;
+    color: #F4F4F5;
+}
+
+input[type="date"] {
+    background-color: #D7E37E; /* Background color */
+    border: 3px solid #333134; /* Border */
+    color: #333134; /* Text color */
+    padding: 5px;
+    border-radius: 5px;
+    width: 150px; 
     text-align: center;
-    position: relative; 
   }
-  
-  .info:hover .tooltip {
-    display: block; 
+select {
+    background-color: #D7E37E;
+    border: 3px solid #52276A;
+    border-radius: 5px;
+    padding: 3px;
+    margin-bottom: 3%;
+    min-width: fit-content;
+    width: 100px;
+}
+
+.tooltipContainer {
+    position: relative;
+    width: 80%;
+    height: 10px;
   }
   
   .tooltip {
-    display: none; 
-    position: absolute; 
-    background-color: #000;
+    display: none;
     border-radius: 5px;
-    padding: 5px;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
+    padding: 10px;
+    background-color: #8FA13B;
+    border-color: #C0D730;
+    border-width: 5px;
+    color: #F4F4F5;
     width: fit-content;
+    justify-content: center;
+    text-align: center;
+    position: center center;
+    transform: translate(0, -150%) ;
+    z-index: 1;
+  
+    line-height: 1.25;
+    font-size: 16px;
+  
+    white-space: pre;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  .tooltipContainer:hover .tooltip {
+    display: block;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  .container {
+    align-self: center;
+    background-image: linear-gradient(to bottom, #F7AA57 1%, #F78E1E 85%, #B86B29 99%);
+    padding: 20px;
+    margin-bottom: 6%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #B86B29 (0 0 4);
+    height: fit-content;
+    width: 80%;
     text-align: center;
 
-    white-space: pre; /* Preserve line breaks */
-    word-wrap: break-word; /* Optional: break long words */
-    overflow-wrap: break-word; /* For older browsers */
-    
+  }
+
+  .activitySlot {
+    background-color: #E9808E;
+    min-width: fit-content;
+    max-width: 25%;
+    min-height: fit-content;
+    max-height: 75px;
+    border-radius: 25px;
+    padding: 15px;
+    margin-bottom: 3%;
+    text-align: center;
+  }
+  .activitySlot:hover {
+    background-color: #333;
+    cursor: pointer;
+  }
+
+  .activitySlot {
+    background-color: #1E787C;
+  }
+  
+  .activitySlot:hover .tooltip {
+    display: block; /* Show on hover */
   }

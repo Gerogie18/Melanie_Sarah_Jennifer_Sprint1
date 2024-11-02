@@ -20,7 +20,6 @@ async function fetchBookings() {
 function populateTimeSlots(timeSelect, ageRange) {
     // Define time slots
     var timeSlots = [
-      { value: '', text: 'Select Start Time: ' },
       { value: '15:00', text: '3:00 PM' },
       { value: '16:00', text: '4:00 PM' },
       { value: '17:00', text: '5:00 PM' },
@@ -30,28 +29,33 @@ function populateTimeSlots(timeSelect, ageRange) {
       { value: '21:00', text: '9:00 PM' },
     ];
   
-    // Remove existing options
-    for (let i = timeSelect.options.length - 1; i >= 0; i--) {
-      timeSelect.remove(i);
-    }
+    // flush the time slots and any img elements
+    let timeSlot = document.getElementById('timeSlot');
+    timeSlot.innerHTML = `
+    <h2> Time Slots
+    <select id="timeSelect">
+            <option value="">Select Start Time:</option>
+    </select>`
+    // Update timeSelect reference
+    timeSelect = document.getElementById('timeSelect');
   
     // Filter time slots based on age range
     if (ageRange === 'ageRange3-6') {
-      timeSlots.splice(1, 8);  //testing for booked option
-      //timeSlots.splice(3, 5);  //actual time slots
+      timeSlots.splice(0, 7);  //testing for booked option
+      //timeSlots.splice(2, 5);  //actual time slots
       console.log(timeSlots.length) 
       
     }
     if (ageRange === 'ageRange7-11') {
-        timeSlots.splice(4, 4);
-        timeSlots.splice(1,1);
+        timeSlots.splice(3, 4);
+        timeSlots.splice(0,1);
     }
     if (ageRange === 'ageRange12-18') {
-        timeSlots.splice(6, 2);
-        timeSlots.splice(1, 2);
+        timeSlots.splice(5, 2);
+        timeSlots.splice(0, 2);
     }
     if (ageRange === 'ageRange19+') {
-        timeSlots.splice(1, 4);
+        timeSlots.splice(0, 4);
     }
 
     // Populate time slots
@@ -63,6 +67,127 @@ function populateTimeSlots(timeSelect, ageRange) {
     });
   }
 
+function populateActivitySlots(ageRange) {
+    //Activity slot arrays
+    var activitySlotOne = [
+        {ageRange: ['ageRange3-6', 'ageRange7-11'],
+            type: 'cookingActivitySlot',
+            activity: 'Cooking',
+            text: 'Cooking',
+            img: '../images/activity.png',
+            alt: 'img alt text'
+        },
+        {ageRange: ['ageRange7-11'],
+            type: 'cookingActivitySlot',
+            activity: 'Cooking',
+            text: 'Cooking',
+            img: '../images/activity.png',
+            alt: 'img alt text'
+        },
+        {ageRange: ['ageRange12-18'],
+            type: 'cookingActivitySlot',
+            activity: 'Cooking',
+            text: 'Cooking',
+            img: '../images/activity1.png',
+            alt: 'img alt text'
+        },
+        {ageRange: ['ageRange19+'],
+            type: 'cookingActivitySlot',
+            activity: 'Cooking',
+            text: 'Cooking',
+            img: '../images/activity1.png',
+            alt: 'img alt text'
+        }
+    ]
+    var activitySlotTwo = [
+        {ageRange: ['ageRange3-6', 'ageRange7-11'],
+            type: 'craftActivitySlot',
+            activity: 'Craft',
+            text: 'Craft',
+            img: '../images/activity.png',
+            alt: 'img alt text'
+        },
+        {ageRange: ['ageRange7-11'],
+            type: 'craftActivitySlot',
+            activity: 'Craft',
+            text: 'Craft',
+            img: '../images/activity.png',
+            alt: 'img alt text'
+        },
+        {ageRange: ['ageRange12-18'],
+            type: 'craftActivitySlot',
+            activity: 'Craft',
+            text: 'Craft',
+            img: '../images/activity1.png',
+            alt: 'img alt text'
+        },
+        {ageRange: ['ageRange19+'],
+            type: 'craftActivitySlot',
+            activity: 'Craft',
+            text: 'Craft',
+            img: '../images/activity1.png',
+            alt: 'img alt text'
+        }
+    ]
+    var activitySlotThree = [
+        {ageRange: ['ageRange3-6', 'ageRange7-11'],
+            type: 'activityActivitySlot',
+            activity: 'Activity',
+            text: 'Activity',
+            img: '../images/activity.png',
+            alt: 'img alt text'
+        },
+        {ageRange: ['ageRange7-11'],
+            type: 'activityActivitySlot',
+            activity: 'Activity',
+            text: 'Activity',
+            img: '../images/activity.png',
+            alt: 'img alt text'
+        },
+        {ageRange: ['ageRange12-18'],
+            type: 'activityActivitySlot',
+            activity: 'Activity',
+            text: 'Activity',
+            img: '../images/activity1.png',
+            alt: 'img alt text'
+        },
+        {ageRange: ['ageRange19+'],
+            type: 'activityActivitySlot',
+            activity: 'Activity',
+            text: 'Activity',
+            img: '../images/activity1.png',
+            alt: 'img alt text'
+        }
+    ]
+
+    //create div for activities
+    let activityContainer = document.getElementById('activityContainer');
+    activityContainer.classList.remove('hidden'); //removes hidden class if first pressing button
+    activityContainer.innerHTML = ''; // Flush existing divs
+    console.log(activityContainer.classList);
+
+    // Create activity divs
+  function createActivityDiv(activity) {
+    let activityDiv = document.getElementById('activityContainer');
+    activityDiv.innerHTML = `
+      <div class = 'activitySlot selected'>
+      <h3>${activity.activity}</h3>
+      <img src="${activity.img}" alt="${activity.alt}">
+      <div class = 'tooltipContainer'>
+      <span class='tooltip'>${activity.text}</span>
+      </div>
+      </div>
+    `;
+    return activityDiv;
+  }
+
+  // Filter activities based on age range
+  activitySlotOne.forEach((activity) => {
+    if (activity.ageRange.includes(ageRange)) {
+      activityContainer.appendChild(createActivityDiv(activity));
+    }
+    });
+}
 //Creating a min date, and blocking out dates
 let dateInput = document.getElementById('date');
 const today = new Date();
@@ -120,7 +245,7 @@ ageRangeButtons.forEach((button) => {
         //could set up a sound here
     }
     //restting activities:
-    
+    populateActivitySlots(ageRange); 
     // checking to see if logging correctly
     console.log(`Clicked button value: ${button.getAttribute('value') || button.textContent}`); 
   });

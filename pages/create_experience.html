@@ -7,15 +7,15 @@
     <title>Document</title>
   </head>
   <body>
+    <div class = pageContainer>
     <h1>Create your Own Experience</h1>
     <div class = "container">
         <h2>Available Dates:</h2>
         <input type="date" name="Date" id="date" max="2024-11-21" />
     </div>
-    <div class="ageRangediv">
+    <div id="ageRange" class = "container">
         <h2>Age Range</h2>
-        <div class = "info">
-            ?
+        <div class = tooltipContainer>
         <span class = "tooltip">
             We love throwing spooky events for all age ranges. Depending on age range
             picked different timeslots and activities may be available.</span>
@@ -35,14 +35,14 @@
     </div>
     <div id = "timeSlot" class = "container">
     <h2>Time Slot</h2>
+    <br>
     <select id="timeSelect">
             <option value="">Select Age Range </option>
     </select>
     </div> 
-    <div class="groupSizeDiv">
+    <div id = "groupSize" class = "container">
         <h2>Group Size</h2>
-        <div class = "info">
-            ?
+        <div class = tooltipContainer>
         <span class = "tooltip">
             Small Group: 5-15 people &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp| &nbsp&nbspCost per person: $$.$$ <br>
             Medium Group: 11-25 people &nbsp|&nbsp&nbsp Cost per person: $$.$$ <br>
@@ -58,9 +58,9 @@
             Large
         </button>
     </div>
-    <div id="activityConainerCook" class = "container"></div>
-    <div id="activityContainerCraft" class = "container"></div></div>
-
+    <div id="activityContainer" class = "container hidden"></div>
+    </div>
+</div>
     <script src="../scripts/create_experience.js"></script>
   </body>
 </html>
