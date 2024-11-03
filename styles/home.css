@@ -29,8 +29,8 @@ body {
 }
 
 .ghost {
-  width: 150px;
-  height: 150px;
+  width: 125px;
+  height: 125px;
   position: fixed;
   top: 40%;
   left: -10%;
@@ -53,13 +53,16 @@ figure {
 }
 
 .house {
-  height: 105vh;
-  width: 100vw;
+  height: 94vh;
+  width: 53vw;
   background-image: url("../images/hauntedhouse-3.png");
   background-repeat: no-repeat;
-  background-size: 50%;
+  background-size: contain;
   background-position: center;
-  position: absolute;
+  margin: auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-5%);
   /* display: grid;
   grid-template-columns: repeat(13, 63px);
   grid-template-rows: repeat(17, 63px); */
@@ -72,17 +75,16 @@ figure {
 .house:hover {
   background-image: url("../images/silhoutte.svg");
   background-repeat: no-repeat;
-  background-size: 50%;
+  background-size: 100%;
   background-position: center;
-  position: absolute;
 }
 
 .room {
   display: flex;
   align-items: center;
   justify-content: center;
-  /*background-color: #f0f0f030;
-  border: 1px solid #ccc; */
+  background-color: #f0f0f030;
+  border: 1px solid #ccc;
 }
 
 .attic {
@@ -92,27 +94,27 @@ figure {
   color: darkorchid;
   font-size: 1.5em;
   width: 12vw;
-  height: 45vh;
+  height: 42.25vh;
   position: absolute;
-  left: 52%;
+  left: 53.5%;
   top: 11%;
 }
 
 .thrdfloor1 {
-  width: 15vw;
-  height: 23vh;
+  width: 14.5vw;
+  height: 21.5vh;
   position: absolute;
-  left: 37%;
+  left: 26%;
   top: 32%;
   /* grid-column: 5 / span 4;
   grid-row: 6 / span 4; */
 }
 
 .sndfloor1 {
-  width: 15vw;
-  height: 20vh;
+  width: 14.5vw;
+  height: 19.5vh;
   position: absolute;
-  left: 37%;
+  left: 26%;
   top: 54%;
   /* grid-column: 9 / span 3;
   grid-row: 10 / span 3; */
@@ -120,40 +122,40 @@ figure {
 
 .sndfloor2 {
   width: 12vw;
-  height: 20vh;
+  height: 19.5vh;
   position: absolute;
-  left: 52%;
+  left: 53.5%;
   top: 54%;
   /* grid-column: 5 / span 4;
   grid-row: 10 / span 3; */
 }
 
 .sidedoor {
-  width: 9vw;
-  height: 24vh;
+  width: 8vw;
+  height: 23vh;
   position: absolute;
-  left: 28%;
-  top: 73%;
+  left: 11%;
+  top: 74%;
   /* grid-column: 3 / span 2;
   grid-row: 13 / span 4; */
 }
 
 .maindoor {
-  width: 15vw;
-  height: 24vh;
+  width: 14.5vw;
+  height: 23vh;
   position: absolute;
-  left: 37%;
-  top: 73%;
+  left: 26%;
+  top: 74%;
   /* grid-column: 5 / span 4;
   grid-row: 13 / span 4; */
 }
 
 .frstfloor1 {
   width: 12vw;
-  height: 24vh;
+  height: 23vh;
   position: absolute;
-  left: 52%;
-  top: 73%;
+  left: 53.5%;
+  top: 74%;
   /* grid-column: 9 / span 3;
   grid-row: 13 / span 4; */
 }
