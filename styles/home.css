@@ -55,7 +55,7 @@ figure {
 .house {
   height: 94vh;
   width: 53vw;
-  background-image: url("../images/hauntedhouse-3.png");
+  background-image: url("../images/hauntedhouse-3.png");  /* show house */
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -73,7 +73,7 @@ figure {
 }
 
 .house:hover {
-  background-image: url("../images/silhoutte.svg");
+  background-image: url("../images/silhoutte.svg"); /* show silhouette */
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
