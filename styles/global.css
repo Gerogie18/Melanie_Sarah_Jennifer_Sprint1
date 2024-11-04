@@ -60,58 +60,24 @@ ul.topnav li a.active {
     background-color: var(--spooky-orange-dark);
 }
 
+ul.topnav li a.sub {
+  background-color: #3C3A3C;
+}
+
+ul.topnav li a.sub:hover {
+  background-color: var(--spooky-orange-light);
+}
+
 ul.topnav li.right {
     float: right;
 }
+
 
 @media screen and (max-width: 600px) {
     ul.topnav li.right, 
     ul.topnav li {
         float: none;
     }
-}
-
-/* Dropdown menu styles */
-.dropdownContainer {
-    position: relative;
-    z-index: 10; /* Ensure dropdown appears above other elements */
-}
-
-.dropdown ul {
-    position: absolute;
-    display: none;
-    top: 100%; /* Position dropdown below the "Games" menu item */
-    left: 0;
-    background-color: #333134;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    z-index: 999; /* Higher z-index to overlay content */
-}
-
-.dropdownContainer:hover ul {
-    display: block;
-}
-
-.dropdown li {
-    float: none;
-}
-
-.dropdown li a {
-    display: block;
-    padding: 10px;
-    color: #F4F4F5;
-    text-decoration: none;
-    border-bottom: 1px solid #444;
-}
-
-.dropdown li a:hover {
-    background-color: var(--spooky-white);
-    color: black;
-}
-
-.dropdown li:last-child a {
-    border-bottom: none;
 }
 
 
@@ -127,6 +93,7 @@ ul.topnav li.right {
     --spooky-green: #C0D730;
     --spooky-purple: #52276A;
     --spooky-orange:#F78E1E;
+    --spooky-orange-light:#F7AA57;
     --spooky-orange-dark:#B86B29;
     --spooky-pink: #E9808E;
   }
@@ -157,7 +124,7 @@ ul.topnav li.right {
 
   
   .orange-light {
-    background-color: #F7AA57;
+    background-color: var(--spooky-orange-light);
   }
   .orange {
     background-color: var(--spooky-orange);
