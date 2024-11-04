@@ -11,6 +11,7 @@ function getRandomItem(array) {
   return array[randomIndex];  
 }
 
+
 // handle user ID
 
 function generateRandomID() {

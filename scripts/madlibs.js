@@ -44,12 +44,12 @@ let rooms = [];
 // FUNCTIONS 
 
 
-function getRandomItem(array) {
-  // Generate a random index between 0 and array.length - 1
-  const randomIndex = Math.floor(Math.random() * array.length);
-  // Return the item at that index
-  return array[randomIndex];
-}
+// function getRandomItem(array) {
+//   // Generate a random index between 0 and array.length - 1
+//   const randomIndex = Math.floor(Math.random() * array.length);
+//   // Return the item at that index
+//   return array[randomIndex];
+// }
 
 
 
