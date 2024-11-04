@@ -25,6 +25,11 @@ function populateTimeSlots(timeSelect, ageRange) {
     </select>`
     // Update timeSelect reference
     timeSelect = document.getElementById('timeSelect');
+     // Reattach the event listener to the newly created timeSelect
+     timeSelect.addEventListener('change', (event) => {
+        BookedParty.time = event.target.value;
+        console.log('Selected Time:', bookedParty.time);
+    });
   
     // Filter time slots based on age range
     if (ageRange === 'ageRange3-6') {
@@ -241,7 +246,7 @@ activityContainer.addEventListener('click', (event) => {
     activityDiv.classList.remove('chosen');
   }
 
-  if (selectedActivities.length > 2) {
+  if (selectedActivities.length > 3) {
     selectedActivities.shift();
     // Remove 'selected' class from first activity
     document.querySelector('.chosen').classList.remove('chosen');
@@ -249,41 +254,35 @@ activityContainer.addEventListener('click', (event) => {
 });
 
 //setup party
-const BookedParty = {
+const bookedParty = {
     date: '',
     ageRange: '',
     groupSize: '',
     time: '',
-    activities: []
+    activities: [],
+    price: '',
   };
   
   // Update within event listeners
   dateInput.addEventListener('change', (event) => {
-    BookedParty.date = event.target.value;
+    bookedParty.date = event.target.value;
   });
   
   ageRangeButtons.forEach((button) => {
     button.addEventListener('click', (event) => {
       // ...
-      BookedParty.ageRange = button.getAttribute('Value');
+      bookedParty.ageRange = button.getAttribute('Value');
     });
   });
   
   groupSizeButtons.forEach((button) => {
     button.addEventListener('click', (event) => {
       // ...
-      BookedParty.groupSize = button.getAttribute('value');
+      bookedParty.groupSize = button.getAttribute('value');
     });
   });
   
-  // Element reference
-const timeSelection = document.getElementById('timeSelect');
 
-// Event listener
-timeSelection.addEventListener('change', (event) => {
-  BookedParty.time = event.target.value;
-  console.log('Selected Time:', BookedParty.time);
-});
   
   activityContainer.addEventListener('click', (event) => {
     // ...
@@ -292,6 +291,7 @@ timeSelection.addEventListener('change', (event) => {
   
   // Submit event listener
   document.querySelector('.submit').addEventListener('click', () => {
+    booked.BookedParty.submit
     console.log('Booked Party:', BookedParty);
     localStorage.setItem('bookedParty', JSON.stringify(BookedParty));
     alert('Party Booked Successfully!');

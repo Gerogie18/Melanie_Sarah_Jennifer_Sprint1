@@ -1,3 +1,6 @@
+/*Name: Sarah  - created file*/
+/*NOV 4 Name Jenn - changed some nav elements
+
 /* Import Google Fonts in your CSS file */
 @import url('https://fonts.googleapis.com/css2?family=Imprima&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jolly+Lodger&family=Ruda&display=swap');
@@ -17,39 +20,100 @@
 }
 
 
-/* nav */
+/* Updated nav */
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10; /* Ensure nav is above other content */
+}
+
+/* Navigation styles */
 ul.topnav {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #333134;
-    border-bottom:.1rem solid #B86B29;
-  }
-  
-  ul.topnav li {float: left;}
-  
-  ul.topnav li a {
+    border-bottom: .1rem solid #B86B29;
+}
+
+ul.topnav li {
+    float: left;
+}
+
+ul.topnav li a {
     display: block;
     color: #F4F4F5;
     text-align: center;
-    padding: 12px 16px; /* top right bottom left  */
+    padding: 12px 16px;
     text-decoration: none;
-  }
-  
-  ul.topnav li a:hover:not(.active) {
-    background-color: var(--spooky-white);
-    color: black;}
-  
-  ul.topnav li a.active {background-color: var(--spooky-orange-dark);}
-  
-  ul.topnav li.right {float: right;}
+}
 
-  
-  @media screen and (max-width: 600px) {
+ul.topnav li a:hover:not(.active) {
+    background-color: var(--spooky-white);
+    color: black;
+}
+
+ul.topnav li a.active {
+    background-color: var(--spooky-orange-dark);
+}
+
+ul.topnav li.right {
+    float: right;
+}
+
+@media screen and (max-width: 600px) {
     ul.topnav li.right, 
-    ul.topnav li {float: none;}
-  }
+    ul.topnav li {
+        float: none;
+    }
+}
+
+/* Dropdown menu styles */
+.dropdownContainer {
+    position: relative;
+    z-index: 10; /* Ensure dropdown appears above other elements */
+}
+
+.dropdown ul {
+    position: absolute;
+    display: none;
+    top: 100%; /* Position dropdown below the "Games" menu item */
+    left: 0;
+    background-color: #333134;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    z-index: 999; /* Higher z-index to overlay content */
+}
+
+.dropdownContainer:hover ul {
+    display: block;
+}
+
+.dropdown li {
+    float: none;
+}
+
+.dropdown li a {
+    display: block;
+    padding: 10px;
+    color: #F4F4F5;
+    text-decoration: none;
+    border-bottom: 1px solid #444;
+}
+
+.dropdown li a:hover {
+    background-color: var(--spooky-white);
+    color: black;
+}
+
+.dropdown li:last-child a {
+    border-bottom: none;
+}
+
 
 
 
