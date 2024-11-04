@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="../styles/default.css" />
+    <link rel="icon" type="image/svg+xml" href="../images/house.png" height = 48px width = 48px>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jolly+Lodger&family=Ruda&display=swap" rel="stylesheet">
     <title>Document</title>
   </head>
   <body>
@@ -34,10 +38,10 @@
         </button>
     </div>
     <div id = "timeSlot" class = "container">
-    <h2>Time Slot</h2>
+    <h2>Time Slots</h2>
     <br>
     <select id="timeSelect">
-            <option value="">Select Age Range </option>
+            <option value="">Select Age Range</Select> </option>
     </select>
     </div> 
     <div id = "groupSize" class = "container">
@@ -58,7 +62,10 @@
             Large
         </button>
     </div>
-    <div id="activityContainer" class = "container hidden"></div>
+    <div id="activityContainer" class = "container hidden">
+    </div>
+    <div id = "submitForm" class = "container">
+        <button type = "submit" class = "submit">Book Event</button>
     </div>
 </div>
     <script src="../scripts/create_experience.js"></script>

@@ -4,19 +4,6 @@
 
 console.log("JS loaded")
 
-//fetching booking data
-var bookings = {};
-async function fetchBookings() {
-  try {
-    const response = await fetch('../data/bookings.json');
-    bookings = await response.json();
-    console.log('These are the bookings:');
-    console.log(bookings);
-  } catch (error) {
-    console.error(error);
-  }
-}
-
 function populateTimeSlots(timeSelect, ageRange) {
     // Define time slots
     var timeSlots = [
@@ -32,7 +19,7 @@ function populateTimeSlots(timeSelect, ageRange) {
     // flush the time slots and any img elements
     let timeSlot = document.getElementById('timeSlot');
     timeSlot.innerHTML = `
-    <h2> Time Slots
+    <h2> Time Slots </h2>
     <select id="timeSelect">
             <option value="">Select Start Time:</option>
     </select>`
@@ -69,124 +56,84 @@ function populateTimeSlots(timeSelect, ageRange) {
 
 function populateActivitySlots(ageRange) {
     //Activity slot arrays
-    var activitySlotOne = [
+    var activitySlots = [
         {ageRange: ['ageRange3-6', 'ageRange7-11'],
-            type: 'cookingActivitySlot',
-            activity: 'Cooking',
-            text: 'Cooking',
-            img: '../images/activity.png',
-            alt: 'img alt text'
+            activity: 'Make Monster Cookies',
+            text: 'Grab some classic monster mix-ins of eyeballs and suspicious blobs and create some personal monster cookies for all to enjoy',
+            price: 20
         },
-        {ageRange: ['ageRange7-11'],
-            type: 'cookingActivitySlot',
-            activity: 'Cooking',
-            text: 'Cooking',
-            img: '../images/activity.png',
-            alt: 'img alt text'
+        {ageRange: ['ageRange3-6'],
+            activity: 'Leaf Painting',
+            text: 'Gather up some leaves and get ready for some classic messy fall fun',
+            price: 10
         },
-        {ageRange: ['ageRange12-18'],
-            type: 'cookingActivitySlot',
-            activity: 'Cooking',
-            text: 'Cooking',
-            img: '../images/activity1.png',
-            alt: 'img alt text'
+        {ageRange: ['ageRange3-6'],
+            activity: 'Spooky Story Time',
+            text: 'Chose from our Spooky Story Collection, and have our resident vampire read to the group',
+            price: 10
+        },
+        {ageRange: ['ageRange3-6'],
+            activity: 'Spooktacular Party Games',
+            text: 'Play a variety of party games with us, such as monster mash freeze dance, pin-the-wart-on-the-witch, and web crawl',
+            price: 20
+        },
+        {ageRange: ['ageRange7-11', 'ageRange 12-18', 'ageRange19+'],
+            activity: 'Decorate Spooky Sugar Cookies',
+            text: 'shape and deocrate your own sugar cookies with a variety of spooky toppings',
+            price: 20
+        },
+        {ageRange: ['ageRange7-11', 'ageRange12-18', 'ageRange19+'],
+            activity: 'Carve Pumpkins',
+            text: 'The classic tradition, we provide the pumpkins and tools, you provide the creativity',
+            price: 25
+        },
+        {ageRange: ['ageRange7-11', 'ageRange12-18', 'ageRange19+'],
+            activity: 'Haunted House',
+            text: 'Walk through our terryfying haunted house, be wary of what might pop out at you',
+            price: 20
         },
         {ageRange: ['ageRange19+'],
-            type: 'cookingActivitySlot',
-            activity: 'Cooking',
-            text: 'Cooking',
-            img: '../images/activity1.png',
-            alt: 'img alt text'
-        }
-    ]
-    var activitySlotTwo = [
-        {ageRange: ['ageRange3-6', 'ageRange7-11'],
-            type: 'craftActivitySlot',
-            activity: 'Craft',
-            text: 'Craft',
-            img: '../images/activity.png',
-            alt: 'img alt text'
+            activity: 'Cauldron of Cocktail and Mocktails',
+            text: 'Choose from our selection of spooky drinks, Create personal cauldrons to enjoy',
+            price: 50
         },
-        {ageRange: ['ageRange7-11'],
-            type: 'craftActivitySlot',
-            activity: 'Craft',
-            text: 'Craft',
-            img: '../images/activity.png',
-            alt: 'img alt text'
+        {ageRange: ['ageRange12-18', 'ageRange19+'],
+            activity: 'Glow in the Dark Monster Mash',
+            text: 'Join us for a dance party with glow in the dark lights and spooky tunes',
+            price: 20
         },
-        {ageRange: ['ageRange12-18'],
-            type: 'craftActivitySlot',
-            activity: 'Craft',
-            text: 'Craft',
-            img: '../images/activity1.png',
-            alt: 'img alt text'
-        },
-        {ageRange: ['ageRange19+'],
-            type: 'craftActivitySlot',
-            activity: 'Craft',
-            text: 'Craft',
-            img: '../images/activity1.png',
-            alt: 'img alt text'
-        }
-    ]
-    var activitySlotThree = [
-        {ageRange: ['ageRange3-6', 'ageRange7-11'],
-            type: 'activityActivitySlot',
-            activity: 'Activity',
-            text: 'Activity',
-            img: '../images/activity.png',
-            alt: 'img alt text'
-        },
-        {ageRange: ['ageRange7-11'],
-            type: 'activityActivitySlot',
-            activity: 'Activity',
-            text: 'Activity',
-            img: '../images/activity.png',
-            alt: 'img alt text'
-        },
-        {ageRange: ['ageRange12-18'],
-            type: 'activityActivitySlot',
-            activity: 'Activity',
-            text: 'Activity',
-            img: '../images/activity1.png',
-            alt: 'img alt text'
-        },
-        {ageRange: ['ageRange19+'],
-            type: 'activityActivitySlot',
-            activity: 'Activity',
-            text: 'Activity',
-            img: '../images/activity1.png',
-            alt: 'img alt text'
-        }
     ]
 
     //create div for activities
     let activityContainer = document.getElementById('activityContainer');
     activityContainer.classList.remove('hidden'); //removes hidden class if first pressing button
-    activityContainer.innerHTML = ''; // Flush existing divs
+    activityContainer.innerHTML = `<h2>Choose Your Activities</h2>    
+    <div class = tooltipContainer>
+            <span class="tooltip">Choose Three Thrilling Activities for your Group</span>
+    </div> `; // Flush existing divs
     console.log(activityContainer.classList);
 
     // Create activity divs
-  function createActivityDiv(activity) {
-    let activityDiv = document.getElementById('activityContainer');
-    activityDiv.innerHTML = `
-      <div class = 'activitySlot selected'>
-      <h3>${activity.activity}</h3>
-      <img src="${activity.img}" alt="${activity.alt}">
-      <div class = 'tooltipContainer'>
-      <span class='tooltip'>${activity.text}</span>
-      </div>
-      </div>
-    `;
-    return activityDiv;
-  }
+    function createActivityDiv(activity) {
+        const activitySlot = document.createElement('div');
+        activitySlot.id = `activitySlot-${activity.activity}`;
+        activitySlot.className = `activitySlot ${activity.activity}`;
+        activitySlot.innerHTML = `
+          <h3>${activity.activity}</h3>
+          <div class='tooltipContainer'>
+            <span class='tooltip'>${activity.text}</span>
+          </div>
+        `;
+        return activitySlot;
+      }
 
   // Filter activities based on age range
-  activitySlotOne.forEach((activity) => {
+  activitySlots.forEach((activity) => {
     if (activity.ageRange.includes(ageRange)) {
-      activityContainer.appendChild(createActivityDiv(activity));
+      const activitySlot = createActivityDiv(activity);
+      activityContainer.appendChild(activitySlot);
     }
-    });
+  });
 }
 //Creating a min date, and blocking out dates
 let dateInput = document.getElementById('date');
@@ -199,10 +146,12 @@ dateInput.min = minDate;
 
 
 // Get the selected date
+let selectedDate = ''; // Global declaration
+
 dateInput.addEventListener('change', function() {
-    const selectedDate = dateInput.value;
-    console.log('Date updated:', selectedDate);
-  });
+  selectedDate = dateInput.value;
+  console.log('Date updated:', selectedDate);
+});
 
 
 // Accessing the Age Range buttons
@@ -229,12 +178,12 @@ ageRangeButtons.forEach((button) => {
     if (timeSelect.options.length === 1) {  
         let booked = document.getElementById('timeSlot')
         booked.innerHTML = `
-        <h2>Time Slots</h2>
-        <h3>Sorry We're Booked</h3>
+        <h2>Time Slots</h2> 
         <select id="timeSelect">
+        <br>
             <option value="">No available time slots </option>
         </select>
-        <br>
+        <h3>Sorry We're Booked</h3>
         <div class = imgContainer>
         <img src='../images/ghost-sookybaby.png' 
         alt='contrary ghost with rain clouds behind them'
@@ -244,8 +193,10 @@ ageRangeButtons.forEach((button) => {
         `
         //could set up a sound here
     }
+
     //restting activities:
     populateActivitySlots(ageRange); 
+
     // checking to see if logging correctly
     console.log(`Clicked button value: ${button.getAttribute('value') || button.textContent}`); 
   });
@@ -271,12 +222,75 @@ groupSizeButtons.forEach((button) => {
   });
 });
 
-// Get the time selected
-let selectedTime = '';
-timeSelect.addEventListener('change', (event) => {
-    selectedTime = event.target.value;
-    console.log('Selected Time:', selectedTime);
+// Get selected activities
+let selectedActivities = [];
+
+activityContainer.addEventListener('click', (event) => {
+  const activityDiv = event.target.closest('.activitySlot');
+  const activity = activityDiv.querySelector('h3').textContent;
+
+  if (activityDiv.dataset && !selectedActivities.includes(activity)) {
+    selectedActivities.push(activity);
+    activityDiv.classList.add('chosen');
+  } else if (selectedActivities.includes(activity)) {
+    selectedActivities = selectedActivities.filter((a) => a !== activity);
+    activityDiv.classList.remove('chosen');
+  }
+
+  if (selectedActivities.length > 2) {
+    selectedActivities.shift();
+    // Remove 'selected' class from first activity
+    document.querySelector('.chosen').classList.remove('selected');
+  }
+});
+
+//setup party
+const BookedParty = {
+    date: '',
+    ageRange: '',
+    groupSize: '',
+    time: '',
+    activities: []
+  };
+  
+  // Update within event listeners
+  dateInput.addEventListener('change', (event) => {
+    BookedParty.date = event.target.value;
+  });
+  
+  ageRangeButtons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      // ...
+      BookedParty.ageRange = button.getAttribute('Value');
+    });
+  });
+  
+  groupSizeButtons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      // ...
+      BookedParty.groupSize = button.getAttribute('value');
+    });
+  });
+  
+  // Element reference
+const timeSelection = document.getElementById('timeSelect');
+
+// Event listener
+timeSelection.addEventListener('change', (event) => {
+  BookedParty.time = event.target.value;
+  console.log('Selected Time:', BookedParty.time);
+});
+  
+  activityContainer.addEventListener('click', (event) => {
+    // ...
+    BookedParty.activities = selectedActivities;
+  });
+  
+  // Submit event listener
+  document.querySelector('.submit').addEventListener('click', () => {
+    console.log('Booked Party:', BookedParty);
+    localStorage.setItem('bookedParty', JSON.stringify(BookedParty));
+    alert('Party Booked Successfully!');
   });
 
-  console.log('Selected Time:', selectedTime);
 

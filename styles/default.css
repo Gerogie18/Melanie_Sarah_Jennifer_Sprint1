@@ -1,17 +1,39 @@
+.jolly-lodger-regular {
+    font-family: "Jolly Lodger", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.ruda-bodyfont {
+  font-family: "Ruda", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+} 
+
 body {
-    background-color: #3D1C4E;
+    background-color: #52276A;
+    
+
+    font-family: 'Ruda', serif;
 }
 
 h1 {
     color: #C0D730;
+    font-family: 'jolly lodger', system-ui;
+    letter-spacing: 0.05em;
 }
 
 h2 {
-    color: #333134;
+    color: #F4F4F5;
+    font-family: 'jolly lodger', system-ui;
+    letter-spacing: 0.05em;
 }
 
 h3 {
-    color: #333134;
+    color: #F4F4F5;
+    font-family: 'jolly lodger', system-ui;
+    letter-spacing: 0.05em;
 }
 
 br {
@@ -20,12 +42,14 @@ br {
 }
 .pageContainer {
     justify-content: center;
-    width: 100%;
     max-width: 900px;
+    border-radius: 10px;
+    width: 80%;
+    align-content: center;
 }
 button {
     background-color: #D7E37E;
-    border: 3px solid #52276A;
+    border: 3px solid #333134;
     border-radius: 5px;
     padding: 3px;
     width: 100px;
@@ -33,6 +57,7 @@ button {
 .selected{
     background-color: #52276A;
     color: #F4F4F5;
+    font-weight: bold   ;
 }
 
 input[type="date"] {
@@ -46,21 +71,22 @@ input[type="date"] {
   }
 select {
     background-color: #D7E37E;
-    border: 3px solid #52276A;
+    border: 3px solid #333134;
     border-radius: 5px;
     padding: 3px;
     margin-bottom: 3%;
     min-width: fit-content;
     width: 100px;
 }
-
-.tooltipContainer {
+  
+  .tooltipContainer {
     position: relative;
-    width: 80%;
+    width: 50%;
     height: 10px;
   }
-  
+
   .tooltip {
+    position: absolute;
     display: none;
     border-radius: 5px;
     padding: 10px;
@@ -71,7 +97,6 @@ select {
     width: fit-content;
     justify-content: center;
     text-align: center;
-    position: center center;
     transform: translate(0, -150%) ;
     z-index: 1;
   
@@ -87,42 +112,62 @@ select {
     display: block;
   }
   
-  .hidden {
-    display: none;
-  }
+  
   .container {
     align-self: center;
-    background-image: linear-gradient(to bottom, #F7AA57 1%, #F78E1E 85%, #B86B29 99%);
+    background: #333134;
     padding: 20px;
-    margin-bottom: 6%;
+    margin-bottom: 1%;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px #B86B29 (0 0 4);
     height: fit-content;
-    width: 80%;
+    width: 92%;
     text-align: center;
-
+  }
+  .hidden {
+    display: block;
   }
 
+  .container.hidden {
+    display: none;
+  }
+
+  #activityContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch; /* Ensure equal height */
+  }
+  
   .activitySlot {
-    background-color: #E9808E;
-    min-width: fit-content;
-    max-width: 25%;
-    min-height: fit-content;
-    max-height: 75px;
+    flex-basis: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #8FA13B;
+    min-height: 75px; /* Set minimum height */
     border-radius: 25px;
     padding: 15px;
     margin-bottom: 3%;
-    text-align: center;
+    box-shadow: 0px 0px 10px #333134;
+    border: 3px solid #333134;
   }
+
   .activitySlot:hover {
-    background-color: #333;
+    background-color: #333134;
     cursor: pointer;
   }
 
-  .activitySlot {
-    background-color: #1E787C;
-  }
-  
   .activitySlot:hover .tooltip {
-    display: block; /* Show on hover */
+    display: block;
+    background-color: #B86B29;
+    width: 300%;
+    transform: translate(0,0);
+    height: fit-content;
+    text-wrap: wrap;
+  }
+
+  .activitySlot.chosen {
+    background-color: #1E787C;
+    font-weight: bolder;
   }
