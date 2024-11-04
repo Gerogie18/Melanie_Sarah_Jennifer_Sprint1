@@ -13,15 +13,19 @@
 
 body {
     background-color: #52276A;
-    
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: 'Ruda', serif;
-}
+    height: 100vh; 
+    margin: 0; 
+  }
 
 h1 {
     color: #C0D730;
     font-family: 'jolly lodger', system-ui;
     letter-spacing: 0.05em;
+    padding-top: 20px;
 }
 
 h2 {
@@ -41,9 +45,13 @@ br {
     padding: 0;
 }
 .pageContainer {
+    position: absolute;
+    color: #333134;
+    z-index: 1;
     justify-content: center;
     max-width: 900px;
     border-radius: 10px;
+    min-width: 600px;
     width: 80%;
     align-content: center;
 }
@@ -98,7 +106,7 @@ select {
     justify-content: center;
     text-align: center;
     transform: translate(0, -150%) ;
-    z-index: 1;
+    z-index: 2;
   
     line-height: 1.25;
     font-size: 16px;

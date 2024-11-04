@@ -31,7 +31,6 @@ function populateTimeSlots(timeSelect, ageRange) {
       timeSlots.splice(0, 7);  //testing for booked option
       //timeSlots.splice(2, 5);  //actual time slots
       console.log(timeSlots.length) 
-      
     }
     if (ageRange === 'ageRange7-11') {
         timeSlots.splice(3, 4);
@@ -62,6 +61,11 @@ function populateActivitySlots(ageRange) {
             text: 'Grab some classic monster mix-ins of eyeballs and suspicious blobs and create some personal monster cookies for all to enjoy',
             price: 20
         },
+        {ageRange: ['ageRange3-6', 'ageRange7-11'],
+            activity: 'Create Party Hats',
+            text: 'Have fun with felt and craft paper to make some ',
+            price: 20
+        },
         {ageRange: ['ageRange3-6'],
             activity: 'Leaf Painting',
             text: 'Gather up some leaves and get ready for some classic messy fall fun',
@@ -77,7 +81,7 @@ function populateActivitySlots(ageRange) {
             text: 'Play a variety of party games with us, such as monster mash freeze dance, pin-the-wart-on-the-witch, and web crawl',
             price: 20
         },
-        {ageRange: ['ageRange7-11', 'ageRange 12-18', 'ageRange19+'],
+        {ageRange: ['ageRange7-11', 'ageRange12-18', 'ageRange19+'],
             activity: 'Decorate Spooky Sugar Cookies',
             text: 'shape and deocrate your own sugar cookies with a variety of spooky toppings',
             price: 20
@@ -240,7 +244,7 @@ activityContainer.addEventListener('click', (event) => {
   if (selectedActivities.length > 2) {
     selectedActivities.shift();
     // Remove 'selected' class from first activity
-    document.querySelector('.chosen').classList.remove('selected');
+    document.querySelector('.chosen').classList.remove('chosen');
   }
 });
 
