@@ -27,7 +27,7 @@ function populateTimeSlots(timeSelect, ageRange) {
     timeSelect = document.getElementById('timeSelect');
      // Reattach the event listener to the newly created timeSelect
      timeSelect.addEventListener('change', (event) => {
-        BookedParty.time = event.target.value;
+        bookedParty.time = event.target.value;
         console.log('Selected Time:', bookedParty.time);
     });
   
@@ -58,61 +58,7 @@ function populateTimeSlots(timeSelect, ageRange) {
     });
   }
 
-function populateActivitySlots(ageRange) {
-    //Activity slot arrays
-    var activitySlots = [
-        {ageRange: ['ageRange3-6', 'ageRange7-11'],
-            activity: 'Make Monster Cookies',
-            text: 'Grab some classic monster mix-ins of eyeballs and suspicious blobs and create some personal monster cookies for all to enjoy',
-            price: 20
-        },
-        {ageRange: ['ageRange3-6', 'ageRange7-11'],
-            activity: 'Create Party Hats',
-            text: 'Have fun with felt and craft paper to make some ',
-            price: 20
-        },
-        {ageRange: ['ageRange3-6'],
-            activity: 'Leaf Painting',
-            text: 'Gather up some leaves and get ready for some classic messy fall fun',
-            price: 10
-        },
-        {ageRange: ['ageRange3-6'],
-            activity: 'Spooky Story Time',
-            text: 'Chose from our Spooky Story Collection, and have our resident vampire read to the group',
-            price: 10
-        },
-        {ageRange: ['ageRange3-6'],
-            activity: 'Spooktacular Party Games',
-            text: 'Play a variety of party games with us, such as monster mash freeze dance, pin-the-wart-on-the-witch, and web crawl',
-            price: 20
-        },
-        {ageRange: ['ageRange7-11', 'ageRange12-18', 'ageRange19+'],
-            activity: 'Decorate Spooky Sugar Cookies',
-            text: 'shape and deocrate your own sugar cookies with a variety of spooky toppings',
-            price: 20
-        },
-        {ageRange: ['ageRange7-11', 'ageRange12-18', 'ageRange19+'],
-            activity: 'Carve Pumpkins',
-            text: 'The classic tradition, we provide the pumpkins and tools, you provide the creativity',
-            price: 25
-        },
-        {ageRange: ['ageRange7-11', 'ageRange12-18', 'ageRange19+'],
-            activity: 'Haunted House',
-            text: 'Walk through our terryfying haunted house, be wary of what might pop out at you',
-            price: 20
-        },
-        {ageRange: ['ageRange19+'],
-            activity: 'Cauldron of Cocktail and Mocktails',
-            text: 'Choose from our selection of spooky drinks, Create personal cauldrons to enjoy',
-            price: 50
-        },
-        {ageRange: ['ageRange12-18', 'ageRange19+'],
-            activity: 'Glow in the Dark Monster Mash',
-            text: 'Join us for a dance party with glow in the dark lights and spooky tunes',
-            price: 20
-        },
-    ]
-
+function populateActivitySlots(ageRange, activitySlots) {
     //create div for activities
     let activityContainer = document.getElementById('activityContainer');
     activityContainer.classList.remove('hidden'); //removes hidden class if first pressing button
@@ -144,6 +90,97 @@ function populateActivitySlots(ageRange) {
     }
   });
 }
+
+function updatePrice(bookedParty, activitySlots) {
+    // Initialize priceMin and priceMax
+    bookedParty.priceMin = 0;
+    bookedParty.priceMax = 0;
+    var groupSizePriceMin = 0;
+    var groupSizePriceMax = 0;
+    var totalActivityPrice = 0;
+
+    // Calculate price per person
+    if (bookedParty.groupSize === '5-15') {
+      groupSizePriceMin += 7.00 * 5;
+      groupSizePriceMax += 7.00 * 15;
+    }
+    if (bookedParty.groupSize === '11-20') {
+      groupSizePriceMin += 6.00 * 11;
+      groupSizePriceMax += 6.00 * 20;
+    }
+    if (bookedParty.groupSize === '21-30') {
+      groupSizePriceMin += 5.00 * 21;
+      groupSizePriceMax += 5.00 * 30;
+    }
+    console.log(bookedParty.groupSize)
+    console.log(`Group size price min: ${groupSizePriceMin}`);
+    console.log(`Group size price max: ${groupSizePriceMax}`);
+    // Calculate price per activity
+    bookedParty.activities.forEach((activity) => {
+    const activityPrice = activitySlots.find((slot) => slot.activity === activity).price;
+    totalActivityPrice += activityPrice;
+    console.log(`adding ${activityPrice}`);
+    });
+
+    bookedParty.priceMin = groupSizePriceMin + totalActivityPrice;
+    bookedParty.priceMax = groupSizePriceMax + totalActivityPrice;
+  
+    return bookedParty;
+  }
+
+//Establish activitySlots
+var activitySlots = [
+{ageRange: ['ageRange3-6', 'ageRange7-11'],
+    activity: 'Make Monster Cookies',
+    text: 'Grab some classic monster mix-ins of eyeballs and suspicious blobs and create some personal monster cookies for all to enjoy',
+    price: 20
+},
+{ageRange: ['ageRange3-6', 'ageRange7-11'],
+    activity: 'Create Party Hats',
+    text: 'Have fun with felt and craft paper to make some ',
+    price: 20
+},
+{ageRange: ['ageRange3-6'],
+    activity: 'Leaf Painting',
+    text: 'Gather up some leaves and get ready for some classic messy fall fun',
+    price: 10
+},
+{ageRange: ['ageRange3-6'],
+    activity: 'Spooky Story Time',
+    text: 'Chose from our Spooky Story Collection, and have our resident vampire read to the group',
+    price: 10
+},
+{ageRange: ['ageRange3-6'],
+    activity: 'Spooktacular Party Games',
+    text: 'Play a variety of party games with us, such as monster mash freeze dance, pin-the-wart-on-the-witch, and web crawl',
+    price: 20
+},
+{ageRange: ['ageRange7-11', 'ageRange12-18', 'ageRange19+'],
+    activity: 'Decorate Spooky Sugar Cookies',
+    text: 'shape and deocrate your own sugar cookies with a variety of spooky toppings',
+    price: 20
+},
+{ageRange: ['ageRange7-11', 'ageRange12-18', 'ageRange19+'],
+    activity: 'Carve Pumpkins',
+    text: 'The classic tradition, we provide the pumpkins and tools, you provide the creativity',
+    price: 25
+},
+{ageRange: ['ageRange7-11', 'ageRange12-18', 'ageRange19+'],
+    activity: 'Haunted House',
+    text: 'Walk through our terryfying haunted house, be wary of what might pop out at you',
+    price: 20
+},
+{ageRange: ['ageRange19+'],
+    activity: 'Cauldron of Cocktail and Mocktails',
+    text: 'Choose from our selection of spooky drinks, Create personal cauldrons to enjoy',
+    price: 50
+},
+{ageRange: ['ageRange12-18', 'ageRange19+'],
+    activity: 'Glow in the Dark Monster Mash',
+    text: 'Join us for a dance party with glow in the dark lights and spooky tunes',
+    price: 20
+},
+]
 //Creating a min date, and blocking out dates
 let dateInput = document.getElementById('date');
 const today = new Date();
@@ -204,7 +241,7 @@ ageRangeButtons.forEach((button) => {
     }
 
     //restting activities:
-    populateActivitySlots(ageRange); 
+    populateActivitySlots(ageRange, activitySlots); 
 
     // checking to see if logging correctly
     console.log(`Clicked button value: ${button.getAttribute('value') || button.textContent}`); 
@@ -260,7 +297,8 @@ const bookedParty = {
     groupSize: '',
     time: '',
     activities: [],
-    price: '',
+    priceMin: '',
+    priceMax: '',
   };
   
   // Update within event listeners
@@ -286,14 +324,14 @@ const bookedParty = {
   
   activityContainer.addEventListener('click', (event) => {
     // ...
-    BookedParty.activities = selectedActivities;
+    bookedParty.activities = selectedActivities;
   });
   
   // Submit event listener
   document.querySelector('.submit').addEventListener('click', () => {
-    booked.BookedParty.submit
-    console.log('Booked Party:', BookedParty);
-    localStorage.setItem('bookedParty', JSON.stringify(BookedParty));
+    updatePrice(bookedParty, activitySlots);
+    console.log('Booked Party:', bookedParty);
+    localStorage.setItem('bookedParty', JSON.stringify(bookedParty));
     alert('Party Booked Successfully!');
   });
 
