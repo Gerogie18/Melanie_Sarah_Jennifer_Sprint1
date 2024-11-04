@@ -1,0 +1,148 @@
+/*Name: Sarah  - created file*/
+/*NOV 4 Name Jenn - changed some nav elements
+
+/* Import Google Fonts in your CSS file */
+@import url('https://fonts.googleapis.com/css2?family=Imprima&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jolly+Lodger&family=Ruda&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playwrite+AU+QLD:wght@100..400&family=Ruda:wght@400..900&display=swap');
+
+.jolly-lodger-regular {
+  font-family: "Jolly Lodger", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ruda-bodyfont {
+  font-family: "Ruda", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+/* Updated nav */
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10; /* Ensure nav is above other content */
+}
+
+/* Navigation styles */
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333134;
+    border-bottom: .1rem solid #B86B29;
+}
+
+ul.topnav li {
+    float: left;
+}
+
+ul.topnav li a {
+    display: block;
+    color: #F4F4F5;
+    text-align: center;
+    padding: 12px 16px;
+    text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {
+    background-color: var(--spooky-white);
+    color: black;
+}
+
+ul.topnav li a.active {
+    background-color: var(--spooky-orange-dark);
+}
+
+ul.topnav li a.sub {
+  background-color: #3C3A3C;
+}
+
+ul.topnav li a.sub:hover {
+  background-color: var(--spooky-orange-light);
+}
+
+ul.topnav li.right {
+    float: right;
+}
+
+
+@media screen and (max-width: 600px) {
+    ul.topnav li.right, 
+    ul.topnav li {
+        float: none;
+    }
+}
+
+
+
+
+
+
+  /* colours */
+  :root {
+    --spooky-white: #F4F4F5;
+    --spooky-black:#333134;
+    --spooky-blue:#1E787C;
+    --spooky-green: #C0D730;
+    --spooky-purple: #52276A;
+    --spooky-orange:#F78E1E;
+    --spooky-orange-light:#F7AA57;
+    --spooky-orange-dark:#B86B29;
+    --spooky-pink: #E9808E;
+  }
+
+  .blue-light{
+    background-color: #72AAAC;
+  }
+
+  .white{
+    background-color: var(--spooky-white);
+  }
+
+  .black {
+    background-color: var(--spooky-black);
+  }
+  
+
+  .purple{
+  background-color: var(--spooky-purple);
+  }
+  .purple-light{
+    background-color: #9278A1
+  }
+  .green{
+    background-color: var(--spooky-green);
+    }
+  
+
+  
+  .orange-light {
+    background-color: var(--spooky-orange-light);
+  }
+  .orange {
+    background-color: var(--spooky-orange);
+  }
+  .orange-dark {
+    background-color: var(--spooky-orange-dark);
+  }
+
+  .pink-dark{
+    background-color: #AE606A;
+  }
+  
+  .pink{
+    background-color: var(--spooky-pink);
+  }
+  .pink-light{
+    background-color: #F1AFB8;
+  }
+  
+  
+  
