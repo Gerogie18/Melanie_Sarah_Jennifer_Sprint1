@@ -135,13 +135,6 @@ function removeAfterTimeout(className, btn, time) {
   }, time);
 }
 
-// function removeAfterTimeout(className, btn, time) {
-//   setTimeout(function() {
-//     btn.classList.add('btn-light');
-//     btn.classList.remove(className, 'custom-btn');
-//   }, time);
-// }
-
 function updateScore(){
   triviaScore++;   
   let content = document.getElementById('triviaScore');

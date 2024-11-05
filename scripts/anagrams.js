@@ -68,7 +68,7 @@ class AnagramUI{
     div.id = `anaQ${this.index}_${this.anagram.challenge_rating}`;
     div.className = "container pt-4 text-center hide";
     let title = this.anagram.scrambled_word.toLowerCase();
-    div.innerHTML = `<h2 class="games-header">${title}</h2>`;
+    div.innerHTML = `<h2 class="ana-header">${title}</h2>`;
     document.querySelector("#anaQuestionRow").appendChild(div);
   }
   propogateSolutionsDiv(){
