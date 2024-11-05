@@ -332,7 +332,7 @@ const bookedParty = {
     updatePrice(bookedParty, activitySlots);
     console.log('Booked Party:', bookedParty);
     localStorage.setItem('bookedParty', JSON.stringify(bookedParty));
-    alert('Party Booked Successfully!');
+    alert(`Party Booked. Price between $${bookedParty.priceMin} and $${bookedParty.priceMax}`);
   });
 
 
