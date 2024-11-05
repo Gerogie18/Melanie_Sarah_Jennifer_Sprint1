@@ -1,5 +1,5 @@
 //Name: Jenn
-//Date: Oct 23, 2024 - 
+//Date: Oct 23, 2024 - Nov 5, 2024
 //Description: JS to manipulate DOM for a pick user to create and book a party.
 
 console.log("JS loaded")
