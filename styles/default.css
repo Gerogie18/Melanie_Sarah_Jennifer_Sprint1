@@ -45,7 +45,7 @@ br {
     padding: 0;
 }
 .pageContainer {
-    position: absolute;
+    position: fixed;
     color: #333134;
     z-index: 1;
     justify-content: center;
