@@ -1,5 +1,47 @@
 [
-  { "question": "Where", "options": ["here","there","everywhere"], "solution": "there"},
-  { "question": "Who", "options": ["him", "her", "them"], "solution": "them" },
-  { "question": "What", "options": ["this", "that", "everything"], "solution": "this"}
+  {
+    "question": "Which character in “It’s the Great Pumpkin, Charlie Brown” believes in the Great Pumpkin?",
+    "options": ["Charlie", "Snoopy", "Linus"],
+    "solution": "Linus"
+  },
+  {
+    "question": "What are the names of the three kidnappers who abduct “Sandy Claws” in the movie “The Nightmare Before Christmas”?",
+    "options": ["Snap, Crackle, and Pop", "Bump, Bash, and Crash", "Lock, Shock, and Barrel"],
+    "solution": "Lock, Shock, and Barrel"
+  },
+  {
+    "question": "According to the Sheb Wooley song lyric, this creature is a one-eyed, one-horned, flyin' what?",
+    "options": ["Blue Monster", "Green Goblin", "Purple People Eater"],
+    "solution": "Purple People Eater"
+  },
+  {
+    "question": "Who wrote the 1818 classic book “Frankenstein”?",
+    "options": ["Bram Stoker", "Percy Shelley", "Mary Shelley"],
+    "solution": "Mary Shelley"
+  },
+  {
+    "question": "What actor played Laurie Strode in the 1978 movie “Halloween?”",
+    "options": ["Sigourney Weaver", "Linda Blair", "Jamie Lee Curtis"],
+    "solution": "Jamie Lee Curtis"
+  },
+  {
+    "question": "What’s the most popular kids' Halloween candy?",
+    "options": ["Candy Corn", "Tootsie Rolls", "Reese’s Peanut Butter Cups"],
+    "solution": "Reese’s Peanut Butter Cups"
+  },
+  {
+    "question": "Besides horror, what other genre did “Dracula” author Bram Stoker publish books under?",
+    "options": ["Science Fiction", "Western", "Romance"],
+    "solution": "Romance"
+  },
+  {
+    "question": "Why do we carve Jack O'lanterns for Halloween?",
+    "options": ["To bring good luck", "To celebrate the harvest", "To scare away evil spirits"],
+    "solution": "To scare away evil spirits"
+  },
+  {
+    "question": "Where did Halloween originate?",
+    "options": ["Transylvania", "Germany", "Ireland"],
+    "solution": "Ireland"
+  }
 ]
