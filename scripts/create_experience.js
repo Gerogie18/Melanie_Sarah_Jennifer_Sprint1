@@ -1,5 +1,5 @@
 //Name: Jenn
-//Date: Oct 23, 2024 - 
+//Date: Oct 23, 2024 - Nov 5, 2024
 //Description: JS to manipulate DOM for a pick user to create and book a party.
 
 console.log("JS loaded")
@@ -332,7 +332,7 @@ const bookedParty = {
     updatePrice(bookedParty, activitySlots);
     console.log('Booked Party:', bookedParty);
     localStorage.setItem('bookedParty', JSON.stringify(bookedParty));
-    alert('Party Booked Successfully!');
+    alert(`Party Booked. Price between $${bookedParty.priceMin} and $${bookedParty.priceMax}`);
   });
 
 
