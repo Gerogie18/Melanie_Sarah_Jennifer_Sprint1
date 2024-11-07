@@ -37,6 +37,13 @@ body {
   pointer-events: none;
 }
 
+#playButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
 figure {
   margin: 0;
 }
@@ -75,7 +82,7 @@ figure {
 .house:hover {
   background-image: url("../images/insidehalloweenhouseArtboard1.svg"); /* show silhouette */
   background-repeat: no-repeat;
-  background-size: 91 %;
+  background-size: 91%;
   background-position: center;
 }
 
